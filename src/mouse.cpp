@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include "main.hpp"
 
 class CMouse
 {
@@ -11,8 +12,8 @@ class CMouse
 
         void changeCursor(int x, int y, int w, int h)
         {
-            cursor.x = x-w/2;
-            cursor.y = y-h/2;
+            cursor.x = (x-w)/scale;
+            cursor.y = (y-h)/scale;
             cursor.w = w;
             cursor.h = h;
         }

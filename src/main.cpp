@@ -1,10 +1,12 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include <inttypes.h>
 
+#include "main.hpp"
 #include "mouse.cpp"
 
-const int WINDOW_WIDTH = 600;
-const int WINDOW_HEIGHT = 600;
+const uint16_t WINDOW_WIDTH = 600;
+const uint16_t WINDOW_HEIGHT = 600;
 
 
 SDL_Window* window = NULL;
@@ -12,6 +14,7 @@ SDL_Surface* screenSurface = NULL;
 SDL_Renderer* renderer = NULL;
 SDL_Event event;
 
+const uint8_t scale = 2;
 bool running = true;
 
 CMouse Mouse;
@@ -42,6 +45,9 @@ void init()
         printf("Renderer failed to initialize. Error: %s\n", SDL_GetError());
         exit(1);
     }
+
+    SDL_RenderSetScale(renderer, scale, scale);
+
 }
 
 void quit()
@@ -81,18 +87,18 @@ void draw()
 
     SDL_RenderDrawRect(renderer, &Mouse.cursor);
 
-    SDL_RenderDrawPoint(renderer, 400, 300); 
+    SDL_RenderDrawPoint(renderer, 0, 0);
+    SDL_RenderDrawPoint(renderer, 299, 299); 
 
     SDL_RenderPresent(renderer);
 
 }
 
+
 int main(int argc, char* args[])
 {
 
-
     init();
-
     
 	while(running)
     {
@@ -100,6 +106,7 @@ int main(int argc, char* args[])
         {
             handleEvent(&event);
         }
+
 
 	    Mouse.changeCursor(Mouse.x, Mouse.y, Mouse.w, Mouse.h);        
 

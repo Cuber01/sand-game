@@ -15,5 +15,8 @@ main.o: main.cpp
 particle.o: particle.cpp
 	$(CC) $(FLAGS) particle.cpp
 
+mouse.o: mouse.cpp
+	$(CC) $(FLAGS) mouse.cpp
+
 clean:
 	rm -f $(OBJS) $(OUT)
