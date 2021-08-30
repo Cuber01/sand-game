@@ -7,8 +7,8 @@ class CMouse
         SDL_Rect cursor;
         int x = 20;
         int y = 20;
-        int w = 30;
-        int h = 30;
+        int w = 15;
+        int h = 15;
 
         void changeCursor(int x, int y, int w, int h)
         {

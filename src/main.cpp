@@ -4,6 +4,7 @@
 
 #include "main.hpp"
 #include "mouse.cpp"
+#include "color.hpp"
 
 const uint16_t WINDOW_WIDTH = 600;
 const uint16_t WINDOW_HEIGHT = 600;
@@ -16,6 +17,11 @@ SDL_Event event;
 
 const uint8_t scale = 2;
 bool running = true;
+
+const uint16_t rows = WINDOW_WIDTH/scale;
+const uint16_t cols = WINDOW_HEIGHT/scale;
+
+uint8_t grid[rows][cols];
 
 CMouse Mouse;
 
@@ -71,6 +77,13 @@ void handleEvent(SDL_Event* event)
         SDL_GetMouseState( &Mouse.x, &Mouse.y );
         break;
 
+    case SDL_MOUSEBUTTONDOWN:
+        if(event->button.button == SDL_BUTTON_LEFT)
+        {
+            running = false;
+        } 
+        break;
+
     case SDL_QUIT:
         running = false;
         break;
@@ -83,12 +96,20 @@ void handleEvent(SDL_Event* event)
 void draw()
 {
     clear();
+
+    for (int x = 0; x < cols; x++) {
+        for (int y = 0; y < rows; y++) {
+            uint8_t value = grid[x][y];
+            color_t color = color_list[value];
+
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+            SDL_RenderDrawPoint(renderer, x, y);
+      
+        }
+    }
+
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-
     SDL_RenderDrawRect(renderer, &Mouse.cursor);
-
-    SDL_RenderDrawPoint(renderer, 0, 0);
-    SDL_RenderDrawPoint(renderer, 299, 299); 
 
     SDL_RenderPresent(renderer);
 

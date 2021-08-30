@@ -1,5 +1,5 @@
-OBJS	= src/main.o src/particle.o src/mouse.o
-SOURCE	= src/main.cpp src/particle.cpp src/mouse.cpp
+OBJS	= src/main.o src/mouse.o
+SOURCE	= src/main.cpp src/mouse.cpp 
 HEADER	= include/color.hpp
 OUT	    = main
 CC	    = g++
@@ -11,9 +11,6 @@ all: $(OBJS)
 
 main.o: main.cpp
 	$(CC) $(FLAGS) main.cpp
-
-particle.o: particle.cpp
-	$(CC) $(FLAGS) particle.cpp
 
 mouse.o: mouse.cpp
 	$(CC) $(FLAGS) mouse.cpp
