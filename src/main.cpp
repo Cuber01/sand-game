@@ -1,11 +1,12 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 
-const int SCREEN_WIDTH = 600;
-const int SCREEN_HEIGHT = 600;
+const int WINDOW_WIDTH = 600;
+const int WINDOW_HEIGHT = 600;
 
 SDL_Window* window = NULL;
 SDL_Surface* screenSurface = NULL;
+SDL_Renderer* renderer = NULL;
 SDL_Event event;
 
 bool running = true;
@@ -18,7 +19,8 @@ void init()
         exit(1);
     }
 
-	window = SDL_CreateWindow("Sand game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("Sand game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	if( window == NULL )
 	{
@@ -29,6 +31,7 @@ void init()
 
 void quit()
 {
+    SDL_DestroyRenderer( renderer );
 	SDL_DestroyWindow( window );
 	SDL_Quit();
 }
@@ -60,8 +63,10 @@ int main(int argc, char* args[])
         }
 
 	    screenSurface = SDL_GetWindowSurface( window );
-	    SDL_FillRect( screenSurface, NULL, SDL_MapRGB( screenSurface->format, 0xFF, 0xFF, 0xFF ) );
-		
+	    
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderDrawPoint(renderer, 400, 300); 
+        SDL_RenderPresent(renderer);
 
 	    SDL_UpdateWindowSurface( window );
 
