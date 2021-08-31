@@ -1,0 +1,51 @@
+#include <SDL2/SDL.h>
+
+#include "color.hpp"
+#include "draw.hpp"
+#include "main.hpp"
+
+
+void CDrawing::init()
+{
+
+    renderer = SDL_CreateRenderer(window, -1, 0);
+    
+    if (renderer == NULL)
+    {
+        printf("Renderer failed to initialize. Error: %s\n", SDL_GetError());
+        exit(1);
+    }
+
+    SDL_RenderSetScale(renderer, scale, scale);
+}
+
+
+void CDrawing::draw()
+{
+    clear();
+
+    for (int x = 0; x < cols; x++) {
+        for (int y = 0; y < rows; y++) {
+
+            uint8_t value = grid[x][y];
+            color_t color = color_list[value];
+
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+            SDL_RenderDrawPoint(renderer, x, y);
+
+        }
+    }
+
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderDrawRect(renderer, &Mouse.cursor);
+
+
+    SDL_RenderPresent(renderer);
+}
+
+void CDrawing::clear()
+{
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+}
+    

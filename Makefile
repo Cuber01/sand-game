@@ -1,6 +1,5 @@
-OBJS	= src/main.o src/mouse.o
-SOURCE	= src/main.cpp src/mouse.cpp 
-HEADER	= include/color.hpp
+OBJS	= src/main.o src/mouse.o src/draw.o src/color.o
+SOURCE	= src/main.cpp src/mouse.cpp src/draw.cpp src/color.cpp
 OUT	    = main
 CC	    = g++
 FLAGS	= -g -c -Wall
@@ -14,6 +13,12 @@ main.o: main.cpp
 
 mouse.o: mouse.cpp
 	$(CC) $(FLAGS) mouse.cpp
+
+draw.o: draw.cpp
+	$(CC) $(FLAGS) draw.cpp
+
+color.o: color.cpp
+	$(CC) $(FLAGS) color.cpp
 
 clean:
 	rm -f $(OBJS) $(OUT)

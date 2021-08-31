@@ -1,20 +1,11 @@
 #include <SDL2/SDL.h>
-#include "main.hpp"
+#include "mouse.hpp"
 
-class CMouse
+void CMouse::changeCursor(int x, int y, int w, int h)
 {
-    public:
-        SDL_Rect cursor;
-        int x = 20;
-        int y = 20;
-        int w = 15;
-        int h = 15;
+    cursor.x = (x-w)/scale;
+    cursor.y = (y-h)/scale;
+    cursor.w = w;
+    cursor.h = h;
+}
 
-        void changeCursor(int x, int y, int w, int h)
-        {
-            cursor.x = (x-w)/scale;
-            cursor.y = (y-h)/scale;
-            cursor.w = w;
-            cursor.h = h;
-        }
-};
