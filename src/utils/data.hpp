@@ -3,6 +3,14 @@
 
 #include <stdint.h>
 
+#define SAND_MODE  49
+#define WATER_MODE 50
+
+// real keys:    1  2  3  4  5  6  7  8  9  0
+// key numbers: 49 50 51 52 53 54 55 56 57 48
+
+
+
 typedef struct color_t
 {
     uint8_t r;

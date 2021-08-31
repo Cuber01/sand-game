@@ -1,4 +1,6 @@
-#include "color.hpp"
+#include "data.hpp"
+#include <stdint.h>
+
 
 color_t color_list[]
 {
@@ -9,3 +11,4 @@ color_t color_list[]
     { 71, 126, 255 }, // water moving right 4
     { 71, 126, 255 }, // water moving left  5       
 };
+

@@ -10,7 +10,7 @@
 #include "elements/sand.hpp"
 #include "elements/water.hpp"
 #include "utils/util.hpp"
-#include "utils/color.hpp"
+#include "utils/data.hpp"
 
 
 // sdl
@@ -20,6 +20,9 @@ SDL_Event event;
 // bool
 bool mouseIsPressed = false;
 bool running = true;
+
+//key
+uint16_t lastKeyPressed;
 
 // grid
 uint8_t grid[rows][cols];
@@ -81,6 +84,10 @@ void handleEvent(SDL_Event* event)
         mouseIsPressed = false;
         break;
 
+    case SDL_KEYDOWN:
+        lastKeyPressed = event->key.keysym.sym;
+        break;
+
     case SDL_QUIT:
         running = false;
         break;
@@ -106,10 +113,17 @@ int main(int argc, char* args[])
 
         if(mouseIsPressed)
         {
-            //spawn sand
-            //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
-
-            grid[Cursor.x/scale][Cursor.y/scale] = 4; 
+            switch (lastKeyPressed)
+            {
+            case SAND_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                break;
+            
+            case WATER_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = 4; 
+                break;
+            }
+            
             
         } 
 
