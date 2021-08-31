@@ -1,5 +1,5 @@
-OBJS	= src/main.o src/cursor.o src/render.o src/color.o
-SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/color.cpp
+OBJS	= src/main.o src/cursor.o src/render.o src/color.o src/util.o
+SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/color.cpp src/util.cpp
 OUT	    = main
 CC	    = g++
 FLAGS	= -g -c -Wall
@@ -19,6 +19,9 @@ render.o: render.cpp
 
 color.o: color.cpp
 	$(CC) $(FLAGS) color.cpp
+
+util.o: util.cpp
+	$(CC) $(FLAGS) util.cpp
 
 clean:
 	rm -f $(OBJS) $(OUT)

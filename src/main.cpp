@@ -7,21 +7,25 @@
 #include "render.hpp"
 #include "color.hpp"
 
+// sdl
 SDL_Window* window = NULL;
 SDL_Event event;
 
+// bool
+bool mouseIsPressed = false;
 bool running = true;
 
+// grid
 uint8_t grid[rows][cols];
 
+// objects
 CCursor Cursor;
 CRenderHandler RenderHandler;
-
 
 void init()
 {
 
-    Cursor.changeCursor(20, 20, 40, 40);
+    Cursor.adjustCursor(20, 20, 40, 40);
 
     if( SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
@@ -58,10 +62,11 @@ void handleEvent(SDL_Event* event)
         break;
 
     case SDL_MOUSEBUTTONDOWN:
-        if(event->button.button == SDL_BUTTON_LEFT)
-        {
-            grid[Cursor.x/scale][Cursor.y/scale] = 1;
-        } 
+        mouseIsPressed = true;
+        break;
+
+    case SDL_MOUSEBUTTONUP:
+        mouseIsPressed = false;
         break;
 
     case SDL_QUIT:
@@ -86,8 +91,12 @@ int main(int argc, char* args[])
             handleEvent(&event);
         }
 
-
-	    Cursor.changeCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);        
+        if(mouseIsPressed)
+        {
+            grid[Cursor.x/scale][Cursor.y/scale] = 1;
+        } 
+        
+	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);        
 
         RenderHandler.draw();
 	    

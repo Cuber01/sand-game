@@ -3,7 +3,7 @@
 
 #include "cursor.hpp"
 
-void CCursor::changeCursor(int x, int y, uint8_t w, uint8_t h)
+void CCursor::adjustCursor(int x, int y, uint8_t w, uint8_t h)
 {
     cursor.x = (x-w)/scale;
     cursor.y = (y-h)/scale;

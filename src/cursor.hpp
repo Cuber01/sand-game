@@ -16,7 +16,7 @@ class CCursor
         uint8_t w = 15;
         uint8_t h = 15;
 
-        void changeCursor(int x, int y, uint8_t w, uint8_t h);
+        void adjustCursor(int x, int y, uint8_t w, uint8_t h);
 };
 
 #endif
