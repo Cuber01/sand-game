@@ -8,19 +8,15 @@ void CSandHandler::sandUpdate(uint16_t x, uint16_t y)
 
     if (Util.getGrid( x, y+1 ) == 0 ) // down
     {
-        next[x][y+1] = 1;
-      //  printf("a");
+        next[x][y+1] = grid[x][y];
     } else if (Util.getGrid( x+1, y+1) == 0) // down right
     {
-        next[x+1][y+1] = 1;
-      //  printf("b");
+        next[x+1][y+1] = grid[x][y];
     } else if (Util.getGrid( x-1, y+1) == 0) // down left
     {
-        next[x-1][y+1] = 1;
-       // printf("c");
+        next[x-1][y+1] = grid[x][y];
     } else {
-        next[x][y] = 1;
-       // printf("d");
+        next[x][y] = grid[x][y];
     }
 
 }

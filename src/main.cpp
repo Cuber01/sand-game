@@ -35,6 +35,7 @@ void init()
 {
 
     Cursor.adjustCursor(20, 20, 40, 40);
+    std:srand((unsigned)time(NULL));
 
     if( SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
@@ -103,8 +104,7 @@ int main(int argc, char* args[])
 
         if(mouseIsPressed)
         {
-            //std:srand((unsigned)time(NULL));
-            grid[Cursor.x/scale][Cursor.y/scale] = 1;
+            grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
             //printf("%d", (rand()%5)+1);
             //SDL_TriggerBreakpoint();
         } 

@@ -10,7 +10,7 @@ typedef struct color_t
     uint8_t b;
 } color_t;
 
-extern color_t color_list[6];
+extern color_t color_list[4];
 
 //color_t doad = (color_t){ .r = 0, .g = 1, .b = 2  };
 
