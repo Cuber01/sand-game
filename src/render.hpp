@@ -6,7 +6,7 @@
 #define scale 2
 extern SDL_Renderer* renderer;
 
-class CDrawing {
+class CRenderHandler {
     public:
         SDL_Renderer* renderer = NULL;
 

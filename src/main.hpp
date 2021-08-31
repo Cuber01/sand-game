@@ -2,8 +2,8 @@
 #define main_hpp
 
 #include <inttypes.h>
-#include "mouse.hpp"
-#include "draw.hpp"
+#include "cursor.hpp"
+#include "render.hpp"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600
@@ -12,7 +12,7 @@
 #define cols WINDOW_WIDTH/scale
 
 extern SDL_Window* window;
-extern CMouse Mouse;
+extern CCursor Cursor;
 
 extern uint8_t grid[rows][cols];
 

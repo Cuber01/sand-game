@@ -1,11 +1,11 @@
 #include <SDL2/SDL.h>
 
 #include "color.hpp"
-#include "draw.hpp"
+#include "render.hpp"
 #include "main.hpp"
 
 
-void CDrawing::init()
+void CRenderHandler::init()
 {
 
     renderer = SDL_CreateRenderer(window, -1, 0);
@@ -20,7 +20,7 @@ void CDrawing::init()
 }
 
 
-void CDrawing::draw()
+void CRenderHandler::draw()
 {
     clear();
 
@@ -37,13 +37,13 @@ void CDrawing::draw()
     }
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawRect(renderer, &Mouse.cursor);
+    SDL_RenderDrawRect(renderer, &Cursor.cursor);
 
 
     SDL_RenderPresent(renderer);
 }
 
-void CDrawing::clear()
+void CRenderHandler::clear()
 {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);

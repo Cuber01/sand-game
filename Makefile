@@ -1,5 +1,5 @@
-OBJS	= src/main.o src/mouse.o src/draw.o src/color.o
-SOURCE	= src/main.cpp src/mouse.cpp src/draw.cpp src/color.cpp
+OBJS	= src/main.o src/cursor.o src/render.o src/color.o
+SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/color.cpp
 OUT	    = main
 CC	    = g++
 FLAGS	= -g -c -Wall
@@ -11,11 +11,11 @@ all: $(OBJS)
 main.o: main.cpp
 	$(CC) $(FLAGS) main.cpp
 
-mouse.o: mouse.cpp
-	$(CC) $(FLAGS) mouse.cpp
+cursor.o: cursor.cpp
+	$(CC) $(FLAGS) cursor.cpp
 
-draw.o: draw.cpp
-	$(CC) $(FLAGS) draw.cpp
+draw.o: render.cpp
+	$(CC) $(FLAGS) render.cpp
 
 color.o: color.cpp
 	$(CC) $(FLAGS) color.cpp

@@ -3,8 +3,8 @@
 #include <inttypes.h>
 
 #include "main.hpp"
-#include "mouse.hpp"
-#include "draw.hpp"
+#include "cursor.hpp"
+#include "render.hpp"
 #include "color.hpp"
 
 SDL_Window* window = NULL;
@@ -14,14 +14,14 @@ bool running = true;
 
 uint8_t grid[rows][cols];
 
-CMouse Mouse;
-CDrawing Drawing;
+CCursor Cursor;
+CRenderHandler RenderHandler;
 
 
 void init()
 {
 
-    Mouse.changeCursor(20, 20, 40, 40);
+    Cursor.changeCursor(20, 20, 40, 40);
 
     if( SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
@@ -37,13 +37,14 @@ void init()
         exit(1);
 	} 
 
-    Drawing.init();
+    SDL_ShowCursor(SDL_DISABLE);
+    RenderHandler.init();
 
 }
 
 void quit()
 {
-    SDL_DestroyRenderer( Drawing.renderer );
+    SDL_DestroyRenderer( RenderHandler.renderer );
 	SDL_DestroyWindow( window );
 	SDL_Quit();
 }
@@ -53,13 +54,13 @@ void handleEvent(SDL_Event* event)
     switch (event->type)
     {
     case SDL_MOUSEMOTION:
-        SDL_GetMouseState( &Mouse.x, &Mouse.y );
+        SDL_GetMouseState( &Cursor.x, &Cursor.y );
         break;
 
     case SDL_MOUSEBUTTONDOWN:
         if(event->button.button == SDL_BUTTON_LEFT)
         {
-            running = false;
+            grid[Cursor.x/scale][Cursor.y/scale] = 1;
         } 
         break;
 
@@ -86,9 +87,9 @@ int main(int argc, char* args[])
         }
 
 
-	    Mouse.changeCursor(Mouse.x, Mouse.y, Mouse.w, Mouse.h);        
+	    Cursor.changeCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);        
 
-        Drawing.draw();
+        RenderHandler.draw();
 	    
     }
     

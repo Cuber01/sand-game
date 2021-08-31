@@ -2,9 +2,9 @@
 #define mouse_hpp
 
 #include <SDL2/SDL.h>
-#include "draw.hpp"
+#include "render.hpp"
 
-class CMouse
+class CCursor
 {
     public:
         SDL_Rect cursor;
