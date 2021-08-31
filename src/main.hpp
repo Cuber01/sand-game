@@ -1,7 +1,7 @@
 #ifndef main_hpp
 #define main_hpp
 
-#include <inttypes.h>
+#include <stdint.h>
 #include "cursor.hpp"
 #include "render.hpp"
 

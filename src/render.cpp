@@ -24,8 +24,8 @@ void CRenderHandler::draw()
 {
     clear();
 
-    for (int x = 0; x < cols; x++) {
-        for (int y = 0; y < rows; y++) {
+    for (uint16_t x = 0; x < cols; x++) {
+        for (uint16_t y = 0; y < rows; y++) {
 
             uint8_t value = grid[x][y];
             color_t color = color_list[value];

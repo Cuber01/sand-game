@@ -2,18 +2,21 @@
 #define mouse_hpp
 
 #include <SDL2/SDL.h>
+#include <stdint.h>
+
 #include "render.hpp"
+
 
 class CCursor
 {
     public:
         SDL_Rect cursor;
-        int x = 20;
+        int x = 20; // this has to be an int!
         int y = 20;
-        int w = 15;
-        int h = 15;
+        uint8_t w = 15;
+        uint8_t h = 15;
 
-        void changeCursor(int x, int y, int w, int h);
+        void changeCursor(int x, int y, uint8_t w, uint8_t h);
 };
 
 #endif

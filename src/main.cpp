@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
-#include <inttypes.h>
+#include <stdint.h>
 
 #include "main.hpp"
 #include "cursor.hpp"

@@ -14,7 +14,7 @@ main.o: main.cpp
 cursor.o: cursor.cpp
 	$(CC) $(FLAGS) cursor.cpp
 
-draw.o: render.cpp
+render.o: render.cpp
 	$(CC) $(FLAGS) render.cpp
 
 color.o: color.cpp

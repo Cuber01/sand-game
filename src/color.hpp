@@ -1,7 +1,7 @@
 #ifndef color_hpp
 #define color_hpp
 
-#include <inttypes.h>
+#include <stdint.h>
 
 typedef struct color_t
 {

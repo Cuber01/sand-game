@@ -1,7 +1,7 @@
 #ifndef draw_hpp
 #define draw_hpp
 
-#include <inttypes.h>
+#include <stdint.h>
 
 #define scale 2
 extern SDL_Renderer* renderer;
