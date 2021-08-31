@@ -1,6 +1,8 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <cstdlib>
+#include <time.h>
 
 #include "main.hpp"
 #include "cursor.hpp"
@@ -8,6 +10,7 @@
 #include "sand.hpp"
 #include "util.hpp"
 #include "color.hpp"
+
 
 // sdl
 SDL_Window* window = NULL;
@@ -100,7 +103,9 @@ int main(int argc, char* args[])
 
         if(mouseIsPressed)
         {
+            //std:srand((unsigned)time(NULL));
             grid[Cursor.x/scale][Cursor.y/scale] = 1;
+            //printf("%d", (rand()%5)+1);
             //SDL_TriggerBreakpoint();
         } 
 
