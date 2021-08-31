@@ -83,6 +83,7 @@ int main(int argc, char* args[])
 {
 
     init();
+
     
 	while(running)
     {
@@ -94,8 +95,9 @@ int main(int argc, char* args[])
         if(mouseIsPressed)
         {
             grid[Cursor.x/scale][Cursor.y/scale] = 1;
+            //SDL_TriggerBreakpoint();
         } 
-        
+
 	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);        
 
         RenderHandler.draw();
