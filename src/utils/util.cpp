@@ -12,6 +12,17 @@ bool CUtil::outOfBounds(uint16_t x, uint16_t y)
     return false;
 }
 
+uint8_t CUtil::getNext(uint16_t x, uint16_t y)
+{
+    if(outOfBounds(x, y))
+    {
+        return 255;
+    }
+
+    return next[x][y];
+
+}
+
 uint8_t CUtil::getGrid(uint16_t x, uint16_t y)
 {
     if(outOfBounds(x, y))

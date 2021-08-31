@@ -2,7 +2,6 @@
 #include "directions.hpp"
 #include "sand.hpp"
 
-
 #include <stdint.h> 
 
 

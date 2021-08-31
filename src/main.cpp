@@ -8,6 +8,7 @@
 #include "cursor.hpp"
 #include "render.hpp"
 #include "elements/sand.hpp"
+#include "elements/water.hpp"
 #include "utils/util.hpp"
 #include "utils/color.hpp"
 
@@ -28,7 +29,8 @@ uint8_t empty[rows][cols];
 // objects
 CCursor Cursor;
 CRenderHandler RenderHandler;
-CSandHandler SandHandler;
+CSandHandler  SandHandler;
+CWaterHandler WaterHandler;
 CUtil Util;
 
 void init()
@@ -104,9 +106,11 @@ int main(int argc, char* args[])
 
         if(mouseIsPressed)
         {
-            grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
-            //printf("%d", (rand()%5)+1);
-            //SDL_TriggerBreakpoint();
+            //spawn sand
+            //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+
+            grid[Cursor.x/scale][Cursor.y/scale] = 4; 
+            
         } 
 
 	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
@@ -115,10 +119,19 @@ int main(int argc, char* args[])
 
         for (uint16_t x = 0; x < cols; x++) {
             for (uint16_t y = 0; y < rows; y++) {
+                uint8_t value = grid[x][y];
 
-                if(grid[x][y] > 0 && grid[x][y] < 6) {
-                    SandHandler.sandUpdate(x, y);
-                }      
+                if(value > 0) {
+                    
+                    if (value <= 3)
+                    {
+                        SandHandler.sandUpdate(x, y);
+                    } else if (value == 4 || value == 5)
+                    {
+                        WaterHandler.waterUpdate(x, y);
+                    }
+                
+                }        
         
             }
         }     
