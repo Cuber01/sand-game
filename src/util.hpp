@@ -6,7 +6,7 @@
 class CUtil
 {
     public:
-        uint8_t getGrid();
+        uint8_t getGrid( uint16_t x, uint16_t y );
 
 
 };

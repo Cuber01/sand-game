@@ -1,3 +1,4 @@
 src/*.o
 main
 /.vscode
+remember_update_make

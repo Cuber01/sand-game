@@ -1,5 +1,5 @@
-OBJS	= src/main.o src/cursor.o src/render.o src/color.o src/util.o
-SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/color.cpp src/util.cpp
+OBJS	= src/main.o src/cursor.o src/render.o src/color.o src/util.o src/sand.o
+SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/color.cpp src/util.cpp src/sand.cpp
 OUT	    = main
 CC	    = g++
 #CFLAGS	= -g -c -Wall

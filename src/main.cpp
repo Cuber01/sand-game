@@ -5,6 +5,8 @@
 #include "main.hpp"
 #include "cursor.hpp"
 #include "render.hpp"
+#include "sand.hpp"
+#include "util.hpp"
 #include "color.hpp"
 
 // sdl
@@ -17,10 +19,14 @@ bool running = true;
 
 // grid
 uint8_t grid[rows][cols];
+uint8_t next[rows][cols];
+uint8_t empty[rows][cols];
 
 // objects
 CCursor Cursor;
 CRenderHandler RenderHandler;
+CSandHandler SandHandler;
+CUtil Util;
 
 void init()
 {
@@ -98,9 +104,23 @@ int main(int argc, char* args[])
             //SDL_TriggerBreakpoint();
         } 
 
-	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);        
+	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
+
+        memcpy( next, empty, sizeof(next) );
+
+        for (uint16_t x = 0; x < cols; x++) {
+            for (uint16_t y = 0; y < rows; y++) {
+
+                if(grid[x][y] > 0 && grid[x][y] < 6) {
+                    SandHandler.sandUpdate(x, y);
+                }      
+        
+            }
+        }     
 
         RenderHandler.draw();
+
+        memcpy( grid, next, sizeof(grid) );
 	    
     }
     
