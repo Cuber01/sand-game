@@ -37,29 +37,3 @@ void CWaterHandler::waterUpdate(uint16_t x, uint16_t y)
     }
 
 }
-
-// if (GetGrid( x, y+1 ) == 0 && GetNext( x+1, y+1 ) == 0) // down
-//   {
-//     next[x][y+1] = 2;
-//   } else if (GetGrid( x+1, y+1 ) == 0 && GetNext( x+1, y+1 ) == 0) // down right
-//   {
-//     next[x+1][y+1] = 3;
-//   } else if (GetGrid( x-1, y+1 ) == 0 && GetNext( x-1, y+1 ) == 0) // down left
-//   {
-//     next[x-1][y+1] = 2;
-//   } else if (GetGrid( x-1, y ) == 0 && GetGrid( x+1, y ) == 0 && GetNext( x-1, y ) == 0 && GetNext( x+1, y ) == 0)
-//   {
-//     if(GetGrid(x, y) == 2) {
-//       next[x-1][y] = 2;
-//     } else {
-//       next[x+1][y] = 3;
-//     }
-//   } else if (GetGrid( x-1, y ) == 0 && GetNext( x-1, y ) == 0) // left 
-//   {
-//     next[x-1][y] = 2;
-//   } else if (GetGrid( x+1, y ) == 0 && GetNext( x+1, y ) == 0) // right
-//   {
-//     next[x+1][y] = 3;
-//   } else {
-//     next[x][y] = grid[x][y]
-//   } 
