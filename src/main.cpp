@@ -7,9 +7,9 @@
 #include "main.hpp"
 #include "cursor.hpp"
 #include "render.hpp"
-#include "sand.hpp"
-#include "util.hpp"
-#include "color.hpp"
+#include "elements/sand.hpp"
+#include "utils/util.hpp"
+#include "utils/color.hpp"
 
 
 // sdl

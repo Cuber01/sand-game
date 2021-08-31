@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 
-#include "color.hpp"
+#include "utils/color.hpp"
 #include "render.hpp"
 #include "main.hpp"
 

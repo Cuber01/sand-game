@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include "cursor.hpp"
-#include "util.hpp"
+#include "utils/util.hpp"
 #include "render.hpp"
 
 #define WINDOW_WIDTH 600
