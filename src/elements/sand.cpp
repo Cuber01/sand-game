@@ -5,7 +5,7 @@
 #include <stdint.h> 
 
 
-void CSandHandler::sandUpdate(uint16_t x, uint16_t y)
+void CSandHandler::update(uint16_t x, uint16_t y)
 {
 
     if (Util.getGrid( DOWN ) == 0 )

@@ -172,20 +172,20 @@ int main(int argc, char* args[])
                         case 1:
                         case 2:
                         case 3:
-                            SandHandler.sandUpdate(x, y);
+                            SandHandler.update(x, y);
                             break;
 
                         case 4:
                         case 5:
-                            WaterHandler.waterUpdate(x, y);
+                            WaterHandler.update(x, y);
                             break;
 
                         case 6:
-                            SmokeHandler.smokeUpdate(x, y);
+                            SmokeHandler.update(x, y);
                             break;
 
                         case 7:
-                            WoodHandler.woodUpdate(x, y);
+                            WoodHandler.update(x, y);
                             break;
 
 

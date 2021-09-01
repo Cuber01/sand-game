@@ -5,7 +5,7 @@
 #include <stdint.h> 
 
 
-void CWaterHandler::waterUpdate(uint16_t x, uint16_t y)
+void CWaterHandler::update(uint16_t x, uint16_t y)
 {
 
     if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 

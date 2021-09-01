@@ -6,7 +6,7 @@
 class CWaterHandler
 {
     public:
-        void waterUpdate(uint16_t x, uint16_t y);
+        void update(uint16_t x, uint16_t y);
 
 };
 

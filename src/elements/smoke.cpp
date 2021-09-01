@@ -5,9 +5,7 @@
 #include <stdint.h> 
 
 
-
-
-void CSmokeHandler::smokeUpdate(uint16_t x, uint16_t y)
+void CSmokeHandler::update(uint16_t x, uint16_t y)
 {
 
  if (Util.getGrid( UP ) == 0 && Util.getNext( UP ) == 0 && floor(rand()%2) == 1) 
