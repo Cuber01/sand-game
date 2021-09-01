@@ -17,17 +17,24 @@
 SDL_Window* window = NULL;
 SDL_Event event;
 
-// bool
+
+//int
+uint16_t lastKeyPressed;
+uint16_t lastId;
+
+//bool
 bool mouseIsPressed = false;
 bool running = true;
 
-//key
-uint16_t lastKeyPressed;
 
 // grid
-uint8_t grid[rows][cols];
-uint8_t next[rows][cols];
-uint8_t empty[rows][cols];
+uint16_t* particles = new uint16_t[5];
+
+uint16_t grid[rows][cols];
+uint16_t next[rows][cols];
+uint16_t empty[rows][cols];
+
+
 
 // objects
 CCursor Cursor;
@@ -106,6 +113,8 @@ int main(int argc, char* args[])
     
 	while(running)
     {
+        //SDL_Delay(100);
+        
         while( SDL_PollEvent(&event) )
         {
             handleEvent(&event);
@@ -115,6 +124,7 @@ int main(int argc, char* args[])
         {
             switch (lastKeyPressed)
             {
+            
             case SAND_MODE:
                 grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
@@ -122,8 +132,12 @@ int main(int argc, char* args[])
             case WATER_MODE:
                 grid[Cursor.x/scale][Cursor.y/scale] = 4; 
                 break;
-            }
+
+            default:
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                break;
             
+            }
             
         } 
 
@@ -153,7 +167,7 @@ int main(int argc, char* args[])
         RenderHandler.draw();
 
         memcpy( grid, next, sizeof(grid) );
-	    
+        
     }
     
     quit();

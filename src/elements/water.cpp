@@ -25,7 +25,6 @@ void CWaterHandler::waterUpdate(uint16_t x, uint16_t y)
         } else {
             GO_LEFT(x, y, 5);
         }
-
     } else if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0)  
     {
         GO_RIGHT(x, y, 4);
@@ -33,7 +32,7 @@ void CWaterHandler::waterUpdate(uint16_t x, uint16_t y)
     {
         GO_LEFT(x, y, 5);
     } else { 
-        STAY(x, y);
+        STAY(x, y, Util.getGrid( ME ));
     }
 
 }
