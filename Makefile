@@ -1,5 +1,5 @@
-OBJS	= src/main.o src/cursor.o src/render.o src/utils/data.o src/utils/util.o src/elements/sand.o src/elements/water.o
-SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/utils/data.cpp src/utils/util.cpp src/elements/sand.cpp src/elements/water.cpp
+OBJS	= src/main.o src/cursor.o src/render.o src/utils/data.o src/utils/util.o src/elements/sand.o src/elements/water.o  src/elements/smoke.o
+SOURCE	= src/main.cpp src/cursor.cpp src/render.cpp src/utils/data.cpp src/utils/util.cpp src/elements/sand.cpp src/elements/water.cpp src/elements/smoke.cpp
 OUT	    = main
 CC	    = g++
 #CFLAGS	= -g -c -Wall

@@ -9,6 +9,7 @@
 #include "render.hpp"
 #include "elements/sand.hpp"
 #include "elements/water.hpp"
+#include "elements/smoke.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 
@@ -41,6 +42,7 @@ CCursor Cursor;
 CRenderHandler RenderHandler;
 CSandHandler  SandHandler;
 CWaterHandler WaterHandler;
+CSmokeHandler SmokeHandler;
 CUtil Util;
 
 void init()
@@ -133,6 +135,18 @@ int main(int argc, char* args[])
                 grid[Cursor.x/scale][Cursor.y/scale] = 4; 
                 break;
 
+            case WOOD_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = 0; 
+                break;
+
+            case FIRE_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = 0; 
+                break;
+
+            case SMOKE_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = 6; 
+                break;
+
             default:
                 grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
@@ -157,6 +171,9 @@ int main(int argc, char* args[])
                     } else if (value == 4 || value == 5)
                     {
                         WaterHandler.waterUpdate(x, y);
+                    } else if (value == 6) 
+                    {
+                        SmokeHandler.smokeUpdate(x, y);
                     }
                 
                 }        

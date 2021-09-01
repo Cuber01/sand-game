@@ -9,6 +9,7 @@ color_t color_list[]
     { 251, 209, 72 }, // sand 2
     { 251, 242, 54 }, // sand 3
     { 71, 126, 255 }, // water moving right 4
-    { 71, 126, 255 }, // water moving left  5       
+    { 71, 126, 255 }, // water moving left  5  
+    { 60, 67, 73 }, // smoke 6     
 };
 
