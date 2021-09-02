@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define scale 4
+#define scale 6
 extern SDL_Renderer* renderer;
 
 class CRenderHandler {
