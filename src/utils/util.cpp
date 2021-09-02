@@ -34,7 +34,3 @@ uint8_t CUtil::getGrid(uint16_t x, uint16_t y)
 
 }
 
-uint8_t CUtil::random(uint8_t min, uint8_t max)
-{
-    return floor((rand()%max))+min;
-}

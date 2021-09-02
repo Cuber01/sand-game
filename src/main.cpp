@@ -117,8 +117,8 @@ void handleInput()
             switch (lastKeyPressed)
             {
             
-            case SAND_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = Util.random(1, 3);
+             case SAND_MODE:
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
             
             case WATER_MODE:
@@ -130,7 +130,7 @@ void handleInput()
                 break;
 
             case FIRE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = Util.random(8, 10); 
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+8; 
                 break;
 
             case SMOKE_MODE:
@@ -138,8 +138,9 @@ void handleInput()
                 break;
 
             default:
-                grid[Cursor.x/scale][Cursor.y/scale] = Util.random(1, 3);
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
+            
             
             }
             
@@ -198,8 +199,7 @@ int main(int argc, char* args[])
     
 	while(running)
     {
-        //SDL_Delay(100);
-        
+
         while( SDL_PollEvent(&event) )
         {
             handleEvent(&event);
