@@ -12,5 +12,9 @@ color_t color_list[]
     { 71, 126, 255 }, // water moving left  5  
     { 60, 67, 73 }, // smoke 6     
     { 75, 27, 5 }, // wood 7
+    { 255, 160, 1 }, // fire 8
+    { 255, 107, 1 }, // fire 9
+    { 255, 79, 1 }, // fire 10
+
 };
 

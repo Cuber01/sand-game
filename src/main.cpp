@@ -11,6 +11,7 @@
 #include "elements/water.hpp"
 #include "elements/smoke.hpp"
 #include "elements/wood.hpp"
+#include "elements/fire.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 
@@ -45,6 +46,7 @@ CSandHandler  SandHandler;
 CWaterHandler WaterHandler;
 CSmokeHandler SmokeHandler;
 CWoodHandler WoodHandler;
+CFireHandler FireHandler;
 CUtil Util;
 
 void init()
@@ -108,23 +110,9 @@ void handleEvent(SDL_Event* event)
     }
 }
 
-
-int main(int argc, char* args[])
+void handleInput()
 {
-
-    init();
-
-    
-	while(running)
-    {
-        //SDL_Delay(100);
-        
-        while( SDL_PollEvent(&event) )
-        {
-            handleEvent(&event);
-        }
-
-        if(mouseIsPressed)
+    if(mouseIsPressed)
         {
             switch (lastKeyPressed)
             {
@@ -142,7 +130,7 @@ int main(int argc, char* args[])
                 break;
 
             case FIRE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 0; 
+                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+8; 
                 break;
 
             case SMOKE_MODE:
@@ -156,12 +144,11 @@ int main(int argc, char* args[])
             }
             
         } 
+}
 
-	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
-
-        memcpy( next, empty, sizeof(next) );
-
-        for (uint16_t x = 0; x < cols; x++) {
+void update()
+{
+    for (uint16_t x = 0; x < cols; x++) {
             for (uint16_t y = 0; y < rows; y++) {
                 uint8_t value = grid[x][y];
 
@@ -188,12 +175,43 @@ int main(int argc, char* args[])
                             WoodHandler.update(x, y);
                             break;
 
-
+                        case 8:
+                        case 9:
+                        case 10:
+                            FireHandler.update(x, y);
+                            break;
+   
                     }
                 }        
         
             }
-        }     
+    }    
+
+}
+
+
+int main(int argc, char* args[])
+{
+
+    init();
+
+    
+	while(running)
+    {
+        //SDL_Delay(100);
+        
+        while( SDL_PollEvent(&event) )
+        {
+            handleEvent(&event);
+        }
+
+        handleInput();
+
+	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
+
+        memcpy( next, empty, sizeof(next) );
+
+        update();
 
         RenderHandler.draw();
 
