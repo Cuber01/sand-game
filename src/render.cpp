@@ -28,10 +28,24 @@ void CRenderHandler::draw()
         for (uint16_t y = 0; y < rows; y++) {
 
             uint8_t value = grid[x][y];
-            color_t color = color_list[value];
 
-            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
-            SDL_RenderDrawPoint(renderer, x, y);
+            if(value < 8)
+            {
+                color_t color = color_list[value];
+            
+                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+                SDL_RenderDrawPoint(renderer, x, y);
+            
+            } else {
+
+                color_t color = color_list[(rand()%10)+8];
+
+                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+                SDL_RenderDrawPoint(renderer, x, y);
+
+            }
+
+
 
         }
     }

@@ -126,15 +126,15 @@ void handleInput()
                 break;
 
             case WOOD_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 7; 
+                grid[Cursor.x/scale][Cursor.y/scale] = 6; 
                 break;
 
             case FIRE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+8; 
+                grid[Cursor.x/scale][Cursor.y/scale] = 100; 
                 break;
 
             case SMOKE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 6; 
+                grid[Cursor.x/scale][Cursor.y/scale] = 7; 
                 break;
 
             default:
@@ -169,16 +169,14 @@ void update()
                             break;
 
                         case 6:
-                            SmokeHandler.update(x, y);
-                            break;
-
-                        case 7:
                             WoodHandler.update(x, y);
                             break;
 
-                        case 8:
-                        case 9:
-                        case 10:
+                        case 7:
+                            SmokeHandler.update(x, y);
+                            break;
+
+                        default:
                             FireHandler.update(x, y);
                             break;
    

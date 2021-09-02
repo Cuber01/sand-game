@@ -26,7 +26,7 @@ SOURCE	= src/main.cpp \
 
 OUT	    = out/sand_game
 CC	    = g++
-CFLAGS	= -g -ggdb
+CFLAGS	= 
 LFLAGS	= -lSDL2
 
 all: $(OBJS)
