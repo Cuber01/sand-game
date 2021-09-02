@@ -20,6 +20,10 @@ SOURCE	= src/main.cpp \
  src/elements/wood.cpp \
  src/elements/fire.cpp
 
+# debug:
+# CFLAGS	= -g -ggdb
+
+
 OUT	    = out/sand_game
 CC	    = g++
 CFLAGS	= -g -ggdb
