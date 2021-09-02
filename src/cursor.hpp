@@ -13,8 +13,9 @@ class CCursor
         SDL_Rect cursor;
         int x = 20; // this has to be an int!
         int y = 20;
-        uint8_t w = 15;
-        uint8_t h = 15;
+        uint8_t w = 3;
+        uint8_t h = 3;
+        uint8_t change_value = 2;
 
         void adjustCursor(int x, int y, uint8_t w, uint8_t h);
 };

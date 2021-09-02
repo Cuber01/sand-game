@@ -69,7 +69,7 @@ void init()
         exit(1);
 	} 
 
-    SDL_ShowCursor(SDL_DISABLE);
+   // SDL_ShowCursor(SDL_DISABLE);
     RenderHandler.init();
 
 }
@@ -97,6 +97,22 @@ void handleEvent(SDL_Event* event)
         mouseIsPressed = false;
         break;
 
+    case SDL_MOUSEWHEEL:
+        if(event->wheel.y > 0) 
+        {
+            Cursor.w = Cursor.w+2;
+            Cursor.h = Cursor.h+2;
+        } else if(event->wheel.y < 0) 
+        {
+            if(Cursor.w >= 3 && Cursor.h >= 3)
+            {
+                Cursor.w = Cursor.w - Cursor.change_value;
+                Cursor.h = Cursor.h - Cursor.change_value;
+            }
+        }
+        break;
+
+
     case SDL_KEYDOWN:
         lastKeyPressed = event->key.keysym.sym;
         break;
@@ -117,7 +133,7 @@ void handleInput()
             switch (lastKeyPressed)
             {
             
-             case SAND_MODE:
+            case SAND_MODE:
                 grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
             
