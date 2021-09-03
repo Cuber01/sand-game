@@ -38,7 +38,6 @@ uint16_t next[rows][cols];
 uint16_t empty[rows][cols];
 
 
-
 // objects
 CCursor Cursor;
 CRenderHandler RenderHandler;
@@ -134,27 +133,28 @@ void handleInput()
             {
             
             case SAND_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
                 break;
             
             case WATER_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 4; 
+                //grid[Cursor.x/scale][Cursor.y/scale] = 4; 
                 break;
 
             case WOOD_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 6; 
+                //grid[Cursor.x/scale][Cursor.y/scale] = 6; 
                 break;
 
             case FIRE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 100; 
+                //grid[Cursor.x/scale][Cursor.y/scale] = 100; 
                 break;
 
             case SMOKE_MODE:
-                grid[Cursor.x/scale][Cursor.y/scale] = 7; 
+                //grid[Cursor.x/scale][Cursor.y/scale] = 7; 
                 break;
 
             default:
-                grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 break;
             
             
@@ -163,7 +163,7 @@ void handleInput()
         } 
 }
 
-void update()
+void updateParticles()
 {
     for (uint16_t x = 0; x < cols; x++) {
             for (uint16_t y = 0; y < rows; y++) {
@@ -219,13 +219,13 @@ int main(int argc, char* args[])
             handleEvent(&event);
         }
 
-        handleInput();
 
-	    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
+        Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
+        handleInput();
 
         memcpy( next, empty, sizeof(next) );
 
-        update();
+        updateParticles();
 
         RenderHandler.draw();
 
