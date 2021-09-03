@@ -45,10 +45,10 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8
             
             if(place_sand)
             {
-                particle = (rand()%3)+1;
+                particle = Util.random(1, 3);
             } else if (place_water)
             {
-                particle = rand()%(5-4 + 1) + 4; 
+                particle = Util.random(4, 5); 
             } 
 
             grid[(x+i)/scale][(y+j)/scale] = particle;

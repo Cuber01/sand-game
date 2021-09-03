@@ -38,7 +38,7 @@ void CRenderHandler::draw()
             
             } else {
 
-                color_t color = color_list[(rand()%10)+8];
+                color_t color = color_list[Util.random(8, 10)];
 
                 SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
                 SDL_RenderDrawPoint(renderer, x, y);
