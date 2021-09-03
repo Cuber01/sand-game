@@ -23,6 +23,8 @@ void CCursor::adjustCursor(int x, int y, uint8_t w, uint8_t h)
 
 void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8_t particle)
 {
+    bool place_sand = false;
+    bool place_water = false;
 
     if(scale == 1)
     {
@@ -30,9 +32,26 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8
         y = y + h/2;
     }
 
+    if (particle == 1)
+    {
+        place_sand = true;
+    } else if ( particle == 4 )
+    {
+        place_water = true;
+    }
+
     for(uint8_t i = 0; i <= w; i++) {
         for(uint8_t j = 0; j <= h; j++) {
-            grid[(x+i)/scale][(y+j)/scale] = particle; 
+            
+            if(place_sand)
+            {
+                particle = (rand()%3)+1;
+            } else if (place_water)
+            {
+                particle = rand()%(5-4 + 1) + 4; 
+            } 
+
+            grid[(x+i)/scale][(y+j)/scale] = particle;
         }
     }
 }

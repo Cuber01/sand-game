@@ -1,7 +1,6 @@
 #include "data.hpp"
 #include <stdint.h>
 
-
 color_t color_list[]
 {
     { 0, 0, 0 },      // air  0

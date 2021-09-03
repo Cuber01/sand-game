@@ -133,28 +133,27 @@ void handleInput()
             {
             
             case SAND_MODE:
-                //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
                 Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
                 break;
             
             case WATER_MODE:
-                //grid[Cursor.x/scale][Cursor.y/scale] = 4; 
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 4);
                 break;
 
             case WOOD_MODE:
-                //grid[Cursor.x/scale][Cursor.y/scale] = 6; 
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 6);
                 break;
 
             case FIRE_MODE:
-                //grid[Cursor.x/scale][Cursor.y/scale] = 100; 
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 100);
                 break;
 
             case SMOKE_MODE:
-                //grid[Cursor.x/scale][Cursor.y/scale] = 7; 
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 7);
                 break;
 
             default:
-                //grid[Cursor.x/scale][Cursor.y/scale] = (rand()%3)+1;
+                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
                 break;
             
             
