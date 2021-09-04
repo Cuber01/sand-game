@@ -10,31 +10,31 @@ void CSmokeHandler::update(uint16_t x, uint16_t y)
 
  if (Util.getGrid( UP ) == 0 && Util.getNext( UP ) == 0 && Util.random(1, 2) == 1) 
     {
-        GO_UP(x, y, 7);
+        GO_UP(x, y);
     } else if (Util.getGrid( UP_RIGHT ) == 0 && Util.getNext( UP_RIGHT ) == 0 && Util.random(1, 2) == 1) 
     {
-        GO_UP_RIGHT(x, y, 7);
+        GO_UP_RIGHT(x, y);
     } else if (Util.getGrid( UP_LEFT ) == 0 && Util.getNext( UP_LEFT ) == 0 && Util.random(1, 2) == 1) 
     {
-        GO_UP_LEFT(x, y, 7);
+        GO_UP_LEFT(x, y);
     } else if (Util.getGrid( RIGHT ) == 0 && Util.getGrid( LEFT ) == 0 && Util.getNext( RIGHT ) == 0 && Util.getNext( LEFT ) == 0 && Util.random(1, 2) == 1)
     {
         
         if(Util.random(1, 2) == 1)
         {
-            GO_RIGHT(x, y, 7);
+            GO_RIGHT(x, y);
         } else {
-            GO_LEFT(x, y, 7);
+            GO_LEFT(x, y);
         }
 
     } else if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0 && Util.random(1, 2) == 1)  
     {
-        GO_RIGHT(x, y, 7);
+        GO_RIGHT(x, y);
     } else if (Util.getGrid( LEFT ) == 0 && Util.getNext( LEFT ) == 0 && Util.random(1, 2) == 1)
     {
-        GO_LEFT(x, y, 7);
+        GO_LEFT(x, y);
     } else { 
-        STAY(x, y, Util.getGrid( ME ));
+        STAY(x, y);
     }
 
 

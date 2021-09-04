@@ -21,18 +21,18 @@ void CWaterHandler::update(uint16_t x, uint16_t y)
     {
         if(Util.getGrid( ME ) == 4)
         {
-            GO_RIGHT(x, y, 4);
+            PLACE_RIGHT(x, y, 4);
         } else {
-            GO_LEFT(x, y, 5);
+            PLACE_LEFT(x, y, 5);
         }
     } else if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0)  
     {
-        GO_RIGHT(x, y, 4);
+        PLACE_RIGHT(x, y, 4);
     } else if (Util.getGrid( LEFT ) == 0 && Util.getNext( LEFT ) == 0)
     {
-        GO_LEFT(x, y, 5);
+        PLACE_LEFT(x, y, 5);
     } else { 
-        STAY(x, y, Util.getGrid( ME ));
+        STAY(x, y);
     }
 
 }

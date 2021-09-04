@@ -40,8 +40,8 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8
         place_water = true;
     }
 
-    for(uint8_t i = 0; i <= w; i++) {
-        for(uint8_t j = 0; j <= h; j++) {
+    for(uint8_t i = 1; i < w; i++) {
+        for(uint8_t j = 1; j < h; j++) {
             
             if(place_sand)
             {
@@ -50,8 +50,11 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8
             {
                 particle = Util.random(4, 5); 
             } 
-
-            grid[(x+i)/scale][(y+j)/scale] = particle;
+            
+            if (not Util.isOutOfBounds((x+i)/scale, (y+j)/scale))
+            {
+                grid[(x+i)/scale][(y+j)/scale] = particle;
+            }
         }
     }
 }

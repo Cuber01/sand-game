@@ -8,7 +8,7 @@
 void CWoodHandler::update(uint16_t x, uint16_t y)
 {
 
-    STAY(x, y, Util.getGrid( ME ));
+    STAY(x, y);
 
 }
 

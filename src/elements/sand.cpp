@@ -23,7 +23,7 @@ void CSandHandler::update(uint16_t x, uint16_t y)
     {
         GO_DOWN_LEFT(x, y);
     } else {
-        STAY(x, y, Util.getGrid( ME ));
+        STAY(x, y);
     }
 
 }

@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-bool CUtil::outOfBounds(uint16_t x, uint16_t y)
+bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {
     if(x >= rows || x <= 0 || y >= cols || y <= 0) {
         return true;
@@ -14,7 +14,7 @@ bool CUtil::outOfBounds(uint16_t x, uint16_t y)
 
 uint8_t CUtil::getNext(uint16_t x, uint16_t y)
 {
-    if(outOfBounds(x, y))
+    if(isOutOfBounds(x, y))
     {
         return 255;
     }
@@ -25,7 +25,7 @@ uint8_t CUtil::getNext(uint16_t x, uint16_t y)
 
 uint8_t CUtil::getGrid(uint16_t x, uint16_t y)
 {
-    if(outOfBounds(x, y))
+    if(isOutOfBounds(x, y))
     {
         return 255;
     }
