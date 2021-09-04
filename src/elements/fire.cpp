@@ -74,7 +74,7 @@ void CFireHandler::handleIgnite(uint16_t x, uint16_t y)
         PLACE_RIGHT(x, y, new_fire_lifetime);
     }
     
-    if (Util.getGrid( LEFT ) == 6 && Util.getNext( LEFT ) == 6 && Util.random(1, 100) == 1)
+    if (Util.getGrid( LEFT ) == 6 && Util.getNext( LEFT ) == 6 && Util.random(1, spread_chance) == 1)
     {
         PLACE_LEFT(x, y, new_fire_lifetime);
     }

@@ -22,7 +22,8 @@ SDL_Event event;
 
 
 //int
-uint16_t lastKeyPressed;
+uint16_t lastKeyboardKeyPressed;
+uint8_t  lastMouseKeyPressed;
 uint16_t lastId;
 
 //bool
@@ -89,6 +90,7 @@ void handleEvent(SDL_Event* event)
         break;
 
     case SDL_MOUSEBUTTONDOWN:
+        lastMouseKeyPressed = event->button.button;
         mouseIsPressed = true;
         break;
 
@@ -113,7 +115,7 @@ void handleEvent(SDL_Event* event)
 
 
     case SDL_KEYDOWN:
-        lastKeyPressed = event->key.keysym.sym;
+        lastKeyboardKeyPressed = event->key.keysym.sym;
         break;
 
     case SDL_QUIT:
@@ -128,38 +130,44 @@ void handleEvent(SDL_Event* event)
 void handleInput()
 {
     if(mouseIsPressed)
+    {
+        if(lastMouseKeyPressed == SDL_BUTTON_LEFT)
         {
-            switch (lastKeyPressed)
+            switch (lastKeyboardKeyPressed)
             {
-            
-            case SAND_MODE:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
-                break;
-            
-            case WATER_MODE:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 4);
-                break;
 
-            case WOOD_MODE:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 6);
-                break;
+                case SAND_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
+                    break;
 
-            case FIRE_MODE:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 100);
-                break;
+                case WATER_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 4);
+                    break;
 
-            case SMOKE_MODE:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 7);
-                break;
+                case WOOD_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 6);
+                    break;
 
-            default:
-                Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
-                break;
-            
-            
-            }
-            
-        } 
+                case FIRE_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 100);
+                    break;
+
+                case SMOKE_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 7);
+                    break;
+
+                default:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
+                    break;
+
+            } 
+
+        } else if (lastMouseKeyPressed == SDL_BUTTON_RIGHT) 
+        {
+            Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 0);   
+        }   
+         
+    } 
 }
 
 void updateParticles()
