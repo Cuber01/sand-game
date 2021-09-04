@@ -53,44 +53,45 @@ void CFireHandler::handleMovement(uint16_t x, uint16_t y)
 
 void CFireHandler::handleIgnite(uint16_t x, uint16_t y)
 {
-    if (Util.getGrid( UP ) == 6 && Util.getNext( UP ) == 6) 
+
+    if (Util.getGrid( UP ) == 6 && Util.getNext( UP ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_UP(x, y, 200);
+        PLACE_UP(x, y, new_fire_lifetime);
     }
 
-    if (Util.getGrid( UP_RIGHT ) == 6 && Util.getNext( UP_RIGHT ) == 6) 
+    if (Util.getGrid( UP_RIGHT ) == 6 && Util.getNext( UP_RIGHT ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_UP_RIGHT(x, y, 200);
+        PLACE_UP_RIGHT(x, y, new_fire_lifetime);
     }
     
-    if (Util.getGrid( UP_LEFT ) == 6 && Util.getNext( UP_LEFT ) == 6) 
+    if (Util.getGrid( UP_LEFT ) == 6 && Util.getNext( UP_LEFT ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_UP_LEFT(x, y, 200);
+        PLACE_UP_LEFT(x, y, new_fire_lifetime);
     }
     
-    if (Util.getGrid( RIGHT ) == 6 && Util.getNext( RIGHT ) == 6)  
+    if (Util.getGrid( RIGHT ) == 6 && Util.getNext( RIGHT ) == 6 && Util.random(1, spread_chance) == 1)  
     {
-        PLACE_RIGHT(x, y, 200);
+        PLACE_RIGHT(x, y, new_fire_lifetime);
     }
     
-    if (Util.getGrid( LEFT ) == 6 && Util.getNext( LEFT ) == 6)
+    if (Util.getGrid( LEFT ) == 6 && Util.getNext( LEFT ) == 6 && Util.random(1, 100) == 1)
     {
-        PLACE_LEFT(x, y, 200);
+        PLACE_LEFT(x, y, new_fire_lifetime);
     }
 
-    if (Util.getGrid( DOWN_LEFT ) == 6 && Util.getNext( DOWN_LEFT ) == 6) 
+    if (Util.getGrid( DOWN_LEFT ) == 6 && Util.getNext( DOWN_LEFT ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_DOWN_LEFT(x, y, 200);
+        PLACE_DOWN_LEFT(x, y, new_fire_lifetime);
     }
 
-    if (Util.getGrid( DOWN_RIGHT ) == 6 && Util.getNext( DOWN_RIGHT ) == 6) 
+    if (Util.getGrid( DOWN_RIGHT ) == 6 && Util.getNext( DOWN_RIGHT ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_DOWN_RIGHT(x, y, 200);
+        PLACE_DOWN_RIGHT(x, y, new_fire_lifetime);
     }
 
-    if (Util.getGrid( DOWN ) == 6 && Util.getNext( DOWN ) == 6) 
+    if (Util.getGrid( DOWN ) == 6 && Util.getNext( DOWN ) == 6 && Util.random(1, spread_chance) == 1) 
     {
-        PLACE_DOWN(x, y, 200);
+        PLACE_DOWN(x, y, new_fire_lifetime);
     }
 
 }
