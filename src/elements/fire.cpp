@@ -9,6 +9,7 @@ void CFireHandler::update(uint16_t x, uint16_t y)
 {
 
     handleMovement(x, y);
+    handleIgnite(x, y);
 
 
 }
@@ -49,37 +50,48 @@ void CFireHandler::handleMovement(uint16_t x, uint16_t y)
 
 }
 
-// void CFireHandler::handleIgnite(uint16_t x, uint16_t y)
-// {
-//     if (Util.getGrid( UP ) == 0 && Util.getNext( UP ) == 0) 
-//     {
-//         GO_UP(x, y, 200);
-//     }
 
-//     if (Util.getGrid( UP_RIGHT ) == 0 && Util.getNext( UP_RIGHT ) == 0) 
-//     {
-//         GO_UP_RIGHT(x, y, 200);
-//     }
-    
-//     if (Util.getGrid( UP_LEFT ) == 0 && Util.getNext( UP_LEFT ) == 0) 
-//     {
-//         GO_UP_LEFT(x, y, 200);
-//     }
-    
-//     if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0 && Util.random(1, 2) == 1)  
-//     {
-//         GO_RIGHT(x, y, 200);
-//     }
-    
-//     if (Util.getGrid( LEFT ) == 0 && Util.getNext( LEFT ) == 0 && Util.random(1, 2) == 1)
-//     {
-//         GO_LEFT(x, y, 200);
-//     }
+void CFireHandler::handleIgnite(uint16_t x, uint16_t y)
+{
+    if (Util.getGrid( UP ) == 6 && Util.getNext( UP ) == 6) 
+    {
+        PLACE_UP(x, y, 200);
+    }
 
-//     if (Util.getGrid( DOWN_LEFT ) == 0 && Util.getNext( DOWN_LEFT ) == 0) 
-//     {
-//         GO_DOWN_LEFT(x, y, 200);
-//     }
+    if (Util.getGrid( UP_RIGHT ) == 6 && Util.getNext( UP_RIGHT ) == 6) 
+    {
+        PLACE_UP_RIGHT(x, y, 200);
+    }
+    
+    if (Util.getGrid( UP_LEFT ) == 6 && Util.getNext( UP_LEFT ) == 6) 
+    {
+        PLACE_UP_LEFT(x, y, 200);
+    }
+    
+    if (Util.getGrid( RIGHT ) == 6 && Util.getNext( RIGHT ) == 6)  
+    {
+        PLACE_RIGHT(x, y, 200);
+    }
+    
+    if (Util.getGrid( LEFT ) == 6 && Util.getNext( LEFT ) == 6)
+    {
+        PLACE_LEFT(x, y, 200);
+    }
 
-// }
+    if (Util.getGrid( DOWN_LEFT ) == 6 && Util.getNext( DOWN_LEFT ) == 6) 
+    {
+        PLACE_DOWN_LEFT(x, y, 200);
+    }
+
+    if (Util.getGrid( DOWN_RIGHT ) == 6 && Util.getNext( DOWN_RIGHT ) == 6) 
+    {
+        PLACE_DOWN_RIGHT(x, y, 200);
+    }
+
+    if (Util.getGrid( DOWN ) == 6 && Util.getNext( DOWN ) == 6) 
+    {
+        PLACE_DOWN(x, y, 200);
+    }
+
+}
 
