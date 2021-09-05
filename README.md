@@ -6,7 +6,7 @@ Sand game is a sandbox game, where you can place one of the 5 elements available
 
 You're currently on the 'simple' branch (if you're on master and there is no 'simple' branch, this means that I still haven't started working on the rewrite and you can clone master), I would like to rewrite this project in full OOP and add better interactions on the master branch.
 
-version 0.9
+version 1.0
 
 # Compile instructions
 
@@ -72,6 +72,8 @@ The default scale of the game is 4, you can change it at src/render.hpp (recomme
 4 - choose fire
 
 5 - choose smoke
+
+` - clear the board
 
 Any other keyboard button will result in choosing sand.
 

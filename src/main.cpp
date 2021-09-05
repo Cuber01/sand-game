@@ -170,7 +170,12 @@ void handleInput()
             Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 0);   
         }   
          
-    } 
+    } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)
+    {
+        memcpy( next, empty, sizeof(next) );
+        memcpy( grid, empty, sizeof(next) );
+        lastKeyboardKeyPressed = 0;
+    }
 }
 
 void updateParticles()
