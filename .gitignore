@@ -1,6 +1,5 @@
 src/*.o
 src/elements/*.o
 src/utils/*.o
-main
 /.vscode
 remember_update_make

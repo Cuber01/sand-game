@@ -2,7 +2,7 @@
 
 Sand game is a sandbox game, where you can place one of the 5 elements available (sand, water, wood, smoke and fire) and watch them interact with each other.
 
-//video
+*Feel free to watch sand.mp4 if you'd like to see how it looks like.*
 
 You're currently on the 'simple' branch (if you're on master and there is no 'simple' branch, this means that I still haven't started working on the rewrite and you can clone master), I would like to rewrite this project in full OOP and add better interactions on the master branch.
 
