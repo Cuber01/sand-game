@@ -29,14 +29,21 @@ void CRenderHandler::draw()
 
             uint8_t value = grid[x][y];
 
-            if(value < 8)
+            if(value < 8) // normal elements
             {
                 color_t color = color_list[value];
             
                 SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
                 SDL_RenderDrawPoint(renderer, x, y);
             
-            } else {
+            } else if (value == 255) // fake water
+            {
+                color_t color = color_list[4];
+
+                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+                SDL_RenderDrawPoint(renderer, x, y);
+
+            } else { // fire
 
                 color_t color = color_list[Util.random(8, 10)];
 

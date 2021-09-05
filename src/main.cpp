@@ -31,6 +31,7 @@ bool mouseIsPressed = false;
 bool running = true;
 
 
+
 // grid
 uint16_t* particles = new uint16_t[5];
 
@@ -83,6 +84,7 @@ void quit()
 
 void handleEvent(SDL_Event* event)
 {
+
     switch (event->type)
     {
     case SDL_MOUSEMOTION:
@@ -125,6 +127,7 @@ void handleEvent(SDL_Event* event)
     default:
         break;
     }
+
 }
 
 void handleInput()
@@ -172,6 +175,8 @@ void handleInput()
 
 void updateParticles()
 {
+
+
     for (uint16_t x = 0; x < cols; x++) {
             for (uint16_t y = 0; y < rows; y++) {
                 uint8_t value = grid[x][y];
@@ -199,6 +204,9 @@ void updateParticles()
                             SmokeHandler.update(x, y);
                             break;
 
+                        case 255:
+                            break;
+
                         default:
                             FireHandler.update(x, y);
                             break;
@@ -208,6 +216,7 @@ void updateParticles()
         
             }
     }    
+
 
 }
 
@@ -220,6 +229,8 @@ int main(int argc, char* args[])
     
 	while(running)
     {
+
+        SDL_Delay(100);
 
         while( SDL_PollEvent(&event) )
         {

@@ -14,7 +14,8 @@ void CSandHandler::update(uint16_t x, uint16_t y)
     } else if (Util.getGrid( DOWN ) == 4 || Util.getGrid( DOWN ) == 5 )
     {
         GO_DOWN(x, y);
-        //STAY(x, y+1, 4); // water którego przesuwamy nadal się updateuje
+        grid[x][y+1] = 255;
+        PLACE_UP(x, y+1, 4); // water którego przesuwamy nadal się updateuje
 
     } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
     {
