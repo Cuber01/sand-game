@@ -21,12 +21,12 @@ SOURCE	= src/main.cpp \
  src/elements/fire.cpp
 
 # debug:
-CFLAGS	= -g -ggdb
+# CFLAGS	= -g -ggdb
 
 
 OUT	    = out/sand_game
 CC	    = g++
-# CFLAGS	= 
+CFLAGS	= 
 LFLAGS	= -lSDL2
 
 all: $(OBJS)
