@@ -1,5 +1,7 @@
 # How to compile applications made in SDL2 for Windows, from a Linux machine.
 
+My setup: Ubuntu 20.4, gcc version 9.3.0, SDL version 2.0.10
+
 ## mingw64
 
 Install mingw64, by running the following command:
