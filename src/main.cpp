@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <iostream>
 #include <stdio.h>
 #include <stdint.h>
 #include <cstdlib>
@@ -14,6 +15,7 @@
 #include "elements/fire.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
+
 
 
 // sdl
@@ -33,8 +35,6 @@ bool running = true;
 
 
 // grid
-uint16_t* particles = new uint16_t[5];
-
 uint16_t grid[rows][cols];
 uint16_t next[rows][cols];
 uint16_t empty[rows][cols];
@@ -56,6 +56,8 @@ void init()
     Cursor.adjustCursor(20, 20, 40, 40);
     std:srand((unsigned)time(NULL));
 
+
+
     if( SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
         printf( "SDL failed to initialize. Error: %s\n", SDL_GetError() );
@@ -71,6 +73,7 @@ void init()
 	} 
 
    // SDL_ShowCursor(SDL_DISABLE);
+    
     RenderHandler.init();
 
 }

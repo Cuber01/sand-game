@@ -7,14 +7,18 @@
 
 void CRenderHandler::init()
 {
-
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE); // TODO
     
     if (renderer == NULL)
     {
         printf("Renderer failed to initialize. Error: %s\n", SDL_GetError());
         exit(1);
     }
+
+    // SDL_RendererInfo rendererInfo;
+    // SDL_GetRendererInfo(renderer, &rendererInfo);
+    // SDL_Log("Renderer: %s", rendererInfo.name);
 
     SDL_RenderSetScale(renderer, scale, scale);
 }
