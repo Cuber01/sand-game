@@ -4,7 +4,7 @@ Sand game is a sandbox game, where you can place one of the 5 elements available
 
 *Feel free to watch sand.mp4 if you'd like to see how it looks like.*
 
-You're currently on the 'simple' branch (if you're on master and there is no 'simple' branch, this means that I still haven't started working on the rewrite and you can clone master), I would like to rewrite this project in full OOP and add better interactions on the master branch.
+You're currently on the 'simple' branch, I'm currently rewriting this project to full OOP and adding better interactions on the 'master' branch. If you don't want to contribute, just clone this branch (considered stable atm) and have fun!
 
 version 1.0
 
