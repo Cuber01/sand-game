@@ -1,5 +1,7 @@
 #include <SDL2/SDL.h>
 
+
+#include "elements/element.hpp"
 #include "utils/data.hpp"
 #include "render.hpp"
 #include "main.hpp"
@@ -8,7 +10,7 @@
 void CRenderHandler::init()
 {
     
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE); // TODO
+    renderer = SDL_CreateRenderer(window, -1, 0); // TODO
     
     if (renderer == NULL)
     {
@@ -30,33 +32,18 @@ void CRenderHandler::draw()
 
     for (uint16_t x = 0; x < cols; x++) {
         for (uint16_t y = 0; y < rows; y++) {
-
-            uint8_t value = grid[x][y];
-
-            if(value < 8) // normal elements
-            {
-                color_t color = color_list[value];
             
-                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
-                SDL_RenderDrawPoint(renderer, x, y);
-            
-            } else if (value == 255) // fake water
-            {
-                color_t color = color_list[4];
+            CElement* value = grid[x][y];
+
+            if(value != 0)
+            {            
+
+                color_t color = value->color;
 
                 SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
                 SDL_RenderDrawPoint(renderer, x, y);
-
-            } else { // fire
-
-                color_t color = color_list[Util.random(8, 10)];
-
-                SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
-                SDL_RenderDrawPoint(renderer, x, y);
-
+                
             }
-
-
 
         }
     }

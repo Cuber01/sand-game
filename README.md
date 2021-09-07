@@ -160,6 +160,6 @@ After some time, Fire will decrement itself to Smoke.
 # TODO 
 
 * screen is drawn from 1,1 instead of 0,0
-* add clear
 * very big cursor doesnt work properly
+* cursor is off
 * optimize draw (thx nuff)

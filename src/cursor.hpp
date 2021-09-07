@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #include "render.hpp"
-
+#include "elements/element.hpp"
 
 class CCursor
 {
@@ -18,7 +18,7 @@ class CCursor
         uint8_t change_value = 2;
 
         void adjustCursor(int x, int y, uint8_t w, uint8_t h);
-        void placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, uint8_t particle);
+        void placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, CElement* particle);
 };
 
 #endif

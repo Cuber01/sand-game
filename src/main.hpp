@@ -17,8 +17,8 @@ extern SDL_Window* window;
 extern CCursor Cursor;
 extern CUtil Util;
 
-extern uint16_t grid[rows][cols];
-extern uint16_t next[rows][cols];
+extern CElement* grid[rows][cols];
+extern CElement* next[rows][cols];
 
 
 

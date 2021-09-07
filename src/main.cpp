@@ -3,16 +3,13 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <cstdlib>
+#include <memory>
 #include <time.h>
 
 #include "main.hpp"
 #include "cursor.hpp"
 #include "render.hpp"
-#include "elements/sand.hpp"
-#include "elements/water.hpp"
-#include "elements/smoke.hpp"
-#include "elements/wood.hpp"
-#include "elements/fire.hpp"
+#include "elements/element.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 
@@ -26,28 +23,21 @@ SDL_Event event;
 //int
 uint16_t lastKeyboardKeyPressed;
 uint8_t  lastMouseKeyPressed;
-uint16_t lastId;
+uint32_t lastId;
 
 //bool
 bool mouseIsPressed = false;
 bool running = true;
 
 
-
 // grid
-uint16_t grid[rows][cols];
-uint16_t next[rows][cols];
-uint16_t empty[rows][cols];
+CElement* grid[rows][cols];
+CElement* next[rows][cols];
 
 
 // objects
 CCursor Cursor;
 CRenderHandler RenderHandler;
-CSandHandler  SandHandler;
-CWaterHandler WaterHandler;
-CSmokeHandler SmokeHandler;
-CWoodHandler WoodHandler;
-CFireHandler FireHandler;
 CUtil Util;
 
 void init()
@@ -71,8 +61,6 @@ void init()
 		printf( "Window could not be created. SDL_Error: %s\n", SDL_GetError() );
         exit(1);
 	} 
-
-   // SDL_ShowCursor(SDL_DISABLE);
     
     RenderHandler.init();
 
@@ -143,27 +131,23 @@ void handleInput()
             {
 
                 case SAND_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CElement);
                     break;
 
                 case WATER_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 4);
                     break;
 
                 case WOOD_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 6);
                     break;
 
                 case FIRE_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 100);
                     break;
 
                 case SMOKE_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 7);
                     break;
 
                 default:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 1);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CElement);
                     break;
 
             } 
@@ -175,8 +159,8 @@ void handleInput()
          
     } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)
     {
-        memcpy( next, empty, sizeof(next) );
-        memcpy( grid, empty, sizeof(next) );
+        memset( next, 0, sizeof(next) ); // TODO?
+        memset( grid, 0, sizeof(next) );
         lastKeyboardKeyPressed = 0;
     }
 }
@@ -187,39 +171,12 @@ void updateParticles()
 
     for (uint16_t x = 0; x < cols; x++) {
             for (uint16_t y = 0; y < rows; y++) {
-                uint8_t value = grid[x][y];
+                CElement* value = grid[x][y];
 
-                if(value > 0) {
+                if(value != NULL) {
                     
-                    switch(value)
-                    {
-                        case 1:
-                        case 2:
-                        case 3:
-                            SandHandler.update(x, y);
-                            break;
+                    value->update(x, y);
 
-                        case 4:
-                        case 5:
-                            WaterHandler.update(x, y);
-                            break;
-
-                        case 6:
-                            WoodHandler.update(x, y);
-                            break;
-
-                        case 7:
-                            SmokeHandler.update(x, y);
-                            break;
-
-                        case 255:
-                            break;
-
-                        default:
-                            FireHandler.update(x, y);
-                            break;
-   
-                    }
                 }        
         
             }
@@ -247,7 +204,7 @@ int main(int argc, char* args[])
         Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
         handleInput();
 
-        memcpy( next, empty, sizeof(next) );
+        memset( next, 0, sizeof(next) );
 
         updateParticles();
 

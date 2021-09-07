@@ -1,6 +1,7 @@
 #include "../main.hpp" 
 #include "util.hpp"
 
+#include "../elements/element.hpp"
 #include <stdint.h>
 
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
@@ -12,22 +13,22 @@ bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
     return false;
 }
 
-uint8_t CUtil::getNext(uint16_t x, uint16_t y)
+CElement* CUtil::getNext(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return 255;
+        return NULL;
     }
 
     return next[x][y];
 
 }
 
-uint8_t CUtil::getGrid(uint16_t x, uint16_t y)
+CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return 255;
+        return NULL;
     }
 
     return grid[x][y];
