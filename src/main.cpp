@@ -12,6 +12,7 @@
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 #include "elements/element.hpp"
+#include "elements/water.hpp"
 #include "elements/sand.hpp"
 
 
@@ -136,6 +137,7 @@ void handleInput()
                     break;
 
                 case WATER_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CWater);
                     break;
 
                 case WOOD_MODE:
@@ -160,7 +162,7 @@ void handleInput()
          
     } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)
     {
-        memset( next, 0, sizeof(next) ); // TODO?
+        memset( next, 0, sizeof(next) );
         memset( grid, 0, sizeof(next) );
         lastKeyboardKeyPressed = 0;
     }

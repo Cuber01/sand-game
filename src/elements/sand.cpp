@@ -2,13 +2,19 @@
 #include "directions.hpp"
 #include "sand.hpp"
 
+#include "../utils/util.hpp"
 #include <stdint.h> 
 
-#define DEFAUL_COLOR { 234, 181, 11 }
+color_t color_list[3] =
+{
+    { 234, 181, 11 }, // sand 1
+    { 251, 209, 72 }, // sand 2
+    { 251, 242, 54 }, // sand 3
+};
 
 CSand::CSand()
 {
-    color = DEFAUL_COLOR;
+    color = color_list[Util.random(0, 2)]; // TODO
 }
 
 void CSand::move(uint16_t x, uint16_t y)
