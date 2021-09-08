@@ -6,7 +6,7 @@ Sand game is a sandbox game, where you can place one of the 5 elements available
 
 You're currently on the 'master' branch, I'm currently rewriting this project to full OOP and adding better interactions on this branch. It's currently unstable, go to 'simple' for a stable build.
 
-version 1.1
+version 1.2
 
 # Compile instructions
 

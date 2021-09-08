@@ -6,8 +6,5 @@
 
 CElement::CElement() {}
 
-void CElement::update(uint16_t x,uint16_t y)
-{
-
-}
+void CElement::update(uint16_t x,uint16_t y) {}
 

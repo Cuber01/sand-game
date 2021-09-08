@@ -12,7 +12,7 @@ class CElement
 
         CElement();
 
-        void update(uint16_t x,uint16_t y);
+        virtual void update(uint16_t x,uint16_t y);
 
 };
 

@@ -17,7 +17,7 @@ CElement* CUtil::getNext(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return NULL;
+        return new CElement; //TODO
     }
 
     return next[x][y];
@@ -28,7 +28,7 @@ CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return NULL;
+        return new CElement; //TODO
     }
 
     return grid[x][y];

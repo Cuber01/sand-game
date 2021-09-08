@@ -39,6 +39,7 @@ void CRenderHandler::draw()
             {            
 
                 color_t color = value->color;
+                //printf("r:%d g:%d b:%d", color.r, color.g, color.b);
 
                 SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
                 SDL_RenderDrawPoint(renderer, x, y);

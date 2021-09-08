@@ -9,9 +9,10 @@
 #include "main.hpp"
 #include "cursor.hpp"
 #include "render.hpp"
-#include "elements/element.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
+#include "elements/element.hpp"
+#include "elements/sand.hpp"
 
 
 
@@ -131,7 +132,7 @@ void handleInput()
             {
 
                 case SAND_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CElement);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CSand);
                     break;
 
                 case WATER_MODE:
@@ -147,7 +148,7 @@ void handleInput()
                     break;
 
                 default:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CElement);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CSand);
                     break;
 
             } 
@@ -173,7 +174,7 @@ void updateParticles()
             for (uint16_t y = 0; y < rows; y++) {
                 CElement* value = grid[x][y];
 
-                if(value != NULL) {
+                if(value != 0) {
                     
                     value->update(x, y);
 
