@@ -5,16 +5,20 @@
 #include "../utils/util.hpp"
 #include <stdint.h> 
 
-color_t color_list[3] =
+color_t sand_color_list[3] =
 {
     { 234, 181, 11 }, // sand 1
     { 251, 209, 72 }, // sand 2
     { 251, 242, 54 }, // sand 3
 };
 
+void CSand::setColor() {
+    color = sand_color_list[Util.random(0, 2)];
+}
+
 CSand::CSand()
 {
-    color = color_list[Util.random(0, 2)]; // TODO
+    setColor();
 }
 
 void CSand::move(uint16_t x, uint16_t y)

@@ -8,9 +8,13 @@
 
 CWater::CWater()
 {
-    color = _color; // TODO
+    color = my_color;
 }
 
+void CWater::setColor()
+{
+    color = my_color;
+}
 
 void CWater::move(uint16_t x, uint16_t y)
 {

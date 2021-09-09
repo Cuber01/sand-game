@@ -36,11 +36,20 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, CElem
         for(uint8_t j = 1; j < h; j++) {
 
             if (not Util.isOutOfBounds((x+i)/scale, (y+j)/scale))
-            {
-                grid[(x+i)/scale][(y+j)/scale] = particle; //new particle;
+            {                
+                if(particle != 0)
+                {
+                    CElement* o = new CElement(); // TODO
+                    memcpy( o, particle, sizeof(CElement) );
+                    o->setColor();
+                    grid[(x+i)/scale][(y+j)/scale] = o;//particle; //new particle;
+                } else{
+                    grid[(x+i)/scale][(y+j)/scale] = 0;
+                } 
             }
 
         }
     }
+
 }
 

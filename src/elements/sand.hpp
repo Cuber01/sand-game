@@ -12,6 +12,7 @@ class CSand : public CElement
     public:
         CSand();
 
+        void setColor();
         void update(uint16_t x, uint16_t y);
         void move(uint16_t x, uint16_t y);
 

@@ -12,6 +12,7 @@
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 #include "elements/element.hpp"
+#include "elements/wood.hpp"
 #include "elements/water.hpp"
 #include "elements/sand.hpp"
 
@@ -141,6 +142,7 @@ void handleInput()
                     break;
 
                 case WOOD_MODE:
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CWood);
                     break;
 
                 case FIRE_MODE:
