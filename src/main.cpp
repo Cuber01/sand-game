@@ -103,7 +103,7 @@ void handleEvent(SDL_Event* event)
         {
             if(Cursor.w >= 3 && Cursor.h >= 3)
             {
-                Cursor.w = Cursor.w - Cursor.change_value;ss
+                Cursor.w = Cursor.w - Cursor.change_value;
                 Cursor.h = Cursor.h - Cursor.change_value;
             }
         }
@@ -132,25 +132,19 @@ void handleInput()
         {
             switch (lastKeyboardKeyPressed)
             {
-
-                case SAND_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);
+                case KEY_SAND_MODE_NUMKEY1 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);                
                     break;
-
-                case WATER_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWaterElement);
+                case KEY_WATER_MODE_NUMKEY2 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWaterElement);                
                     break;
-
-                case WOOD_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWoodElement);
+                case KEY_WOOD_MODE_NUMKEY3 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWoodElement);                
                     break;
-
-                case FIRE_MODE:
+                case KEY_FIRE_MODE_NUMKEY4 :
                     break;
-
-                case SMOKE_MODE:
+                case KEY_SMOKE_MODE_NUMKEY5 :
                     break;
-
                 default:
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);
                     break;
