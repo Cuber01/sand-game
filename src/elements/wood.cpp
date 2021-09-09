@@ -6,7 +6,7 @@
 
 CWood::CWood()
 {
-    color = wood_color;
+    this->setColor( wood_color );    
 }
 
 void CWood::stay(uint16_t x, uint16_t y)

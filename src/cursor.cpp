@@ -2,6 +2,10 @@
 #include <stdint.h>
 
 #include "elements/element.hpp"
+#include "elements/sand.hpp"
+#include "elements/water.hpp"
+#include "elements/wood.hpp"
+
 #include "cursor.hpp"
 #include "main.hpp"
 
@@ -23,7 +27,7 @@ void CCursor::adjustCursor(int x, int y, uint8_t w, uint8_t h)
 }
 
 
-void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, CElement* particle)
+void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, element_t particle)
 {
 
     if(scale == 1)
@@ -37,11 +41,19 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, CElem
 
             if (not Util.isOutOfBounds((x+i)/scale, (y+j)/scale))
             {                
-                if(particle != 0)
+                if(particle != dNoneElement )
                 {
-                    CElement* o = new CElement(); // TODO
-                    memcpy( o, particle, sizeof(CElement) );
-                    o->setColor();
+                    CElement* o;
+                    switch( particle )
+                    {
+                        case dSandElement:  o = new CSand();  break;
+                        case dWaterElement: o = new CWater(); break;
+                        // case dSmokeElement: o = new CSmoke(); break;
+                        case dWoodElement:  o = new CWood();  break;
+                        default:
+                            printf("motyla noga");
+                            exit(1);
+                    }
                     grid[(x+i)/scale][(y+j)/scale] = o;//particle; //new particle;
                 } else{
                     grid[(x+i)/scale][(y+j)/scale] = 0;

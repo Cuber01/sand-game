@@ -16,6 +16,12 @@ CElement::CElement() {}
 
 void CElement::update(uint16_t x,uint16_t y) {}
 
-void CElement::setColor() {}
+void CElement::setColor( color_t color) {
+    this->color = color;
+}
+
+color_t CElement::getColor() {
+    return this->color;
+}
 
 
