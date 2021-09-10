@@ -11,8 +11,10 @@ class CWater : public CElement
     private:        
 
         void move(uint16_t x, uint16_t y);
+        void spread(uint16_t x, uint16_t y, int8_t right);
 
-        bool movesRight = true;
+        uint8_t dispersionRate = 4;
+        bool movesRight;
 
     public:
         CWater();

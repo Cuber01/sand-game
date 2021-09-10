@@ -3,6 +3,8 @@
 
 // -------------------- MOVE ------------------------
 
+#define GO(cur_x, cur_y, dest_x, dest_y) do { next[dest_x][dest_y] = grid[cur_x][cur_y];   } while(0)
+
 #define GO_UP(x, y)           do { next[x][y-1] = grid[x][y];   } while(0)
 #define GO_DOWN(x, y)         do { next[x][y+1] = grid[x][y];   } while(0)
 
@@ -15,6 +17,7 @@
 #define GO_RIGHT(x, y)        do { next[x+1][y] = grid[x][y];   } while(0)
 
 #define STAY(x, y)            do { next[x][y] = grid[x][y];     } while(0)
+
 
 // -------------------- PLACE -----------------------
 

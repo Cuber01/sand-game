@@ -51,7 +51,7 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                         // case dSmokeElement: o = new CSmoke(); break;
                         case dWoodElement:  o = new CWood();  break;
                         default:
-                            printf("motyla noga");
+                            printf("Unknown particle.");
                             exit(1);
                     }
                     grid[(x+i)/scale][(y+j)/scale] = o;//particle; //new particle;

@@ -193,6 +193,7 @@ int main(int argc, char* args[])
     
 	while(running)
     {
+        //SDL_Delay(100);
 
         while( SDL_PollEvent(&event) )
         {
