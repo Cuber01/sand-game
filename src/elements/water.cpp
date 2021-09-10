@@ -8,12 +8,7 @@
 
 CWater::CWater()
 {
-    color = my_color;
-}
-
-void CWater::setColor()
-{
-    color = my_color;
+    this->setColor({ 71, 126, 255 });
 }
 
 void CWater::move(uint16_t x, uint16_t y)

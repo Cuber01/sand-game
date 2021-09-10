@@ -132,34 +132,28 @@ void handleInput()
         {
             switch (lastKeyboardKeyPressed)
             {
-
-                case SAND_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CSand);
+                case KEY_SAND_MODE_NUMKEY1 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);                
                     break;
-
-                case WATER_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CWater);
+                case KEY_WATER_MODE_NUMKEY2 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWaterElement);                
                     break;
-
-                case WOOD_MODE:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CWood);
+                case KEY_WOOD_MODE_NUMKEY3 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWoodElement);                
                     break;
-
-                case FIRE_MODE:
+                case KEY_FIRE_MODE_NUMKEY4 :
                     break;
-
-                case SMOKE_MODE:
+                case KEY_SMOKE_MODE_NUMKEY5 :
                     break;
-
                 default:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, new CSand);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);
                     break;
 
             } 
 
         } else if (lastMouseKeyPressed == SDL_BUTTON_RIGHT) 
         {
-            Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, 0);   
+            Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dNoneElement );   
         }   
          
     } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)

@@ -7,14 +7,15 @@
 
 class CElement
 { 
-    // protect
+    private:
+    // protected:
+        color_t color;    
     public:
-
-        color_t color;
 
         CElement();
 
-        virtual void setColor();
+        void setColor( color_t color);
+        color_t getColor();
         virtual void update(uint16_t x,uint16_t y);
         
 };

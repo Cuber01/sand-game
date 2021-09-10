@@ -38,7 +38,7 @@ void CRenderHandler::draw()
             if(value != 0)
             {            
 
-                color_t color = value->color;
+                color_t color = value->getColor();
                 //printf("r:%d g:%d b:%d", color.r, color.g, color.b);
 
                 SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);

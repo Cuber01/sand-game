@@ -12,13 +12,9 @@ color_t sand_color_list[3] =
     { 251, 242, 54 }, // sand 3
 };
 
-void CSand::setColor() {
-    color = sand_color_list[Util.random(0, 2)];
-}
-
 CSand::CSand()
 {
-    setColor();
+    this->setColor( sand_color_list[Util.random(0, 2)] );
 }
 
 void CSand::move(uint16_t x, uint16_t y)

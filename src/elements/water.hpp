@@ -8,8 +8,7 @@
 
 class CWater : public CElement
 {
-    private:
-        color_t my_color = { 71, 126, 255 };
+    private:        
 
         void move(uint16_t x, uint16_t y);
 
@@ -18,7 +17,6 @@ class CWater : public CElement
     public:
         CWater();
         
-        void setColor();
         void update(uint16_t x, uint16_t y);
 
 };

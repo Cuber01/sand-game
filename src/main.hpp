@@ -21,5 +21,4 @@ extern CElement* grid[rows][cols];
 extern CElement* next[rows][cols];
 
 
-
 #endif

@@ -3,21 +3,23 @@
 
 #include <stdint.h>
 
-#define SAND_MODE  49
-#define WATER_MODE 50
-#define WOOD_MODE  51
-#define FIRE_MODE  52
-#define SMOKE_MODE 53
+#define KEY_SAND_MODE_NUMKEY1  49
+#define KEY_WATER_MODE_NUMKEY2 50
+#define KEY_WOOD_MODE_NUMKEY3  51
+#define KEY_FIRE_MODE_NUMKEY4  52
+#define KEY_SMOKE_MODE_NUMKEY5 53
 
 // real keys:    1  2  3  4  5  6  7  8  9  0
 // key numbers: 49 50 51 52 53 54 55 56 57 48
 
-// TODO
 typedef enum {
-    dPIASEK,
-    dWODA,
-    dDREWNO
+    dNoneElement =0,
+    dSandElement,
+    dWaterElement,
+    dSmokeElement,
+    dWoodElement
 } element_t;
+
 
 typedef struct color_t
 {
