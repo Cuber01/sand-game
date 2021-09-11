@@ -1,6 +1,7 @@
 #ifndef directions_hpp
 #define directions_hpp
 
+
 // -------------------- MOVE ------------------------
 
 #define GO(cur_x, cur_y, dest_x, dest_y) do { next[dest_x][dest_y] = grid[cur_x][cur_y];   } while(0)

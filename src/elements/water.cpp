@@ -12,6 +12,7 @@ CWater::CWater()
 {
     this->setColor({ 71, 126, 255 });
     this->movesRight = Util.random(0, 1);
+    type = dWaterElement;
 }
 
 void CWater::move(uint16_t x, uint16_t y)

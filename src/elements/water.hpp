@@ -18,6 +18,7 @@ class CWater : public CElement
 
     public:
         CWater();
+        bool doNotUpdate = false; // TODO 
         
         void update(uint16_t x, uint16_t y);
 

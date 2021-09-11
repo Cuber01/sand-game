@@ -9,10 +9,11 @@ class CElement
 { 
     private:
     // protected:
-        color_t color;    
+        color_t color;  
     public:
 
         CElement();
+        uint8_t type; 
 
         void setColor( color_t color);
         color_t getColor();
