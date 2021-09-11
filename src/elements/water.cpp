@@ -64,7 +64,10 @@ void CWater::spread(uint16_t x, uint16_t y, int8_t right)
                 return;
             }
 
-        }    
+        } else {
+            STAY(x, y);
+            return;
+        }   
     }
 
     GO(x, y, x+(dispersionRate*right), y);
