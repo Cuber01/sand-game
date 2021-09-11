@@ -9,6 +9,7 @@
 #include "main.hpp"
 #include "cursor.hpp"
 #include "render.hpp"
+#include "settings.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
 #include "elements/element.hpp"
@@ -193,7 +194,9 @@ int main(int argc, char* args[])
     
 	while(running)
     {
-        //SDL_Delay(100);
+        #ifdef SLOw
+            SDL_Delay(100);
+        #endif
 
         while( SDL_PollEvent(&event) )
         {

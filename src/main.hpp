@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include "cursor.hpp"
 #include "utils/util.hpp"
-#include "render.hpp"
+#include "settings.hpp"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600

@@ -6,6 +6,7 @@
 #include "elements/water.hpp"
 #include "elements/wood.hpp"
 
+#include "settings.hpp"
 #include "cursor.hpp"
 #include "main.hpp"
 

@@ -2,6 +2,7 @@
 
 
 #include "elements/element.hpp"
+#include "settings.hpp"
 #include "utils/data.hpp"
 #include "render.hpp"
 #include "main.hpp"
