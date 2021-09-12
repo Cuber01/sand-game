@@ -31,9 +31,11 @@ void CSand::move(uint16_t x, uint16_t y)
     } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
     {
         GO_DOWN_RIGHT(x, y);
+        velocity_y = 0;
     } else if (Util.getGrid( DOWN_LEFT ) == 0) 
     {
         GO_DOWN_LEFT(x, y);
+        velocity_y = 0;
     } else {
         STAY(x, y);
         velocity_y = 0;
@@ -47,17 +49,37 @@ void CSand::update(uint16_t x, uint16_t y)
 
 void CSand::fall(uint16_t x, uint16_t y)
 {
-    int8_t vel_y = std::roundf(velocity_y);
-    printf("%d", vel_y);
+    int8_t vel_y = 2;
+    //std::roundf(velocity_y);
+    // printf("%d", vel_y);
 
-    
-    GO_DOWN( x, y + vel_y );
+    // if(vel_y == -2)
+    // {
+    //     printf("a");
+    // }
 
-    if(velocity_y < max_fall_speed)
+    for(int8_t i = 1; i <= vel_y; i++)
     {
-        velocity_y += gravity;
+        if(Util.getGrid(x, y+i) == 0) // TODO if i add getnext checks it doesnt work
+        {
+            if(Util.getGrid(x , y + i+1) != 0)
+            {
+                GO(x, y, x, y+i);
+                return;
+            }
+        
+        } else {
+            STAY(x, y);
+            return;
+        }   
     }
 
-    hasBeenUpdated = true;
+    GO(x, y, x, y+vel_y);
+
+    // if(velocity_y < max_fall_speed)
+    // {
+    //     velocity_y += gravity;
+    // }
+
 }
 

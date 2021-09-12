@@ -175,13 +175,8 @@ void updateParticles()
 
                 if(value != 0) {
 
-                    if(value->hasBeenUpdated == false)
-                    {
-                        value->update(x, y);
-                    } else {
-                        value->hasBeenUpdated == false;
-                        next[x][y] = value;
-                    }
+
+                    value->update(x, y);
 
 
                 }        
