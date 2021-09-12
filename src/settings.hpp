@@ -6,4 +6,7 @@
 #define scale 4
 
 // gravity factor
-#define gravity 2
+#define gravity 0.2
+
+// max number of cells we can travel per frame while falling
+#define max_fall_speed 3

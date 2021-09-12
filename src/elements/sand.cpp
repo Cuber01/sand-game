@@ -3,7 +3,9 @@
 #include "sand.hpp"
 
 #include "../utils/util.hpp"
+#include <float.h>
 #include <stdint.h> 
+
 
 color_t sand_color_list[3] =
 {
@@ -22,7 +24,7 @@ void CSand::move(uint16_t x, uint16_t y)
 {
     if (Util.getGrid( DOWN ) == 0)
     {
-        GO_DOWN(x, y);
+        fall(x, y);
     } else if (Util.getGrid( DOWN )->type == dWaterElement)
     {
         GO_DOWN(x, y); // TODO 
@@ -34,11 +36,28 @@ void CSand::move(uint16_t x, uint16_t y)
         GO_DOWN_LEFT(x, y);
     } else {
         STAY(x, y);
+        velocity_y = 0;
     }
 }
 
 void CSand::update(uint16_t x, uint16_t y)
 {
     move(x, y);
+}
+
+void CSand::fall(uint16_t x, uint16_t y)
+{
+    int8_t vel_y = std::round(velocity_y);
+    printf("%d", vel_y);
+
+    
+    GO_DOWN( x, y + vel_y );
+
+    if(velocity_y < max_fall_speed)
+    {
+        velocity_y += gravity;
+    }
+
+    hasBeenUpdated = true;
 }
 

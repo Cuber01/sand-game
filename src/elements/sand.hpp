@@ -15,6 +15,8 @@ class CSand : public CElement
         void update(uint16_t x, uint16_t y);
         void move(uint16_t x, uint16_t y);
 
+        void fall(uint16_t x, uint16_t y);
+
 };
 
 

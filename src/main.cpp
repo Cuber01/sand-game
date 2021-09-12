@@ -174,8 +174,15 @@ void updateParticles()
                 CElement* value = grid[x][y];
 
                 if(value != 0) {
-                    
-                    value->update(x, y);
+
+                    if(value->hasBeenUpdated == false)
+                    {
+                        value->update(x, y);
+                    } else {
+                        value->hasBeenUpdated == false;
+                        next[x][y] = value;
+                    }
+
 
                 }        
         

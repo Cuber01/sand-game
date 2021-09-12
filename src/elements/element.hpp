@@ -2,6 +2,7 @@
 #define element_hpp
 
 #include <stdint.h>
+#include <float.h>
 #include "../utils/data.hpp"
 
 
@@ -14,6 +15,8 @@ class CElement
 
         CElement();
         uint8_t type; 
+        float velocity_y;
+        bool hasBeenUpdated = false;
 
         void setColor( color_t color);
         color_t getColor();
