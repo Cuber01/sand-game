@@ -47,7 +47,7 @@ void CSand::update(uint16_t x, uint16_t y)
 
 void CSand::fall(uint16_t x, uint16_t y)
 {
-    int8_t vel_y = std::round(velocity_y);
+    int8_t vel_y = std::roundf(velocity_y);
     printf("%d", vel_y);
 
     

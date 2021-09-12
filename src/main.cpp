@@ -201,7 +201,7 @@ int main(int argc, char* args[])
     
 	while(running)
     {
-        #ifdef SLOw
+        #ifdef SLOW
             SDL_Delay(100);
         #endif
 
