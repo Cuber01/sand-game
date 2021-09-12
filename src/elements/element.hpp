@@ -15,7 +15,7 @@ class CElement
 
         CElement();
         uint8_t type; 
-        float velocity_y;
+        float velocity_y = 1;
 
 
         void setColor( color_t color);
