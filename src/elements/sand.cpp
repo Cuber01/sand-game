@@ -38,10 +38,18 @@ void CSand::move(uint16_t x, uint16_t y)
         } else if (Util.getGrid( DOWN_LEFT ) == 0) 
         {
             GO_DOWN_LEFT(x, y);
+        } else if (velocity_x >= 0.5) 
+        {
+            react_to_velocity_x(x, y, direction);
         } else {
             STAY(x, y);
+
+            velocity_x = velocity_y/2;
+            direction = Util.randomPositiveNegative();
+
             velocity_y = 0;
             isFalling = false;
+
             return;
         }
 
@@ -128,8 +136,36 @@ void CSand::fall(uint16_t x, uint16_t y)
     } else {
         velocity_y = max_fall_speed;
     }
+}
 
 
+void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
+{
+    int8_t rounded_vel_x = std::roundf(velocity_x);
+
+
+    for(int8_t i = 1; i <= rounded_vel_x; i++)
+    {
+        if(Util.getGrid(x+(i*direction), y) == 0) 
+        {
+            if(Util.getGrid(x + ( (i+1) * direction ), y) != 0)
+            {
+                GO(x, y, x+(i*direction), y);
+                velocity_x -= bounds_friction;                //TODO
+                return;
+            }
+        
+        } else {
+            STAY(x, y);
+            velocity_x = 0;
+            return;
+        }   
+    }
+
+    GO(x, y, x+(rounded_vel_x * direction), y);
+    velocity_x -= bounds_friction;
 
 }
+
+
 

@@ -17,7 +17,7 @@ CWater::CWater()
 
 void CWater::move(uint16_t x, uint16_t y)
 {
-
+    
     if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 
     {
         fall(x, y);
@@ -53,15 +53,15 @@ void CWater::move(uint16_t x, uint16_t y)
 
 // 1 = right
 // -1 = left
-void CWater::spread(uint16_t x, uint16_t y, int8_t right)
+void CWater::spread(uint16_t x, uint16_t y, int8_t direction)
 {
     for(uint8_t i = 1; i <= dispersionRate; i++)
     {
-        if(Util.getGrid(x+(i*right), y) == 0 && Util.getNext(x+(i*right), y) == 0)
+        if(Util.getGrid(x+(i*direction), y) == 0 && Util.getNext(x+(i*direction), y) == 0)
         {
-            if(Util.getGrid(x + ((i+1)*right) , y) != 0 && Util.getNext(x + ((i+1)*right) , y) != 0)
+            if(Util.getGrid(x + ((i+1)*direction) , y) != 0 && Util.getNext(x + ((i+1)*direction) , y) != 0)
             {
-                GO(x, y, x+(i*right), y);
+                GO(x, y, x+(i*direction), y);
                 return;
             }
 
@@ -71,7 +71,7 @@ void CWater::spread(uint16_t x, uint16_t y, int8_t right)
         }   
     }
 
-    GO(x, y, x+(dispersionRate*right), y);
+    GO(x, y, x+(dispersionRate*direction), y);
 
     
 

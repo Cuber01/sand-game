@@ -9,12 +9,25 @@
 class CSand : public CElement
 {
     public:
+        // constructor 
         CSand();
 
+        // direction in which the sand goes after hitting the ground with a high velocity
+        int8_t direction;
+
+        // main update loop
         void update(uint16_t x, uint16_t y);
+
+        // move on the grid
         void move(uint16_t x, uint16_t y);
+
+        // when sand isFalling, it will nudge other sands and set their isFalling to true, which causes a nice chain reaction
         void nudge_neighbors(uint16_t x, uint16_t y);
 
+        // move to left or right with power equal to velocity_y/2 while hitting the ground
+        void react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction);
+
+        // fall, taking velocity_y into account
         void fall(uint16_t x, uint16_t y);
 
 };
