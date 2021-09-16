@@ -4,6 +4,8 @@
 #include "../elements/element.hpp"
 #include <stdint.h>
 
+
+
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {
     if(x >= rows || x <= 0 || y >= cols || y <= 0) {
@@ -17,7 +19,7 @@ CElement* CUtil::getNext(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return new CElement; //TODO
+        return &bounds; 
     }
 
     return next[x][y];
@@ -28,7 +30,7 @@ CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 {
     if(isOutOfBounds(x, y))
     {
-        return new CElement; //TODO
+        return &bounds;
     }
 
     return grid[x][y];
