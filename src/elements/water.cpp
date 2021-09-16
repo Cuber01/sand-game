@@ -20,7 +20,7 @@ void CWater::move(uint16_t x, uint16_t y)
 
     if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 
     {
-        GO_DOWN(x, y);
+        fall(x, y);
     } else if (Util.getGrid( DOWN_RIGHT ) == 0 && Util.getNext( DOWN_RIGHT ) == 0) 
     {
         //spread(x, y+1, true);
@@ -74,6 +74,38 @@ void CWater::spread(uint16_t x, uint16_t y, int8_t right)
     GO(x, y, x+(dispersionRate*right), y);
 
     
+
+}
+
+void CWater::fall(uint16_t x, uint16_t y)
+{
+    int8_t rounded_vel_y = std::roundf(velocity_y);
+
+
+    for(int8_t i = 1; i <= rounded_vel_y; i++)
+    {
+        if(Util.getGrid(x, y+i) == 0) // TODO if i add getnext checks it doesnt work
+        {
+            if(Util.getGrid(x , y + i+1) != 0)
+            {
+                GO(x, y, x, y+i);
+                return;
+            }
+        
+        } else {
+            STAY(x, y);
+            return;
+        }   
+    }
+
+    GO(x, y, x, y+rounded_vel_y);
+
+    if(velocity_y < max_fall_speed)
+    {
+        velocity_y += gravity;
+    } else {
+        velocity_y = max_fall_speed;
+    }
 
 }
 

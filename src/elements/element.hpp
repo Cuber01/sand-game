@@ -16,6 +16,7 @@ class CElement
         CElement();
         uint8_t type; 
         float velocity_y = 1;
+        bool isFalling = true;
 
 
         void setColor( color_t color);

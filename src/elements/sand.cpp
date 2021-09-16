@@ -22,35 +22,57 @@ CSand::CSand()
 
 void CSand::move(uint16_t x, uint16_t y)
 {
-    if (Util.getGrid( DOWN ) == 0)
-    {
-        fall(x, y);
-    } else if (Util.getGrid( DOWN )->type == dWaterElement)
-    {
-        GO_DOWN(x, y); // TODO 
-    } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
-    {
-        GO_DOWN_RIGHT(x, y);
-    } else if (Util.getGrid( DOWN_LEFT ) == 0) 
-    {
-        GO_DOWN_LEFT(x, y);
-    } else {
-        STAY(x, y);
-        velocity_y = 0;
-    }
+    // if (!isFalling)
+    // {
+        if (Util.getGrid( DOWN ) == 0)
+        {
+            fall(x, y);
+        } else if (Util.getGrid( DOWN )->type == dWaterElement)
+        {
+            GO_DOWN(x, y); // TODO 
+        } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
+        {
+            GO_DOWN_RIGHT(x, y);
+        } else if (Util.getGrid( DOWN_LEFT ) == 0) 
+        {
+            GO_DOWN_LEFT(x, y);
+        } else {
+            STAY(x, y);
+            isFalling = false;
+        }
+    // } else {
+    //     if (Util.getGrid( DOWN ) == 0)
+    //     {
+    //         fall(x, y);
+    //         isFalling = true;
+    //     }
+    // }
 }
 
 void CSand::update(uint16_t x, uint16_t y)
 {
     move(x, y);
+    //nudge_neighbors(x, y);
+    
+}
+
+void CSand::nudge_neighbors(uint16_t x, uint16_t y)
+{
+    if(Util.getGrid( RIGHT )->type == dSandElement)
+    {
+        Util.getGrid( RIGHT )->isFalling = true;
+    } else if (Util.getGrid( LEFT )->type == dSandElement)
+    {
+        Util.getGrid( RIGHT )->isFalling = true;
+    } 
 }
 
 void CSand::fall(uint16_t x, uint16_t y)
 {
-    int8_t vel_y = std::roundf(velocity_y);
+    int8_t rounded_vel_y = std::roundf(velocity_y);
 
 
-    for(int8_t i = 1; i <= vel_y; i++)
+    for(int8_t i = 1; i <= rounded_vel_y; i++)
     {
         if(Util.getGrid(x, y+i) == 0) // TODO if i add getnext checks it doesnt work
         {
@@ -66,7 +88,7 @@ void CSand::fall(uint16_t x, uint16_t y)
         }   
     }
 
-    GO(x, y, x, y+vel_y);
+    GO(x, y, x, y+rounded_vel_y);
 
     if(velocity_y < max_fall_speed)
     {
