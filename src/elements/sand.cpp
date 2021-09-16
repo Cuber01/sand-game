@@ -22,11 +22,12 @@ CSand::CSand()
 
 void CSand::move(uint16_t x, uint16_t y)
 {
-    // if (!isFalling)
-    // {
+    if (isFalling)
+    {
         if (Util.getGrid( DOWN ) == 0)
         {
             fall(x, y);
+            isFalling = true;
         } else if (Util.getGrid( DOWN )->type == dWaterElement)
         {
             GO_DOWN(x, y); // TODO 
@@ -38,15 +39,23 @@ void CSand::move(uint16_t x, uint16_t y)
             GO_DOWN_LEFT(x, y);
         } else {
             STAY(x, y);
+            velocity_y = 0;
             isFalling = false;
+            return;
         }
-    // } else {
-    //     if (Util.getGrid( DOWN ) == 0)
-    //     {
-    //         fall(x, y);
-    //         isFalling = true;
-    //     }
-    // }
+
+        isFalling = true;
+
+    } else {
+        if (Util.getGrid( DOWN ) == 0)
+        {
+            fall(x, y);
+        } else {
+            STAY(x, y);
+            velocity_y = 0;
+            isFalling = true;
+        }
+    }
 }
 
 void CSand::update(uint16_t x, uint16_t y)
@@ -96,6 +105,8 @@ void CSand::fall(uint16_t x, uint16_t y)
     } else {
         velocity_y = max_fall_speed;
     }
+
+
 
 }
 

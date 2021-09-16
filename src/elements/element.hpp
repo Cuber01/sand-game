@@ -15,7 +15,10 @@ class CElement
 
         CElement();
         uint8_t type; 
+        
         float velocity_y = 1;
+        float velocity_x = 0;
+
         bool isFalling = true;
 
 
