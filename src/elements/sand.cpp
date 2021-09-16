@@ -22,6 +22,7 @@ CSand::CSand()
 
 void CSand::move(uint16_t x, uint16_t y)
 {
+
     if (isFalling)
     {
         if (Util.getGrid( DOWN ) == 0)
@@ -50,10 +51,10 @@ void CSand::move(uint16_t x, uint16_t y)
         if (Util.getGrid( DOWN ) == 0)
         {
             fall(x, y);
+            isFalling = true;
         } else {
             STAY(x, y);
             velocity_y = 0;
-            isFalling = true;
         }
     }
 }
@@ -61,19 +62,41 @@ void CSand::move(uint16_t x, uint16_t y)
 void CSand::update(uint16_t x, uint16_t y)
 {
     move(x, y);
-    //nudge_neighbors(x, y);
+    
+    if(isFalling)
+    {
+        nudge_neighbors(x, y);
+    }
     
 }
 
 void CSand::nudge_neighbors(uint16_t x, uint16_t y)
 {
-    if(Util.getGrid( RIGHT )->type == dSandElement)
+    CElement* rightElement = Util.getGrid( RIGHT );
+    CElement* leftElement = Util.getGrid( LEFT );
+
+    if(rightElement)
     {
-        Util.getGrid( RIGHT )->isFalling = true;
-    } else if (Util.getGrid( LEFT )->type == dSandElement)
+        if(rightElement->type == dSandElement)
+        {
+            rightElement->isFalling = true;
+        } else if (rightElement->type == dSandElement)
+        {
+            rightElement->isFalling = true;
+        } 
+    }
+
+    if(leftElement)
     {
-        Util.getGrid( RIGHT )->isFalling = true;
-    } 
+        if(leftElement->type == dSandElement)
+        {
+            leftElement->isFalling = true;
+        } else if (leftElement->type == dSandElement)
+        {
+            leftElement->isFalling = true;
+        } 
+    }
+
 }
 
 void CSand::fall(uint16_t x, uint16_t y)

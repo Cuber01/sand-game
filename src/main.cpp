@@ -200,6 +200,8 @@ int main(int argc, char* args[])
             SDL_Delay(100);
         #endif
 
+        SDL_Delay(10);
+
         while( SDL_PollEvent(&event) )
         {
             handleEvent(&event);
