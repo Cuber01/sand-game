@@ -6,6 +6,8 @@
 #include <float.h>
 #include <stdint.h> 
 
+#define sRETURN { isFalling = true; return; }
+
 
 color_t sand_color_list[3] =
 {
@@ -23,48 +25,81 @@ CSand::CSand()
 void CSand::move(uint16_t x, uint16_t y)
 {
 
-    if (isFalling)
-    {
+    if (!isFalling) {
+
         if (Util.getGrid( DOWN ) == 0)
         {
             fall(x, y);
             isFalling = true;
-        } else if (Util.getGrid( DOWN )->type == dWaterElement)
-        {
-            GO_DOWN(x, y); // TODO 
-        } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
+        } else {
+            STAY(x, y);
+            velocity_y = 0;
+        }
+
+        return;
+    } 
+
+    //------
+
+    if (Util.getGrid( DOWN ) == 0)
+    {
+        fall(x, y);
+        sRETURN;
+    }
+    
+    if (Util.getGrid( DOWN )->type == dWaterElement)
+    {
+        sRETURN; // TODO
+    }
+
+    //------
+
+    check_order = Util.randomBool();
+
+    if(check_order)
+    {
+        
+        if (Util.getGrid( DOWN_RIGHT ) == 0) 
         {
             GO_DOWN_RIGHT(x, y);
+            sRETURN;
         } else if (Util.getGrid( DOWN_LEFT ) == 0) 
         {
             GO_DOWN_LEFT(x, y);
-        } else if (velocity_x >= 0.5) 
-        {
-            react_to_velocity_x(x, y, direction);
-        } else {
-            STAY(x, y);
-
-            velocity_x = velocity_y/2;
-            direction = Util.randomPositiveNegative();
-
-            velocity_y = 0;
-            isFalling = false;
-
-            return;
+            sRETURN;
         }
-
-        isFalling = true;
-
+    
     } else {
-        if (Util.getGrid( DOWN ) == 0)
+
+        if (Util.getGrid( DOWN_LEFT ) == 0) 
         {
-            fall(x, y);
-            isFalling = true;
-        } else {
-            STAY(x, y);
-            velocity_y = 0;
+            GO_DOWN_LEFT(x, y);
+            sRETURN;
+        } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
+        {
+            GO_DOWN_RIGHT(x, y);
+            sRETURN;
         }
+
     }
+
+    //------
+
+    if (velocity_x >= 0.5) 
+    {
+        react_to_velocity_x(x, y, direction);
+        sRETURN;
+    }
+
+    // else:
+        STAY(x, y);
+
+        velocity_x = velocity_y/2;
+        direction = Util.randomPositiveNegative();
+
+        velocity_y = 0;
+        isFalling = false;
+
 }
 
 void CSand::update(uint16_t x, uint16_t y)

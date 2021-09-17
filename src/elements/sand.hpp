@@ -1,6 +1,7 @@
 #ifndef sand_hpp
 #define sand_hpp
 
+
 #include "../utils/data.hpp"
 #include "element.hpp"
 #include <stdint.h>
@@ -8,15 +9,13 @@
 
 class CSand : public CElement
 {
-    public:
-        // constructor 
-        CSand();
+    private:
+
+        // whether we check DOWN_RIGHT or DOWN_LEFT first
+        bool check_order;
 
         // direction in which the sand goes after hitting the ground with a high velocity
         int8_t direction;
-
-        // main update loop
-        void update(uint16_t x, uint16_t y);
 
         // move on the grid
         void move(uint16_t x, uint16_t y);
@@ -29,6 +28,13 @@ class CSand : public CElement
 
         // fall, taking velocity_y into account
         void fall(uint16_t x, uint16_t y);
+
+    public:
+        // constructor 
+        CSand();
+
+        // main update loop
+        void update(uint16_t x, uint16_t y);
 
 };
 

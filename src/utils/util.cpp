@@ -42,11 +42,16 @@ uint8_t CUtil::random(uint16_t min, uint8_t max)
     return rand()%(max-min + 1) + min;
 }
 
+bool CUtil::randomBool()
+{
+    return rand() & 1;
+}
+
 int8_t CUtil::randomPositiveNegative()
 {
-    uint8_t rv = random(0, 1);
+    uint8_t choice = randomBool();
 
-    if(rv == 0) {
+    if(choice == 0) {
         return 1; 
     } else {
         return -1;
