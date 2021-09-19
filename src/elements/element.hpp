@@ -33,6 +33,9 @@ class CElement
         // if set to false, element will check only cell on down (y+1, x)
         bool isFalling = true;
 
+        // chance for setting isFalling to true while being nudged
+        uint8_t inertialResistance = 0.1;
+
         // set my color
         void setColor( color_t color);
 

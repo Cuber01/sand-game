@@ -2,9 +2,14 @@
 #include "util.hpp"
 
 #include "../elements/element.hpp"
+
 #include <stdint.h>
+#include <random>
 
-
+// void CUtil()
+// {
+//     std::default_random_engine generator;
+// }
 
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {
@@ -42,11 +47,6 @@ uint8_t CUtil::random(uint16_t min, uint8_t max)
     return rand()%(max-min + 1) + min;
 }
 
-bool CUtil::randomBool()
-{
-    return rand() & 1;
-}
-
 int8_t CUtil::randomPositiveNegative()
 {
     uint8_t choice = randomBool();
@@ -58,3 +58,17 @@ int8_t CUtil::randomPositiveNegative()
     } 
 }
 
+
+bool CUtil::randomBool()
+{
+    return rand() & 1;
+}
+
+bool CUtil::randomBoolChance(float chance)
+{   
+    static std::default_random_engine generator; // TODO
+    std::bernoulli_distribution distribution(chance);
+
+    return distribution(generator);
+
+}

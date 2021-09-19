@@ -20,6 +20,7 @@ CSand::CSand()
 {
     this->setColor( sand_color_list[Util.random(0, 2)] );
     type = dSandElement;
+    inertialResistance = 0.9;
 }
 
 
@@ -124,10 +125,12 @@ void CSand::nudge_neighbors(uint16_t x, uint16_t y)
     {
         if(rightElement->type == dSandElement)
         {
-            rightElement->isFalling = true;
-        } else if (rightElement->type == dSandElement)
-        {
-            rightElement->isFalling = true;
+
+            if(!Util.randomBoolChance(rightElement->inertialResistance))
+            {
+                rightElement->isFalling = true;
+            }
+
         } 
     }
 
@@ -135,10 +138,10 @@ void CSand::nudge_neighbors(uint16_t x, uint16_t y)
     {
         if(leftElement->type == dSandElement)
         {
-            leftElement->isFalling = true;
-        } else if (leftElement->type == dSandElement)
-        {
-            leftElement->isFalling = true;
+            if(!Util.randomBoolChance(leftElement->inertialResistance))
+            {
+                leftElement->isFalling = true;
+            }
         } 
     }
 
