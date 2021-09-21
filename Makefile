@@ -1,6 +1,6 @@
-OBJS	= $(wildcard src/*.o) $(wildcard src/*/*.o)
+OBJS	= $(wildcard src/*.o) $(wildcard src/utils/*.hpp) $(wildcard src/elements/*.o) $(wildcard src/elements/derived/*.cpp)
 
-SOURCE	= $(wildcard src/*.cpp) $(wildcard src/*/*.cpp)
+SOURCE	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
 
 
 # debug:

@@ -21,20 +21,26 @@ class CElement
         // who am I?
         uint8_t type; 
 
-        // when a movable solid moves on me, it loses its velocity_x by my friction (velocity_x - friction)
+        // when a movable solid moves on me, it loses its velocity_x by my friction (velocity_x - friction) [used in sand only atm]
         uint8_t friction;
         
-        // velocity in y axis
+        // velocity in y axis [used in sand only atm]
         float velocity_y = 1;
 
-        // velocity in x axis
+        // velocity in x axis [used in sand only atm]
         float velocity_x = 0;
 
-        // if set to false, element will check only cell on down (y+1, x)
+        // if set to false, element will check only cell on down (y+1, x) [used in sand only atm]
         bool isFalling = true;
 
-        // chance for setting isFalling to true while being nudged
-        uint8_t inertialResistance = 0.1;
+        // chance for setting isFalling to true while being nudged [used in sand only atm]
+        uint8_t nudgeChance = 0.1;
+
+        // whether I can be nudged by other cells
+        bool canBeNudged = false;
+
+        // if true, cell won't update next frame [used in water only atm]
+        bool willBeReplaced = false;
 
         // set my color
         void setColor( color_t color);

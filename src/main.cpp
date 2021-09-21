@@ -16,6 +16,7 @@
 #include "elements/wood.hpp"
 #include "elements/water.hpp"
 #include "elements/sand.hpp"
+#include "elements/derived/dirt.hpp"
 
 
 
@@ -143,6 +144,7 @@ void handleInput()
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWoodElement);                
                     break;
                 case KEY_FIRE_MODE_NUMKEY4 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dDirtElement);
                     break;
                 case KEY_SMOKE_MODE_NUMKEY5 :
                     break;

@@ -19,8 +19,9 @@ color_t sand_color_list[3] =
 CSand::CSand()
 {
     this->setColor( sand_color_list[Util.random(0, 2)] );
+    canBeNudged = true;
     type = dSandElement;
-    inertialResistance = 0.9;
+    nudgeChance = 0.9;
 }
 
 
@@ -52,6 +53,25 @@ void CSand::move(uint16_t x, uint16_t y)
     
     if (Util.getGrid( DOWN )->type == dWaterElement)
     {
+        // grid [x][y] = 1
+        // grid [x][y+1] = 2
+
+        //GO_DOWN(x, y);
+        next[x][y+1] = grid[x][y];
+
+        // grid[x][y] = 1
+        // grid[x][y+1] = 2
+        // next[x][y+1] = 1
+        
+        next[x][y] = grid[x][y+1];
+
+        // grid[x][y] = 1
+        // grid[x][y+1] = 2
+        // next [x][y+1] = 1
+        // next [x][y] = 2
+
+        grid[x][y+1]->willBeReplaced = true;
+
         sRETURN; // TODO
     }
 
@@ -123,10 +143,10 @@ void CSand::nudge_neighbors(uint16_t x, uint16_t y)
 
     if(rightElement)
     {
-        if(rightElement->type == dSandElement)
+        if(rightElement->canBeNudged)
         {
 
-            if(!Util.randomBoolChance(rightElement->inertialResistance))
+            if(!Util.randomBoolChance(rightElement->nudgeChance))
             {
                 rightElement->isFalling = true;
             }
@@ -136,9 +156,9 @@ void CSand::nudge_neighbors(uint16_t x, uint16_t y)
 
     if(leftElement)
     {
-        if(leftElement->type == dSandElement)
+        if(leftElement->canBeNudged)
         {
-            if(!Util.randomBoolChance(leftElement->inertialResistance))
+            if(!Util.randomBoolChance(leftElement->nudgeChance))
             {
                 leftElement->isFalling = true;
             }

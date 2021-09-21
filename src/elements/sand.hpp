@@ -1,7 +1,6 @@
 #ifndef sand_hpp
 #define sand_hpp
 
-
 #include "../utils/data.hpp"
 #include "element.hpp"
 #include <stdint.h>
