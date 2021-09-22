@@ -28,7 +28,9 @@ class CUtil
         // ------------ RANDOM -------------------
 
         // return a random number where x is min <= x <=max
-        uint8_t random(uint16_t min, uint8_t max);
+        uint8_t random(uint8_t min, uint8_t max);
+
+        uint16_t random_u16(uint16_t min, uint16_t max);
 
         // returns -1 or 1. 50% chance
         int8_t randomPositiveNegative();

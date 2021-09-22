@@ -6,10 +6,6 @@
 #include <stdint.h>
 #include <random>
 
-// void CUtil()
-// {
-//     std::default_random_engine generator;
-// }
 
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {
@@ -42,10 +38,16 @@ CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 
 }
 
-uint8_t CUtil::random(uint16_t min, uint8_t max)
+uint8_t CUtil::random(uint8_t min, uint8_t max)
 {
     return rand()%(max-min + 1) + min;
 }
+
+uint16_t CUtil::random_u16(uint16_t min, uint16_t max)
+{
+    return rand()%(max-min + 1) + min;
+}
+
 
 int8_t CUtil::randomPositiveNegative()
 {
@@ -64,11 +66,14 @@ bool CUtil::randomBool()
     return rand() & 1;
 }
 
+
 bool CUtil::randomBoolChance(float chance)
 {   
-    static std::default_random_engine generator; // TODO
+    static std::default_random_engine generator;
+
     std::bernoulli_distribution distribution(chance);
 
     return distribution(generator);
 
 }
+

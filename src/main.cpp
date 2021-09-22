@@ -12,12 +12,6 @@
 #include "settings.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
-#include "elements/element.hpp"
-#include "elements/wood.hpp"
-#include "elements/water.hpp"
-#include "elements/sand.hpp"
-#include "elements/derived/dirt.hpp"
-
 
 
 // sdl
@@ -147,6 +141,7 @@ void handleInput()
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dDirtElement);
                     break;
                 case KEY_SMOKE_MODE_NUMKEY5 :
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSmokeElement);
                     break;
                 default:
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSandElement);

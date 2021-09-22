@@ -1,11 +1,12 @@
 #include <SDL2/SDL.h>
 #include <stdint.h>
 
-#include "elements/element.hpp"
+
 #include "elements/derived/dirt.hpp"
 #include "elements/sand.hpp"
 #include "elements/water.hpp"
 #include "elements/wood.hpp"
+#include "elements/smoke.hpp"
 
 #include "settings.hpp"
 #include "cursor.hpp"
@@ -50,7 +51,7 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                     {
                         case dSandElement:  o = new CSand();  break;
                         case dWaterElement: o = new CWater(); break;
-                        // case dSmokeElement: o = new CSmoke(); break;
+                        case dSmokeElement: o = new CSmoke(); break;
                         case dWoodElement:  o = new CWood();  break;
                         case dDirtElement:  o = new CDirt();  break;
                         default:
