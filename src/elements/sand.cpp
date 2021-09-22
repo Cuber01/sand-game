@@ -211,7 +211,7 @@ void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
             if(Util.getGrid(x + ( (i+1) * direction ), y) != 0)
             {
                 GO(x, y, x+(i*direction), y);
-                velocity_x -= bounds_friction;                //TODO
+                velocity_x -= bounds_friction; //TODO it should use friction of the object below
                 return;
             }
         

@@ -11,19 +11,12 @@ CSmoke::CSmoke()
 {
     this->setColor( smoke_color );
     type = dSmokeElement;
-    lifetime = Util.random_u16(200,400);
+    lifetime = Util.random_u16(200,400); // check/adjust numbers TODO
 }
 
 void CSmoke::update(uint16_t x, uint16_t y)
 {
-    lifetime--;
-
-    if(lifetime < 0)
-    {
-        // goodbye cruel world
-        grid[x][y] = 0;
-        delete this;
-    }
+    handleLifetime(x, y);
 
     move(x, y);
     
@@ -74,5 +67,17 @@ void CSmoke::move(uint16_t x, uint16_t y)
     }
 
 
+}
+
+void CSmoke::handleLifetime(uint16_t x, uint16_t y)
+{
+    lifetime--;
+
+    if(lifetime < 0)
+    {
+        // goodbye cruel world TODO?
+        grid[x][y] = 0;
+        delete this;
+    }
 }
 

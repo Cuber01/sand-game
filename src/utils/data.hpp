@@ -16,6 +16,7 @@ typedef enum {
     dNoneElement =0,
     dSandElement,
     dDirtElement,
+    dFireElement,
     dWaterElement,
     dSmokeElement,
     dWoodElement

@@ -138,7 +138,7 @@ void handleInput()
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dWoodElement);                
                     break;
                 case KEY_FIRE_MODE_NUMKEY4 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dDirtElement);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dFireElement);
                     break;
                 case KEY_SMOKE_MODE_NUMKEY5 :
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * scale, Cursor.h * scale, dSmokeElement);

@@ -11,7 +11,7 @@
 void CRenderHandler::init()
 {
     
-    renderer = SDL_CreateRenderer(window, -1, 0); // TODO
+    renderer = SDL_CreateRenderer(window, -1, 0); // TODO software rendering nuffle stuff
     
     if (renderer == NULL)
     {

@@ -21,14 +21,18 @@ class CElement
         // who am I?
         uint8_t type; 
 
-        // when a movable solid moves on me, it loses its velocity_x by my friction (velocity_x - friction) [used in sand only atm]
+        // ------------------------ PHYSICS ------------------------ 
+
+        // when a movable solid moves on me, it loses its velocity_x by my friction (velocity_x - friction) [unused]
         uint8_t friction;
         
-        // velocity in y axis [used in sand only atm]
+        // velocity in y axis
         float velocity_y = 1;
 
-        // velocity in x axis [used in sand only atm]
+        // velocity in x axis
         float velocity_x = 0;
+
+        // --------------------- MOVABLE SOLID --------------------- 
 
         // if set to false, element will check only cell on down (y+1, x) [used in sand only atm]
         bool isFalling = true;
@@ -39,8 +43,26 @@ class CElement
         // whether I can be nudged by other cells
         bool canBeNudged = false;
 
+        // ------------------------- HEAT ------------------------- 
+
+        // heatResistance I start with
+        uint8_t initialHeatResistance;
+
+        // when an element emits heat, heatResistance will decrement, when it hits 0, I burn
+        int8_t heatResistance;
+
+        // amount of heat I emit
+        uint8_t amountOfHeatToEmit;
+
+        // when hitpoints hit 0 I die, can be decremented by fire (and explosions in the future)
+        uint8_t hitpoints;
+
+        // ------------------------ LIQUID ------------------------ 
+
         // if true, cell won't update next frame [used in water only atm]
         bool willBeReplaced = false;
+
+        // ----------------------- METHODS ------------------------ 
 
         // set my color
         void setColor( color_t color);
@@ -50,6 +72,12 @@ class CElement
 
         // main update loop
         virtual void update(uint16_t x,uint16_t y);
+
+        // lower heat resistance by incoming heat
+        virtual void receiveHeat(uint8_t heatAmount);
+
+        // emit amountOfHeatToEmit
+        void emitHeat(uint16_t x, uint16_t y);
         
 };
 
