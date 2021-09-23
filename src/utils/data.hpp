@@ -30,6 +30,8 @@ typedef struct color_t
     uint8_t b;
 } color_t;
 
+extern color_t fire_color_list2[3];
+
 // color_t color_list[]
 // {
 //     { 0, 0, 0      },      // air  0

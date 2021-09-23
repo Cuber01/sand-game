@@ -45,14 +45,17 @@ class CElement
 
         // ------------------------- HEAT ------------------------- 
 
+        // am I burning?
+        bool isBurning = false;
+
         // heatResistance I start with
-        uint8_t initialHeatResistance;
+        float initialHeatResistance;
 
         // when an element emits heat, heatResistance will decrement, when it hits 0, I burn
-        int8_t heatResistance;
+        float heatResistance;
 
         // amount of heat I emit
-        uint8_t amountOfHeatToEmit;
+        float amountOfHeatToEmit = 0.5;
 
         // when hitpoints hit 0 I die, can be decremented by fire (and explosions in the future)
         uint8_t hitpoints;
@@ -74,10 +77,19 @@ class CElement
         virtual void update(uint16_t x,uint16_t y);
 
         // lower heat resistance by incoming heat
-        virtual void receiveHeat(uint8_t heatAmount);
+        virtual void receiveHeat(float heatAmount);
 
         // emit amountOfHeatToEmit
         void emitHeat(uint16_t x, uint16_t y);
+
+        // check if fire should suffocate, if yes, suffocate fire
+        void checkSuffocateFire(uint16_t x, uint16_t y);
+
+        // check if I should be burning, if yes, set isBurning to true
+        void checkHeat();
+
+        // check if I should be dead, if yes, commit sudoku
+        void checkHitpoints(uint16_t x, uint16_t y);
         
 };
 

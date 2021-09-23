@@ -24,7 +24,7 @@ color_t CElement::getColor() {
     return this->color;
 }
 
-void CElement::receiveHeat(uint8_t heatAmount)
+void CElement::receiveHeat(float heatAmount)
 {
     heatResistance -= heatAmount;
 }
@@ -71,6 +71,28 @@ void CElement::emitHeat(uint16_t x, uint16_t y)
         Util.getGrid( LEFT )->receiveHeat(amountOfHeatToEmit);
     }
       
+}
+
+void CElement::checkHitpoints(uint16_t x, uint16_t y)
+{
+    if(hitpoints < 0)
+    {
+        grid[x][y] = 0;
+        delete this;
+    }
+}
+
+void CElement::checkHeat()
+{
+    if(heatResistance < 0)
+    {
+        isBurning = true;
+    }
+}
+
+void CElement::checkSuffocateFire(uint16_t x, uint16_t y)
+{
+    
 }
 
 

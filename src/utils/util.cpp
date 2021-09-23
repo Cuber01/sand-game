@@ -2,6 +2,7 @@
 #include "util.hpp"
 
 #include "../elements/element.hpp"
+#include "../elements/directions.hpp"
 
 #include <stdint.h>
 #include <random>
@@ -36,6 +37,21 @@ CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 
     return grid[x][y];
 
+}
+
+bool CUtil::amISurrounded(uint16_t x, uint16_t y)
+{
+    if(
+        getGrid( DOWN ) && getGrid( UP )
+        && getGrid( LEFT ) && getGrid( RIGHT )
+        && getGrid( DOWN_LEFT ) && getGrid( DOWN_RIGHT )
+        && getGrid( UP_LEFT ) && getGrid( UP_RIGHT ) 
+    ) 
+    {
+        return true;
+    }
+
+    return false;
 }
 
 uint8_t CUtil::random(uint8_t min, uint8_t max)
