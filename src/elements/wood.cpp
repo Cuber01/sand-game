@@ -1,5 +1,6 @@
 #include "../main.hpp"
 #include "directions.hpp"
+#include "smoke.hpp"
 #include "../utils/data.hpp"
 #include "wood.hpp"
 
@@ -16,6 +17,25 @@ CWood::CWood()
 void CWood::stay(uint16_t x, uint16_t y)
 {
     STAY(x, y);
+}
+
+void CWood::checkHitpoints(uint16_t x, uint16_t y)
+{
+
+    if(hitpoints < 0)
+    {
+        grid[x][y] = 0;
+
+        if(Util.randomBool())
+        {
+            next[x][y] = 0;
+        } else {
+            next[x][y] = new CSmoke();
+        }
+
+        delete this;
+    }
+
 }
 
 void CWood::update(uint16_t x, uint16_t y)
@@ -38,7 +58,7 @@ void CWood::update(uint16_t x, uint16_t y)
             }
         } else {
             if(Util.getGrid( UP ) == 0) {
-                
+
             }
         }
     }

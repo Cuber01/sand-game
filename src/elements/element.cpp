@@ -1,6 +1,5 @@
 #include "../main.hpp"
 #include "directions.hpp"
-#include "smoke.hpp"
 #include "element.hpp"
 
 #include <stdint.h> 
@@ -74,23 +73,17 @@ void CElement::emitHeat(uint16_t x, uint16_t y)
       
 }
 
-// TODO
 void CElement::checkHitpoints(uint16_t x, uint16_t y)
 {
 
     if(hitpoints < 0)
     {
         grid[x][y] = 0;
-
-        if(Util.randomBool())
-        {
-            next[x][y] = 0;
-        } else {
-            next[x][y] = new CSmoke();
-        }
+        next[x][y] = 0;
 
         delete this;
     }
+
 }
 
 void CElement::checkHeat()

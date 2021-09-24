@@ -92,7 +92,7 @@ class CElement
         void checkHeat();
 
         // check if I should be dead, if yes, commit sudoku
-        void checkHitpoints(uint16_t x, uint16_t y);
+        virtual void checkHitpoints(uint16_t x, uint16_t y);
         
 };
 

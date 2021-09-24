@@ -81,3 +81,5 @@ void CSmoke::handleLifetime(uint16_t x, uint16_t y)
     }
 }
 
+void CSmoke::receiveHeat(float heatAmount) {}
+

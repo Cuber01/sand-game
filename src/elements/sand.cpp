@@ -227,5 +227,7 @@ void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
 
 }
 
+void CSand::receiveHeat(float heatAmount) {}
+
 
 

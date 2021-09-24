@@ -16,6 +16,8 @@ class CSmoke : public CElement
         void move(uint16_t x, uint16_t y);
         void handleLifetime(uint16_t x, uint16_t y);
 
+        void receiveHeat(float heatAmount); 
+
         int16_t lifetime;
 
 };

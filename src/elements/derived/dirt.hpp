@@ -9,6 +9,8 @@ class CDirt : public CSand
         // constructor 
         CDirt();
 
+        void receiveHeat(float heatAmount);
+
 };
 
 

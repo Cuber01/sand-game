@@ -11,6 +11,7 @@
 CWater::CWater()
 {
     this->setColor({ 71, 126, 255 });
+    heatResistance = 3;
     this->movesRight = Util.random(0, 1);
     type = dWaterElement;
 }
@@ -18,6 +19,12 @@ CWater::CWater()
 
 void CWater::move(uint16_t x, uint16_t y)
 {
+    if(isBurning)
+    {
+        grid[x][y] = 0;
+    }
+
+
     if(!willBeReplaced)
     {
         if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 
@@ -51,6 +58,8 @@ void CWater::move(uint16_t x, uint16_t y)
             STAY(x, y);
         }
     }
+
+    checkHeat();
 
 }
 

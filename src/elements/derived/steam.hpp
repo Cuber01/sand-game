@@ -9,6 +9,8 @@ class CSteam : public CSmoke
         // constructor 
         CSteam();
 
+        void receiveHeat(float heatAmount);
+
 };
 
 

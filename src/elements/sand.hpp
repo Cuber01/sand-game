@@ -35,6 +35,8 @@ class CSand : public CElement
         // main update loop
         void update(uint16_t x, uint16_t y);
 
+        void receiveHeat(float heatAmount);
+
 };
 
 
