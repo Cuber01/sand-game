@@ -2,7 +2,6 @@
 #define dirt_hpp
 
 #include "../sand.hpp"
-#include "../element.hpp"
 
 class CDirt : public CSand
 {

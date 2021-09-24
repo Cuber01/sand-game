@@ -61,7 +61,7 @@ class CElement
         int8_t fireStrength;
 
         // when hitpoints hit 0 I die, can be decremented by fire (and explosions in the future)
-        int8_t hitpoints = 100;
+        float hitpoints = 100;
 
         // ------------------------ LIQUID ------------------------ 
 

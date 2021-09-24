@@ -3,6 +3,7 @@
 
 
 #include "elements/derived/dirt.hpp"
+#include "elements/derived/steam.hpp"
 #include "elements/derived/fire.hpp"
 #include "elements/sand.hpp"
 #include "elements/water.hpp"
@@ -52,7 +53,7 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                     {
                         case dSandElement:  o = new CSand();  break;
                         case dWaterElement: o = new CWater(); break;
-                        case dSmokeElement: o = new CSmoke(); break;
+                        case dSmokeElement: o = new CSteam(); break;
                         case dWoodElement:  o = new CWood();  break;
                         case dDirtElement:  o = new CDirt();  break;
                         case dFireElement:  o = new CFire();  break;

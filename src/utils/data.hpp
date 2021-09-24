@@ -19,6 +19,7 @@ typedef enum {
     dFireElement,
     dWaterElement,
     dSmokeElement,
+    dSteamElement,
     dWoodElement
 } element_t;
 
