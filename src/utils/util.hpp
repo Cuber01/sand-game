@@ -22,7 +22,7 @@ class CUtil
         CElement* getNext( uint16_t x, uint16_t y );
 
         // returns whether I'm surrounded by elements from all sides
-        bool amISurrounded(uint16_t x, uint16_t y);
+        bool isSurrounded(uint16_t x, uint16_t y);
 
         // whether a given x and y are out of bounds of our game
         bool isOutOfBounds( uint16_t x, uint16_t y );

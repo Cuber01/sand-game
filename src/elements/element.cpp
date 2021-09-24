@@ -75,8 +75,10 @@ void CElement::emitHeat(uint16_t x, uint16_t y)
 
 void CElement::checkHitpoints(uint16_t x, uint16_t y)
 {
+
     if(hitpoints < 0)
     {
+        next[x][y] = 0;
         grid[x][y] = 0;
         delete this;
     }
@@ -92,7 +94,7 @@ void CElement::checkHeat()
 
 void CElement::checkSuffocateFire(uint16_t x, uint16_t y)
 {
-    
+
 }
 
 

@@ -39,7 +39,7 @@ CElement* CUtil::getGrid(uint16_t x, uint16_t y)
 
 }
 
-bool CUtil::amISurrounded(uint16_t x, uint16_t y)
+bool CUtil::isSurrounded(uint16_t x, uint16_t y)
 {
     if(
         getGrid( DOWN ) && getGrid( UP )

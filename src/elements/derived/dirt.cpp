@@ -19,5 +19,3 @@ CDirt::CDirt()
     type = dDirtElement;
     nudgeChance = 0.01;
 }
-
-

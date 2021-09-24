@@ -24,8 +24,9 @@ void CWood::update(uint16_t x, uint16_t y)
     {
         emitHeat(x, y);   
         this->setColor( fire_color_list2[Util.random(0,2)] );    
-        
-        if(Util.amISurrounded(x, y))
+        hitpoints--;
+
+        if(Util.isSurrounded(x, y))
         {
             this->setColor( wood_color );
             heatResistance = 10;  
@@ -34,6 +35,8 @@ void CWood::update(uint16_t x, uint16_t y)
     }
 
     stay(x, y);
+
     checkHeat();
+    checkHitpoints(x, y);
 }
 

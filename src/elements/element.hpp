@@ -58,7 +58,7 @@ class CElement
         float amountOfHeatToEmit = 0.5;
 
         // when hitpoints hit 0 I die, can be decremented by fire (and explosions in the future)
-        uint8_t hitpoints;
+        int8_t hitpoints = 100;
 
         // ------------------------ LIQUID ------------------------ 
 
