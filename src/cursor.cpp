@@ -44,27 +44,45 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
     for(uint8_t i = 1; i < w; i++) {
         for(uint8_t j = 1; j < h; j++) {
 
-            if (not Util.isOutOfBounds((x+i)/scale, (y+j)/scale))
+            if ( Util.getGrid((x+i)/scale, (y+j)/scale) == 0 && particle != dNoneElement)
             {                
-                if(particle != dNoneElement )
+                CElement* o;
+
+                switch( particle )
                 {
-                    CElement* o;
-                    switch( particle )
+                    case dSandElement:  o = new CSand();  break;
+                    case dWaterElement: o = new CWater(); break;
+                    case dSmokeElement: o = new CSteam(); break;
+                    case dWoodElement:  o = new CWood();  break;
+                    case dDirtElement:  o = new CDirt();  break;
+                    case dFireElement:  o = new CFire();  break;
+                    default:
+                        printf("Unknown particle.\n");
+                        exit(1);
+                }
+
+                grid[(x+i)/scale][(y+j)/scale] = o;
+
+                #ifdef DEBUG_STACK
+                    stack++;
+                #endif
+
+                 
+            } else if ( particle == dNoneElement ) {
+                    
+                #ifdef DEBUG_STACK
+                    
+                    if( grid[(x+i)/scale][(y+j)/scale] != 0 )
                     {
-                        case dSandElement:  o = new CSand();  break;
-                        case dWaterElement: o = new CWater(); break;
-                        case dSmokeElement: o = new CSteam(); break;
-                        case dWoodElement:  o = new CWood();  break;
-                        case dDirtElement:  o = new CDirt();  break;
-                        case dFireElement:  o = new CFire();  break;
-                        default:
-                            printf("Unknown particle.");
-                            exit(1);
+                        stack--;
                     }
-                    grid[(x+i)/scale][(y+j)/scale] = o;//particle; //new particle;
-                } else{
-                    grid[(x+i)/scale][(y+j)/scale] = 0;
-                } 
+
+                #endif
+
+                delete grid[(x+i)/scale][(y+j)/scale];
+
+                grid[(x+i)/scale][(y+j)/scale] = 0;
+                 
             }
 
         }

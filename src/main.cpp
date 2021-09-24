@@ -18,6 +18,10 @@
 SDL_Window* window = NULL;
 SDL_Event event;
 
+#ifdef DEBUG_STACK 
+    int stack;
+#endif
+
 
 //int
 uint16_t lastKeyboardKeyPressed;
@@ -156,8 +160,26 @@ void handleInput()
          
     } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)
     {
-        memset( next, 0, sizeof(next) );
-        memset( grid, 0, sizeof(next) );
+
+        for(uint8_t x = 0; x <= rows; x++) 
+        {
+            for(uint8_t y = 0; y <= cols; y++) 
+            {
+
+                if(grid[x][y] != 0)
+                {
+                    delete grid[x][y];
+
+                    #ifdef DEBUG_STACK
+                        stack--;
+                    #endif
+
+                    grid[x][y] = 0;
+                }
+
+            }
+        }
+
         lastKeyboardKeyPressed = 0;
     }
 }
@@ -195,6 +217,10 @@ int main(int argc, char* args[])
     {
         #ifdef SLOW
             SDL_Delay(100);
+        #endif
+
+        #ifdef DEBUG_STACK
+            printf("%d\n", stack);
         #endif
 
         SDL_Delay(10);

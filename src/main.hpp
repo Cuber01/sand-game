@@ -20,5 +20,9 @@ extern CUtil Util;
 extern CElement* grid[rows][cols];
 extern CElement* next[rows][cols];
 
+#ifdef DEBUG_STACK
+    extern int stack;
+#endif
+
 
 #endif
