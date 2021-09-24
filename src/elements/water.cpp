@@ -1,6 +1,7 @@
 #include "../main.hpp"
 #include "directions.hpp"
 #include "../utils/util.hpp"
+#include "derived/steam.hpp"
 #include "water.hpp"
 
 
@@ -19,10 +20,6 @@ CWater::CWater()
 
 void CWater::move(uint16_t x, uint16_t y)
 {
-    if(isBurning)
-    {
-        grid[x][y] = 0;
-    }
 
 
     if(!willBeReplaced)
@@ -123,6 +120,14 @@ void CWater::fall(uint16_t x, uint16_t y)
 
 void CWater::update(uint16_t x, uint16_t y)
 {
+    if(isBurning)
+    {
+        grid[x][y] = 0;
+        next[x][y] = new CSteam();
+        delete this;
+    }
+
+
     move(x, y);
 }
 
