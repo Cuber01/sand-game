@@ -55,7 +55,10 @@ class CElement
         float heatResistance;
 
         // amount of heat I emit
-        float amountOfHeatToEmit = 0.5;
+        float amountOfHeatToEmit = 0.2;
+
+        // if it hits 0, I'm not burning anymore
+        int8_t fireStrength;
 
         // when hitpoints hit 0 I die, can be decremented by fire (and explosions in the future)
         int8_t hitpoints = 100;

@@ -8,7 +8,7 @@
 CWood::CWood()
 {
     this->setColor( wood_color );  
-    initialHeatResistance = 3;
+    initialHeatResistance = 10;
     heatResistance = 3;  
     type = dWoodElement;
 }
@@ -28,9 +28,14 @@ void CWood::update(uint16_t x, uint16_t y)
 
         if(Util.isSurrounded(x, y))
         {
-            this->setColor( wood_color );
-            heatResistance = 10;  
-            isBurning = false;
+            fireStrength--;
+
+            if(fireStrength < 0)
+            {
+                this->setColor( wood_color );
+                heatResistance = initialHeatResistance;  
+                isBurning = false;
+            }
         }
     }
 
@@ -38,5 +43,6 @@ void CWood::update(uint16_t x, uint16_t y)
 
     checkHeat();
     checkHitpoints(x, y);
+    
 }
 

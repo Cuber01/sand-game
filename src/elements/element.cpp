@@ -86,9 +86,10 @@ void CElement::checkHitpoints(uint16_t x, uint16_t y)
 
 void CElement::checkHeat()
 {
-    if(heatResistance < 0)
+    if(heatResistance < 0 && not isBurning)
     {
         isBurning = true;
+        fireStrength = 5;
     }
 }
 
