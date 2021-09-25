@@ -2,6 +2,7 @@
 #include <stdint.h>
 
 #include "elements/derived/cracked_brick.hpp"
+#include "elements/derived/petrol.hpp"
 #include "elements/derived/dirt.hpp"
 #include "elements/derived/steam.hpp"
 #include "elements/derived/fire.hpp"
@@ -50,13 +51,14 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
 
                 switch( particle )
                 {
-                    case dSandElement:  o = new CSand();  break;
-                    case dWaterElement: o = new CWater(); break;
-                    case dSmokeElement: o = new CSmoke(); break;
-                    case dSteamElement: o = new CSteam(); break;
-                    case dWoodElement:  o = new CWood();  break;
-                    case dDirtElement:  o = new CDirt();  break;
-                    case dFireElement:  o = new CFire();  break;
+                    case dSandElement:         o = new CSand();  break;
+                    case dWaterElement:        o = new CWater(); break;
+                    case dSmokeElement:        o = new CSmoke(); break;
+                    case dSteamElement:        o = new CSteam(); break;
+                    case dWoodElement:         o = new CWood();  break;
+                    case dDirtElement:         o = new CDirt();  break;
+                    case dFireElement:         o = new CFire();  break;
+                    case dPetrolElement:       o = new CPetrol();  break;
                     case dCrackedBrickElement: o = new CCrackedBrick(); break;
                     default:
                         printf("Unknown particle.\n");

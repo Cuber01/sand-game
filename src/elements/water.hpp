@@ -10,7 +10,6 @@ class CWater : public CElement
 {
     private:        
 
-        void move(uint16_t x, uint16_t y);
         void spread(uint16_t x, uint16_t y, int8_t right);
 
         uint8_t dispersionRate = 4;
@@ -19,9 +18,10 @@ class CWater : public CElement
     public:
         CWater();
 
+        void move(uint16_t x, uint16_t y);
         void fall(uint16_t x, uint16_t y);
         
-        void update(uint16_t x, uint16_t y);
+        virtual void update(uint16_t x, uint16_t y);
 
 
 };

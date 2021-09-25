@@ -22,6 +22,7 @@ typedef enum {
 
     //derived from water
     dWaterElement,
+    dPetrolElement,
     
     // derived from smoke
     dSmokeElement,
