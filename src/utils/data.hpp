@@ -13,13 +13,22 @@
 // key numbers: 49 50 51 52 53 54 55 56 57 48
 
 typedef enum {
-    dNoneElement =0,
+    dNoneElement = 0,
+
+    // derived from sand
     dSandElement,
     dDirtElement,
-    dFireElement,
+    dCrackedBrickElement,
+
+    //derived from water
     dWaterElement,
+    
+    // derived from smoke
     dSmokeElement,
+    dFireElement,
     dSteamElement,
+    
+    // derived from wood
     dWoodElement
 } element_t;
 

@@ -35,6 +35,9 @@ class CSand : public CElement
         // main update loop
         void update(uint16_t x, uint16_t y);
 
+        // what should I do when I'm not falling
+        virtual void notFallingUpdate(uint16_t x, uint16_t y);
+
         void receiveHeat(float heatAmount);
 
 };

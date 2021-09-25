@@ -31,14 +31,7 @@ void CSand::move(uint16_t x, uint16_t y)
 
     if (!isFalling) {
 
-        if (Util.getGrid( DOWN ) == 0)
-        {
-            fall(x, y);
-            isFalling = true;
-        } else {
-            STAY(x, y);
-            velocity_y = 0;
-        }
+        notFallingUpdate(x, y);
 
         return;
     } 
@@ -123,6 +116,18 @@ void CSand::move(uint16_t x, uint16_t y)
         velocity_y = 0;
         isFalling = false;
 
+}
+
+void CSand::notFallingUpdate(uint16_t x, uint16_t y)
+{
+    if (Util.getGrid( DOWN ) == 0)
+    {
+        fall(x, y);
+        isFalling = true;
+    } else {
+        STAY(x, y);
+        velocity_y = 0;
+    }
 }
 
 void CSand::update(uint16_t x, uint16_t y)

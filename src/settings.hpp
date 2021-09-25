@@ -17,5 +17,6 @@
 // max number of cells we can travel per frame while falling
 #define max_fall_speed 5
 
-// TODO docs
+// friction value of bounds [currently used as a default friction everywhere]
 #define bounds_friction 0.1
+
