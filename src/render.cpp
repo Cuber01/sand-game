@@ -10,18 +10,17 @@
 
 void CRenderHandler::init()
 {
-    
-    renderer = SDL_CreateRenderer(window, -1, 0); // TODO software rendering nuffle stuff
-    
+    #ifdef SOFTWARE_RENDERING
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE); 
+    #else
+    renderer = SDL_CreateRenderer(window, -1, 0); 
+    #endif
+
     if (renderer == NULL)
     {
         printf("Renderer failed to initialize. Error: %s\n", SDL_GetError());
         exit(1);
     }
-
-    // SDL_RendererInfo rendererInfo;
-    // SDL_GetRendererInfo(renderer, &rendererInfo);
-    // SDL_Log("Renderer: %s", rendererInfo.name);
 
     SDL_RenderSetScale(renderer, scale, scale);
 }
@@ -31,8 +30,59 @@ void CRenderHandler::draw()
 {
     clear();
 
-    for (uint16_t x = 0; x < cols; x++) {
-        for (uint16_t y = 0; y < rows; y++) {
+    #ifndef SOFTWARE_RENDERING
+
+    // create surface
+    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, rows, cols, 32, 0, 0, 0, 0);
+
+    if(surface == NULL) 
+    {
+        printf("Failed to create surface: %s\n", SDL_GetError());
+        exit(1);
+    }
+
+    // main surface draw loop
+    SDL_LockSurface(surface);
+
+    unsigned char* pixels = (unsigned char*)surface -> pixels;
+    CElement* value;
+
+    for (uint16_t x = 0; x < rows; x++) {
+        for (uint16_t y = 0; y < cols; y++) {
+
+            value = grid[x][y];
+
+            if(value != 0)
+            {
+                color_t color = value->getColor();
+
+                pixels[4 * (y * surface -> w + x) + 3] = 255;   //opacity
+
+                pixels[4 * (y * surface -> w + x) + 2] = color.r;   //red
+                pixels[4 * (y * surface -> w + x) + 1] = color.g;   //green
+                pixels[4 * (y * surface -> w + x) + 0] = color.b;   //blue   
+
+            }
+
+        }
+    }
+
+    SDL_UnlockSurface(surface);
+
+    // create texture from surface
+    texture = SDL_CreateTextureFromSurface(renderer, surface); 
+    
+    // copy texture over to renderer
+    SDL_RenderCopy(renderer, texture, NULL, NULL); 
+    
+    #endif
+     
+
+    #ifdef SOFTWARE_RENDERING
+
+    // main draw loop
+    for (uint16_t x = 0; x < rows; x++) {
+        for (uint16_t y = 0; y < cols; y++) {
             
             CElement* value = grid[x][y];
 
@@ -50,6 +100,9 @@ void CRenderHandler::draw()
         }
     }
 
+    #endif
+
+    // draw cursor
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &Cursor.cursor);
 

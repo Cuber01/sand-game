@@ -3,7 +3,10 @@
 //#define SLOW
 
 // counts and prints the amount of all currently running elements
-#define DEBUG_STACK
+// #define DEBUG_STACK
+
+// use software rendering
+// #define SOFTWARE_RENDERING
 
 // size of the square drawn per cell (scale 4 = each cell is a 4x4 square)
 #define scale 4
