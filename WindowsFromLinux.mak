@@ -1,17 +1,14 @@
-# This makefile works if you are on Linux, and would like to make a Linux executable
-# It may also work on Mac to compile a Mac executable but I'm not sure
+# This makefile works if you're on Linux (and perhaps Mac) and would like to compile a Windows executable
 
 OBJS	= $(wildcard src/*.o) $(wildcard src/utils/*.o) $(wildcard src/elements/*.o) $(wildcard src/elements/derived/*.o)
 
 SOURCE	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
 
-# debug:
-CFLAGS	= -g -ggdb
 
-OUT	    = out/sand_game   
-CC	    = g++
-# CFLAGS	= 
-LFLAGS	= -lSDL2 
+OUT     = out/sand_game.exe     
+CC      = x86_64-w64-mingw32-g++ 
+CFLAGS	= 
+LFLAGS = -I/tmp/sdl2-win64/include/ -L/tmp/sdl2-win64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows 
 
 all: $(OBJS)
 	$(CC) -o $(OUT) $(SOURCE) $(CFLAGS) $(LFLAGS)
