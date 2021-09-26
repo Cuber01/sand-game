@@ -12,7 +12,6 @@ CPetrol::CPetrol()
 {
     this->setColor( petrol_color );
     type = dPetrolElement;
-    hitpoints = 2;
     amountOfHeatToEmit = 5;
 }
 
@@ -35,7 +34,7 @@ void CPetrol::update(uint16_t x, uint16_t y)
 
 void CPetrol::checkHitpoints(uint16_t x, uint16_t y)
 {
-    if(hitpoints < 0)
+    if(hitpoints < 0 && Util.randomBoolChance(0.1))
     {
         grid[x][y] = 0;
 

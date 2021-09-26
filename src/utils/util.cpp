@@ -54,6 +54,18 @@ bool CUtil::isSurrounded(uint16_t x, uint16_t y)
     return false;
 }
 
+void CUtil::switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2 )
+{
+    CElement* cell1 = grid[x1][y1];
+    CElement* cell2 = grid[x2][y2];
+
+    next[x1][y1] = cell2;
+    next[x2][y2] = cell1;
+
+    grid[x1][y1] = 0;
+    grid[x2][y2]->willBeReplaced = true;
+}
+
 uint8_t CUtil::random(uint8_t min, uint8_t max)
 {
     return rand()%(max-min + 1) + min;

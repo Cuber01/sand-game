@@ -16,7 +16,6 @@ color_t cracked_brick_color_list[3] =
 CCrackedBrick::CCrackedBrick()
 {
     this->setColor( cracked_brick_color_list[Util.random(0, 2)] );
-    printf("%d", Util.random(0, 2));
     canBeNudged = true;
     type = dCrackedBrickElement;
     isFalling = false;
@@ -26,7 +25,7 @@ CCrackedBrick::CCrackedBrick()
 void CCrackedBrick::notFallingUpdate(uint16_t x, uint16_t y) 
 {
     STAY(x, y);
-    //velocity_y = 0; //TODO
+    velocity_y = 0;
 }
 
 void CCrackedBrick::receiveHeat(float heatAmount) {}
