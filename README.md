@@ -91,4 +91,4 @@ Mouse wheel - change cursor size
 * screen is drawn from 1,1 instead of 0,0
 * very big cursor doesnt work properly
 * cursor is off
-* optimize draw (thx nuff)
+
