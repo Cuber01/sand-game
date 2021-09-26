@@ -21,6 +21,14 @@ void CRenderHandler::init()
         printf("Renderer failed to initialize. Error: %s\n", SDL_GetError());
         exit(1);
     }
+    
+    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, rows, cols, 32, 0, 0, 0, 0);
+
+    if(surface == NULL) 
+    {
+        printf("Failed to create surface: %s\n", SDL_GetError());
+        exit(1);
+    }
 
     SDL_RenderSetScale(renderer, scale, scale);
 }
@@ -31,15 +39,6 @@ void CRenderHandler::draw()
     clear();
 
     #ifndef SOFTWARE_RENDERING
-
-    // create surface
-    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, rows, cols, 32, 0, 0, 0, 0);
-
-    if(surface == NULL) 
-    {
-        printf("Failed to create surface: %s\n", SDL_GetError());
-        exit(1);
-    }
 
     // main surface draw loop
     SDL_LockSurface(surface);
@@ -108,10 +107,13 @@ void CRenderHandler::draw()
 
 
     SDL_RenderPresent(renderer);
+
+    SDL_DestroyTexture(texture); //TODO keep one texture instead of destroying it every frame, see: SDL_Texture_Lock or SDL_Texture_Update
 }
 
 void CRenderHandler::clear()
 {
+    SDL_FillRect(surface, NULL, 0x000000);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 }
