@@ -30,7 +30,9 @@ typedef enum {
     dSteamElement,
     
     // derived from wood
-    dWoodElement
+    dWoodElement,
+    dWallElement,
+
 } element_t;
 
 

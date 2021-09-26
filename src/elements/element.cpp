@@ -95,9 +95,4 @@ void CElement::checkHeat()
     }
 }
 
-void CElement::checkSuffocateFire(uint16_t x, uint16_t y)
-{
-
-}
-
 

@@ -1,7 +1,7 @@
-#include "../main.hpp"
-#include "directions.hpp"
-#include "smoke.hpp"
-#include "../utils/data.hpp"
+#include "../../main.hpp"
+#include "../directions.hpp"
+#include "../smoke.hpp"
+#include "../../utils/data.hpp"
 #include "wood.hpp"
 
 #include <stdint.h> 
@@ -12,11 +12,6 @@ CWood::CWood()
     initialHeatResistance = 10;
     heatResistance = 3;  
     type = dWoodElement;
-}
-
-void CWood::stay(uint16_t x, uint16_t y)
-{
-    STAY(x, y);
 }
 
 void CWood::checkHitpoints(uint16_t x, uint16_t y)
@@ -36,6 +31,11 @@ void CWood::checkHitpoints(uint16_t x, uint16_t y)
         delete this;
     }
 
+}
+
+void CWood::receiveHeat(float heatAmount)
+{
+    heatResistance -= heatAmount;
 }
 
 void CWood::update(uint16_t x, uint16_t y)

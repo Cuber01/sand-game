@@ -85,9 +85,6 @@ class CElement
         // emit amountOfHeatToEmit
         void emitHeat(uint16_t x, uint16_t y);
 
-        // check if fire should suffocate, if yes, suffocate fire
-        void checkSuffocateFire(uint16_t x, uint16_t y);
-
         // check if I should be burning, if yes, set isBurning to true
         void checkHeat();
 
