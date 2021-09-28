@@ -14,6 +14,7 @@
 
 typedef enum {
     dNoneElement = 0,
+    dParticleElement,
 
     // derived from sand
     dSandElement,
