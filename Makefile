@@ -1,25 +1,59 @@
-# This makefile works if you are on Linux, and would like to make a Linux executable
-# It may also work on Mac to compile a Mac executable but I'm not sure
+# compiler
+CC = g++
 
-OBJS	= $(wildcard src/*.o) $(wildcard src/utils/*.o) $(wildcard src/elements/*.o) $(wildcard src/elements/derived/*.o)
+# compile flags
+CFLAGS	:= `sdl2-config --cflags` -g -Wall -Wformat 
 
-SOURCE	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
+# linker flags
+LFLAGS = -lSDL2 -lGL -ldl `sdl2-config --libs` 
 
-# imgui
+# output directory
+OUTPUT	= out
+
+# imgui directory
 IMGUI_DIR = ./lib/imgui
 
-SOURCE += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
-SOURCE += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
+# source files
+SOURCES	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
 
-# debug:
-CFLAGS	= -g -ggdb -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I/usr/include/SDL2
+# add imgui files
+SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
+SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 
-OUT	    = out/sand_game   
-CC	    = g++
-LFLAGS	= -lSDL2 -lGL -ldl `sdl2-config --libs`
+# include directories
+INCLUDES = -I./src/ -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I/usr/include/SDL2
 
-all: $(OBJS)
-	$(CC) -o $(OUT) $(SOURCE) $(CFLAGS) $(LFLAGS)
+# object files
+OBJECTS = $(SOURCES:.cpp=.o)
 
+
+ifeq ($(OS),Windows_NT)
+MAIN	:= sand_game.exe
+FIXPATH = $(subst /,\,$1)
+RM			:= del /q /f
+MD	:= mkdir
+else
+MAIN	:= sand_game
+FIXPATH = $1
+RM = rm -f
+MD	:= mkdir -p
+endif
+
+
+OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUT)/$(MAIN))
+
+.PHONY: all
+all:$(OUTPUTMAIN)
+	@echo Executing 'all' complete!
+
+$(OUTPUTMAIN): $(OBJECTS) 
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
+
+.PHONY: clean
 clean:
-	rm -f $(OBJS) $(OUT)
+	$(RM) $(OUTPUTMAIN)
+	$(RM) $(call FIXPATH,$(OBJECTS))
+	@echo Cleanup complete!

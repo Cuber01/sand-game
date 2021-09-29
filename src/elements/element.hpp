@@ -70,6 +70,8 @@ class CElement
 
         // ----------------------- METHODS ------------------------ 
 
+        virtual ~CElement();
+        
         // set my color
         void setColor( color_t color);
 

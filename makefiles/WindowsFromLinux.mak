@@ -1,4 +1,4 @@
-# This makefile works if you're on Linux (and perhaps Mac) and would like to compile a Windows executable
+# OUTDATED
 
 OBJS	= $(wildcard src/*.o) $(wildcard src/utils/*.o) $(wildcard src/elements/*.o) $(wildcard src/elements/derived/*.o)
 
