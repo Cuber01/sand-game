@@ -1,4 +1,4 @@
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <stdio.h>
 #include <stdint.h>
@@ -15,7 +15,7 @@
 
 
 #ifdef GUI
-#include <SDL2/SDL_opengl.h>
+#include <SDL_opengl.h>
 
 #include "imgui.h"
 #include "imgui_impl_sdl.h"
@@ -189,10 +189,10 @@ void handleInput()
                     Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dFireElement);
                     break;
                 case KEY_SMOKE_MODE_NUMKEY5 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dWallElement);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dParticleElement);
                     break;
                 default:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dParticleElement);
+                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dSandElement);
                     break;
 
             } 

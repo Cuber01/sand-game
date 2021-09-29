@@ -1,7 +1,7 @@
 #ifndef mouse_hpp
 #define mouse_hpp
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <stdint.h>
 
 #include "render.hpp"

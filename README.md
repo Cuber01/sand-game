@@ -1,12 +1,12 @@
 # Sand game
 
-Sand game is a sandbox game, where you can place one of the 5 elements available (sand, water, wood, smoke and fire) and watch them interact with each other.
+Sand game is a sandbox game, where you can place one of the many elements and watch them interact with each other.
 
 *Feel free to watch sand.mp4 if you'd like to see how it looks like.*
 
 You're currently on the 'master' branch, I'm currently rewriting this project to full OOP and adding better interactions on this branch. It's currently unstable, go to 'simple' for a stable build.
 
-version 1.3
+version before 2.0
 
 # Compile instructions
 
@@ -46,6 +46,11 @@ Clone the git repo:
 git clone https://github.com/Cuber01/sand-game
 ```
 
+Clone modules:
+```
+git submodule update --init
+```
+
 Go to dir and create out/ directory:
 ```sh
 cd sand-game/
@@ -82,9 +87,6 @@ Left mouse button - place chosen particle
 Right mouse button - remove particles
 
 Mouse wheel - change cursor size
-
-# For code-readers and fellow developers
-
 
 # TODO 
 

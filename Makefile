@@ -12,7 +12,7 @@ SOURCE += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_i
 SOURCE += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 
 # debug:
-CFLAGS	= -g -ggdb -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
+CFLAGS	= -g -ggdb -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I/usr/include/SDL2
 
 OUT	    = out/sand_game   
 CC	    = g++
