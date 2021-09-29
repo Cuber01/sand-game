@@ -1,4 +1,5 @@
 src/*.o
 src/elements/*.o
+src/elements/derived/*.o
 src/utils/*.o
 /.vscode
