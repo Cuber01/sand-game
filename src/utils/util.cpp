@@ -10,7 +10,7 @@
 
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {
-    if(x >= rows || x <= 0 || y >= cols || y <= 0) {
+    if(x >= ROWS || x <= 0 || y >= COLS || y <= 0) {
         return true;
     }
 

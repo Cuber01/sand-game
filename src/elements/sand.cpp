@@ -195,11 +195,11 @@ void CSand::fall(uint16_t x, uint16_t y)
 
     GO(x, y, x, y+rounded_vel_y);
 
-    if(velocity_y < max_fall_speed)
+    if(velocity_y < MAX_FALL_SPEED)
     {
-        velocity_y += gravity;
+        velocity_y += GRAVITY;
     } else {
-        velocity_y = max_fall_speed;
+        velocity_y = MAX_FALL_SPEED;
     }
 }
 
@@ -216,7 +216,7 @@ void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
             if(Util.getGrid(x + ( (i+1) * direction ), y) != 0)
             {
                 GO(x, y, x+(i*direction), y);
-                velocity_x -= bounds_friction; //TODO it should use friction of the object below
+                velocity_x -= BOUNDS_FRICTION; //TODO it should use friction of the object below
                 return;
             }
         
@@ -228,7 +228,7 @@ void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
     }
 
     GO(x, y, x+(rounded_vel_x * direction), y);
-    velocity_x -= bounds_friction;
+    velocity_x -= BOUNDS_FRICTION;
 
 }
 

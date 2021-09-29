@@ -22,7 +22,7 @@ void CRenderHandler::init()
         exit(1);
     }
     
-    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, rows, cols, 32, 0, 0, 0, 0);
+    surface = SDL_CreateRGBSurface(SDL_SWSURFACE, ROWS, COLS, 32, 0, 0, 0, 0);
 
     if(surface == NULL) 
     {
@@ -30,7 +30,7 @@ void CRenderHandler::init()
         exit(1);
     }
 
-    SDL_RenderSetScale(renderer, scale, scale);
+    SDL_RenderSetScale(renderer, SCALE, SCALE);
 }
 
 
@@ -46,8 +46,8 @@ void CRenderHandler::draw()
     unsigned char* pixels = (unsigned char*)surface -> pixels;
     CElement* value;
 
-    for (uint16_t x = 0; x < rows; x++) {
-        for (uint16_t y = 0; y < cols; y++) {
+    for (uint16_t x = 0; x < ROWS; x++) {
+        for (uint16_t y = 0; y < COLS; y++) {
 
             value = grid[x][y];
 
@@ -80,8 +80,8 @@ void CRenderHandler::draw()
     #ifdef SOFTWARE_RENDERING
 
     // main draw loop
-    for (uint16_t x = 0; x < rows; x++) {
-        for (uint16_t y = 0; y < cols; y++) {
+    for (uint16_t x = 0; x < ROWS; x++) {
+        for (uint16_t y = 0; y < COLS; y++) {
             
             CElement* value = grid[x][y];
 

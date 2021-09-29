@@ -9,16 +9,16 @@
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600
 
-#define rows WINDOW_WIDTH/scale
-#define cols WINDOW_WIDTH/scale
+#define ROWS WINDOW_WIDTH/SCALE
+#define COLS WINDOW_WIDTH/SCALE
 
 extern SDL_Window* window;
 
 extern CCursor Cursor;
 extern CUtil Util;
 
-extern CElement* grid[rows][cols];
-extern CElement* next[rows][cols];
+extern CElement* grid[ROWS][COLS];
+extern CElement* next[ROWS][COLS];
 
 #ifdef DEBUG_STACK
     extern int stack;

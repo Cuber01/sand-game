@@ -109,11 +109,11 @@ void CWater::fall(uint16_t x, uint16_t y)
 
     GO(x, y, x, y+rounded_vel_y);
 
-    if(velocity_y < max_fall_speed)
+    if(velocity_y < MAX_FALL_SPEED)
     {
-        velocity_y += gravity;
+        velocity_y += GRAVITY;
     } else {
-        velocity_y = max_fall_speed;
+        velocity_y = MAX_FALL_SPEED;
     }
 
 }

@@ -19,14 +19,14 @@
 
 void CCursor::adjustCursor(int x, int y, uint8_t w, uint8_t h)
 {
-    if(scale > 1)
+    if(SCALE > 1)
     {
-        cursor.x = (x-w)/scale;
-        cursor.y = (y-h)/scale;
+        cursor.x = (x-w)/SCALE;
+        cursor.y = (y-h)/SCALE;
     } else 
     {
-        cursor.x = (x-(w/2))/scale;
-        cursor.y = (y-(h/2))/scale;
+        cursor.x = (x-(w/2))/SCALE;
+        cursor.y = (y-(h/2))/SCALE;
     }
 
     cursor.w = w;
@@ -38,7 +38,7 @@ void CCursor::adjustCursor(int x, int y, uint8_t w, uint8_t h)
 void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, element_t particle)
 {
 
-    if(scale == 1)
+    if(SCALE == 1)
     {
         x = x + w/2;
         y = y + h/2;
@@ -47,7 +47,7 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
     for(uint8_t i = 1; i < w; i++) {
         for(uint8_t j = 1; j < h; j++) {
 
-            if ( Util.getGrid((x+i)/scale, (y+j)/scale) == 0 && particle != dNoneElement)
+            if ( Util.getGrid((x+i)/SCALE, (y+j)/SCALE) == 0 && particle != dNoneElement)
             {                
                 CElement* o;
 
@@ -69,27 +69,27 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                         exit(1);
                 }
 
-                grid[(x+i)/scale][(y+j)/scale] = o;
+                grid[(x+i)/SCALE][(y+j)/SCALE] = o;
 
                 #ifdef DEBUG_STACK
                     stack++;
                 #endif
 
                  
-            } else if ( particle == dNoneElement && !Util.isOutOfBounds((x+i)/scale, (y+j)/scale)) {
+            } else if ( particle == dNoneElement && !Util.isOutOfBounds((x+i)/SCALE, (y+j)/SCALE)) {
                     
                 #ifdef DEBUG_STACK
                     
-                    if( grid[(x+i)/scale][(y+j)/scale] != 0 )
+                    if( grid[(x+i)/SCALE][(y+j)/SCALE] != 0 )
                     {
                         stack--;
                     }
 
                 #endif
 
-                delete grid[(x+i)/scale][(y+j)/scale];
+                delete grid[(x+i)/SCALE][(y+j)/SCALE];
 
-                grid[(x+i)/scale][(y+j)/scale] = 0;
+                grid[(x+i)/SCALE][(y+j)/SCALE] = 0;
                  
             }
 

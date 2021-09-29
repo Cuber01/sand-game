@@ -8,15 +8,18 @@
 // use software rendering
 // #define SOFTWARE_RENDERING
 
-// size of the square drawn per cell (scale 4 = each cell is a 4x4 square)
-#define scale 4
+// size of the square drawn per cell (SCALE 4 = each cell is a 4x4 square)
+#define SCALE 4
 
 // gravity factor
-#define gravity 0.2
+#define GRAVITY 0.2
 
 // max number of cells we can travel per frame while falling
-#define max_fall_speed 5
+#define MAX_FALL_SPEED 5
 
 // friction value of bounds [currently used as a default friction everywhere]
-#define bounds_friction 0.1
+#define BOUNDS_FRICTION 0.1
+
+// whether we want a GUI or not
+#define GUI
 
