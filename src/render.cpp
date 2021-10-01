@@ -1,5 +1,5 @@
 #include <SDL.h>
-
+#include <SDL_opengl.h>
 
 #include "elements/element.hpp"
 #include "settings.hpp"
@@ -7,6 +7,11 @@
 #include "render.hpp"
 #include "main.hpp"
 
+#ifdef OPENGL_GUI
+#include "gui.hpp"
+
+CGUI GUI;
+#endif
 
 void CRenderHandler::init()
 {
@@ -31,6 +36,24 @@ void CRenderHandler::init()
     }
 
     SDL_RenderSetScale(renderer, SCALE, SCALE);
+
+    #ifdef OPENGL_GUI
+
+    // initialize opengl
+    glsl_version = "#version 130";
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+    
+    // initialize opengl context
+    gl_context = SDL_GL_CreateContext(window);
+    SDL_GL_MakeCurrent(window, gl_context);
+    SDL_GL_SetSwapInterval(1);
+
+    GUI.init(glsl_version, gl_context);
+
+    #endif
 }
 
 
@@ -105,8 +128,12 @@ void CRenderHandler::draw()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &Cursor.cursor);
 
-
+    // present render
     SDL_RenderPresent(renderer);
+
+    #ifdef OPENGL_GUI
+    GUI.update();
+    #endif
 
     SDL_DestroyTexture(texture); //TODO keep one texture instead of destroying it every frame, see: SDL_Texture_Lock or SDL_Texture_Update
 }

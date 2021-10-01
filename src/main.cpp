@@ -14,16 +14,11 @@
 #include "utils/data.hpp"
 
 
-#ifdef GUI
+#ifdef OPENGL_GUI
 #include <SDL_opengl.h>
 
-#include "imgui.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
-
-const char* glsl_version;
-SDL_GLContext gl_context;
-ImGuiIO io;
 #endif
 
 
@@ -65,17 +60,6 @@ void init()
     // initalize rand
     srand((unsigned)time(NULL));
 
-    #ifdef GUI
-
-    // initialize opengl
-    glsl_version = "#version 130";
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
-    
-    #endif
-
     // initalize video
     if( SDL_Init(SDL_INIT_VIDEO) != 0)
     {
@@ -84,7 +68,7 @@ void init()
     }
 
     // setup window
-    #ifdef GUI
+    #ifdef OPENGL_GUI
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
     SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
@@ -93,7 +77,6 @@ void init()
     #else 
     SDL_WindowFlags window_flags = (SDL_WindowFlags)(SDL_WINDOW_SHOWN);
     #endif
-
 
     // create window
 	window = SDL_CreateWindow("Sand game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, window_flags);
@@ -104,35 +87,18 @@ void init()
         exit(1);
 	} 
 
-    #ifdef GUI
-    // initialize opengl context
-    gl_context = SDL_GL_CreateContext(window);
-    SDL_GL_MakeCurrent(window, gl_context);
-    SDL_GL_SetSwapInterval(1);
-
-    // initalize imgui
-    IMGUI_CHECKVERSION(); 
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
-
-    ImGui::StyleColorsDark();
-
-    ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
-    ImGui_ImplOpenGL3_Init(glsl_version);
-    #endif
-    
-    // //RenderHandler.init();
+    RenderHandler.init();
 
 }
 
 void quit()
 {
-    #ifdef GUI
+    #ifdef OPENGL_GUI
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
 
-    SDL_GL_DeleteContext(gl_context);
+    SDL_GL_DeleteContext(RenderHandler.gl_context);
     #endif
 
     SDL_DestroyRenderer( RenderHandler.renderer );
@@ -143,7 +109,7 @@ void quit()
 void handleEvent(SDL_Event* event)
 {
 
-    #ifdef GUI
+    #ifdef OPENGL_GUI
     ImGui_ImplSDL2_ProcessEvent(event);
     #endif
 
@@ -279,10 +245,7 @@ int main(int argc, char* args[])
 {
     init();
 
-    RenderHandler.init();
-
     bool show_another_window = true;
-    ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
     while (running)
@@ -313,27 +276,6 @@ int main(int argc, char* args[])
         updateParticles();
 
         RenderHandler.draw(); 
-
-        // Start the Dear ImGui frame
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame();
-        ImGui::NewFrame();
-
-        // 3. Show another simple window.
-        if (show_another_window)
-        {
-            ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-            ImGui::Text("Hello from another window!");
-            if (ImGui::Button("Close Me"))
-                show_another_window = false;
-            ImGui::End();
-        }
-
-        // Rendering
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        SDL_GL_SwapWindow(window);
-
 
         memcpy( grid, next, sizeof(grid) );
 
