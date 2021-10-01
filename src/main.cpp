@@ -158,7 +158,7 @@ void handleEvent(SDL_Event* event)
 
 }
 
-void handleInput()
+void reactToEvent()
 {
     if(mouseIsPressed)
     {
@@ -240,12 +240,10 @@ void updateParticles()
 
 }
 
-ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
 int main(int argc, char* args[])
 {
     init();
-
-    bool show_another_window = true;
 
     // Main loop
     while (running)
@@ -259,10 +257,9 @@ int main(int argc, char* args[])
             printf("%d\n", stack);
         #endif
 
-        SDL_Delay(10);
 
         Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
-        handleInput();
+        reactToEvent();
 
         SDL_Event event;
         while (SDL_PollEvent(&event))

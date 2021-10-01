@@ -21,5 +21,5 @@
 #define BOUNDS_FRICTION 0.1
 
 // whether we want a gui or not
-// #define OPENGL_GUI
+#define OPENGL_GUI
 

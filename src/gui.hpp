@@ -17,6 +17,8 @@
             ImGuiIO io;
     
             void init(const char* glsl_version, SDL_GLContext gl_context);
+            
+            void showMenuWindow();
     
             void update();
             

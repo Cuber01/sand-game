@@ -129,7 +129,7 @@ void CRenderHandler::draw()
     SDL_RenderDrawRect(renderer, &Cursor.cursor);
 
     // present render
-    SDL_RenderPresent(renderer);
+    //SDL_RenderPresent(renderer);
 
     #ifdef OPENGL_GUI
     GUI.update();

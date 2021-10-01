@@ -36,6 +36,7 @@ void CGUI::update()
             show_test_window = false;
         ImGui::End();
     }
+
     // Rendering
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
