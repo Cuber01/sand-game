@@ -66,6 +66,24 @@ void CUtil::switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2 )
     grid[x2][y2]->willBeReplaced = true;
 }
 
+void CUtil::clearGrid()
+{
+    for(uint8_t x = 0; x <= ROWS; x++) 
+    {
+        for(uint8_t y = 0; y <= COLS; y++) 
+        {
+                
+            if(grid[x][y] != 0)
+            {
+                delete grid[x][y];
+    
+                grid[x][y] = 0;
+            }
+    
+        }
+    }
+}
+
 
 uint8_t CUtil::random(uint8_t min, uint8_t max)
 {

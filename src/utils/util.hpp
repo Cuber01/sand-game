@@ -30,6 +30,9 @@ class CUtil
         // switch two cells (doesnt work...)
         void switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 
+        // clear grid
+        void clearGrid();
+
         // ------------ RANDOM -------------------
 
         // return a random number where x is min <= x <=max

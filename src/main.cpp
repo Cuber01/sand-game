@@ -152,21 +152,22 @@ void handleEvent(SDL_Event* event)
                 }
             }
             break;
-
-
-        case SDL_KEYDOWN:
-            lastKeyboardKeyPressed = event->key.keysym.sym;
-            break;
-
-        case SDL_QUIT:
-            running = false;
-            break;
-
-        default:
-            break;
         }
 
    }
+
+    switch (event->type)
+    {
+
+    case SDL_KEYDOWN:
+        lastKeyboardKeyPressed = event->key.keysym.sym;
+        break;
+
+    case SDL_QUIT:
+        running = false;
+        break;
+
+    }
 
 }
 
@@ -202,25 +203,29 @@ void reactToEvent()
             Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dNoneElement );   
         }   
          
-    } else if (lastKeyboardKeyPressed == SDLK_BACKQUOTE)
+    } else 
     {
 
-        for(uint8_t x = 0; x <= ROWS; x++) 
+        switch (lastKeyboardKeyPressed)
         {
-            for(uint8_t y = 0; y <= COLS; y++) 
-            {
+        
+            case SDLK_BACKQUOTE:    
+                Util.clearGrid();
+                lastKeyboardKeyPressed = 0;
+                break;
 
-                if(grid[x][y] != 0)
-                {
-                    delete grid[x][y];
+            case SDL_SCANCODE_F1:
+                GUI.show_help_window = !GUI.show_help_window;
+                break;
 
-                    grid[x][y] = 0;
-                }
+            case SDL_SCANCODE_F2:
+                GUI.show_menu_window = !GUI.show_menu_window;
+                break;
 
-            }
+            default:
+                break;
         }
 
-        lastKeyboardKeyPressed = 0;
     }
 }
 
