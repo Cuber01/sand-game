@@ -214,10 +214,6 @@ void reactToEvent()
                 {
                     delete grid[x][y];
 
-                    #ifdef DEBUG_STACK
-                        stack--;
-                    #endif
-
                     grid[x][y] = 0;
                 }
 

@@ -12,6 +12,7 @@ CWood::CWood()
     initialHeatResistance = 10;
     heatResistance = 3;  
     type = dWoodElement;
+    incrementStack();
 }
 
 void CWood::checkHitpoints(uint16_t x, uint16_t y)

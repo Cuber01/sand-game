@@ -18,6 +18,7 @@ CFire::CFire()
     lifetime = Util.random(30, 80);
     amountOfHeatToEmit = 1;
     type = dFireElement;
+    incrementStack();
 }
 
 void CFire::update(uint16_t x,uint16_t y)

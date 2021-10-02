@@ -13,6 +13,7 @@ CPetrol::CPetrol()
     this->setColor( petrol_color );
     type = dPetrolElement;
     amountOfHeatToEmit = 5;
+    incrementStack();
 }
 
 void CPetrol::update(uint16_t x, uint16_t y)

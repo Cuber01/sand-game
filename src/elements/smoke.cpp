@@ -12,6 +12,7 @@ CSmoke::CSmoke()
     this->setColor( smoke_color );
     type = dSmokeElement;
     lifetime = Util.random_u16(200,400); 
+    incrementStack();
 }
 
 void CSmoke::update(uint16_t x, uint16_t y)

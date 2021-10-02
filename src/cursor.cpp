@@ -71,22 +71,8 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                 }
 
                 grid[(x+i)/SCALE][(y+j)/SCALE] = o;
-
-                #ifdef DEBUG_STACK
-                    stack++;
-                #endif
-
                  
             } else if ( particle == dNoneElement && !Util.isOutOfBounds((x+i)/SCALE, (y+j)/SCALE)) {
-                    
-                #ifdef DEBUG_STACK
-                    
-                    if( grid[(x+i)/SCALE][(y+j)/SCALE] != 0 )
-                    {
-                        stack--;
-                    }
-
-                #endif
 
                 delete grid[(x+i)/SCALE][(y+j)/SCALE];
 

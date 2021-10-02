@@ -20,6 +20,7 @@ CCrackedBrick::CCrackedBrick()
     type = dCrackedBrickElement;
     isFalling = false;
     nudgeChance = 0.001;
+    incrementStack();
 }
 
 void CCrackedBrick::notFallingUpdate(uint16_t x, uint16_t y) 

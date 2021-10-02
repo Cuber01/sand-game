@@ -4,6 +4,10 @@
 
 #include <stdint.h> 
 
+#ifdef DEBUG_STACK
+#include "../settings.hpp"
+#endif
+
 
 color_t color_list[3] =
 {
@@ -13,7 +17,13 @@ color_t color_list[3] =
 };
 
 CElement::CElement() {}
-CElement::~CElement() {}
+
+CElement::~CElement() 
+{
+    #ifdef DEBUG_STACK
+        stack--;
+    #endif
+}
 
 void CElement::update(uint16_t x,uint16_t y) {}
 
@@ -97,3 +107,10 @@ void CElement::checkHeat()
 }
 
 
+
+void CElement::incrementStack()
+{
+    #ifdef DEBUG_STACK
+    stack++;
+    #endif
+}

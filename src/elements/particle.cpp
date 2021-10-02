@@ -14,6 +14,7 @@ CParticle::CParticle(color_t color, int8_t velocity_x, int8_t velocity_y)
 
     this->velocity_x = velocity_x;
     this->velocity_y = velocity_y; 
+    incrementStack();
 }
 
 void CParticle::update(uint16_t x, uint16_t y)

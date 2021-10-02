@@ -10,6 +10,7 @@ CWall::CWall()
 {
     this->setColor( wall_color );  
     type = dWallElement;
+    incrementStack();
 }
 
 void CWall::stay(uint16_t x, uint16_t y)

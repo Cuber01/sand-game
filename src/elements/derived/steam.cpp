@@ -11,6 +11,7 @@ CSteam::CSteam()
 {
     this->setColor( steam_color );
     type = dSteamElement;
+    incrementStack();
 }
 
 void CSteam::receiveHeat(float heatAmount) {}

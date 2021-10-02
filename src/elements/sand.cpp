@@ -22,6 +22,7 @@ CSand::CSand()
     canBeNudged = true;
     type = dSandElement;
     nudgeChance = 0.9;
+    incrementStack();
 }
 
 

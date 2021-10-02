@@ -18,6 +18,7 @@ CDirt::CDirt()
     canBeNudged = true;
     type = dDirtElement;
     nudgeChance = 0.01;
+    incrementStack();
 }
 
 void CDirt::receiveHeat(float heatAmount) {}

@@ -15,6 +15,7 @@ CWater::CWater()
     heatResistance = 3;
     this->movesRight = Util.random(0, 1);
     type = dWaterElement;
+    incrementStack();
 }
 
 

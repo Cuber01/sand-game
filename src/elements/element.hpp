@@ -92,6 +92,10 @@ class CElement
 
         // check if I should be dead, if yes, commit sudoku
         virtual void checkHitpoints(uint16_t x, uint16_t y);
+
+        // increment stack if DEBUG_STACK is defined
+        void incrementStack();
+
         
 };
 
