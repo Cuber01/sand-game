@@ -113,48 +113,53 @@ void handleEvent(SDL_Event* event)
     ImGui_ImplSDL2_ProcessEvent(event);
     #endif
 
-    switch (event->type)
+    if(!GUI.io.WantCaptureMouse)
     {
-    case SDL_MOUSEMOTION:
-        SDL_GetMouseState( &Cursor.x, &Cursor.y );
-        break;
 
-    case SDL_MOUSEBUTTONDOWN:
-        lastMouseKeyPressed = event->button.button;
-        mouseIsPressed = true;
-        break;
-
-    case SDL_MOUSEBUTTONUP:
-        mouseIsPressed = false;
-        break;
-
-    case SDL_MOUSEWHEEL:
-        if(event->wheel.y > 0) 
+        switch (event->type)
         {
-            Cursor.w = Cursor.w+2;
-            Cursor.h = Cursor.h+2;
-        } else if(event->wheel.y < 0) 
-        {
-            if(Cursor.w >= 3 && Cursor.h >= 3)
+        case SDL_MOUSEMOTION:
+            SDL_GetMouseState( &Cursor.x, &Cursor.y );
+            break;
+
+        case SDL_MOUSEBUTTONDOWN:
+            lastMouseKeyPressed = event->button.button;
+            mouseIsPressed = true;
+            break;
+
+        case SDL_MOUSEBUTTONUP:
+            mouseIsPressed = false;
+            break;
+
+        case SDL_MOUSEWHEEL:
+            if(event->wheel.y > 0) 
             {
-                Cursor.w = Cursor.w - Cursor.change_value;
-                Cursor.h = Cursor.h - Cursor.change_value;
+                Cursor.w = Cursor.w+2;
+                Cursor.h = Cursor.h+2;
+            } else if(event->wheel.y < 0) 
+            {
+                if(Cursor.w >= 3 && Cursor.h >= 3)
+                {
+                    Cursor.w = Cursor.w - Cursor.change_value;
+                    Cursor.h = Cursor.h - Cursor.change_value;
+                }
             }
+            break;
+
+
+        case SDL_KEYDOWN:
+            lastKeyboardKeyPressed = event->key.keysym.sym;
+            break;
+
+        case SDL_QUIT:
+            running = false;
+            break;
+
+        default:
+            break;
         }
-        break;
 
-
-    case SDL_KEYDOWN:
-        lastKeyboardKeyPressed = event->key.keysym.sym;
-        break;
-
-    case SDL_QUIT:
-        running = false;
-        break;
-    
-    default:
-        break;
-    }
+   }
 
 }
 
@@ -256,6 +261,8 @@ int main(int argc, char* args[])
         #ifdef DEBUG_STACK
             printf("%d\n", stack);
         #endif
+
+        SDL_Delay(10);
 
 
         Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   

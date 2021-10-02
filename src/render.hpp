@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "gui.hpp"
 
+extern CGUI GUI;
+
 extern SDL_Renderer* renderer;
 
 class CRenderHandler {
