@@ -19,27 +19,21 @@
 
 typedef enum {
     dNoneElement = 0,
-    dParticleElement,
 
-    // derived from sand
-    dSandElement,
-    dDirtElement,
     dCrackedBrickElement,
-
-    //derived from water
-    dWaterElement,
-    dPetrolElement,
-    
-    // derived from smoke
-    dSmokeElement,
+    dDirtElement,
     dFireElement,
+    dParticleElement,
+    dPetrolElement,  
+    dSandElement,  
+    dSmokeElement,
     dSteamElement,
-    
-    // derived from wood
-    dWoodElement,
     dWallElement,
-
+    dWaterElement,
+    dWoodElement,
+    
 } element_t;
+
 
 
 typedef struct color_t
