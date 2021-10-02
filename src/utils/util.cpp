@@ -66,6 +66,7 @@ void CUtil::switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2 )
     grid[x2][y2]->willBeReplaced = true;
 }
 
+
 uint8_t CUtil::random(uint8_t min, uint8_t max)
 {
     return rand()%(max-min + 1) + min;

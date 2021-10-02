@@ -27,8 +27,8 @@ class CUtil
         // whether a given x and y are out of bounds of our game
         bool isOutOfBounds( uint16_t x, uint16_t y );
 
+        // switch two cells (doesnt work...)
         void switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
-
 
         // ------------ RANDOM -------------------
 

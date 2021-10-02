@@ -36,6 +36,13 @@ uint16_t lastKeyboardKeyPressed;
 uint8_t  lastMouseKeyPressed;
 uint32_t lastId;
 
+element_t elementSlots[10] = {
+                            dSandElement, dWaterElement, dWallElement, 
+                            dWoodElement, dFireElement, dSmokeElement,
+                            dSteamElement, dCrackedBrickElement, dPetrolElement,
+                            dParticleElement
+                           };
+
 //bool
 bool mouseIsPressed = false;
 bool running = true;
@@ -169,27 +176,25 @@ void reactToEvent()
     {
         if(lastMouseKeyPressed == SDL_BUTTON_LEFT)
         {
+
+            uint16_t x = Cursor.x - Cursor.h;
+            uint16_t y = Cursor.y - Cursor.h;
+            uint16_t h = Cursor.w * SCALE;
+            uint16_t w = Cursor.h * SCALE;
+
             switch (lastKeyboardKeyPressed)
             {
-                case KEY_SAND_MODE_NUMKEY1 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dSandElement);                
-                    break;
-                case KEY_WATER_MODE_NUMKEY2 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dWaterElement);                
-                    break;
-                case KEY_WOOD_MODE_NUMKEY3 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dWoodElement);                
-                    break;
-                case KEY_FIRE_MODE_NUMKEY4 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dFireElement);
-                    break;
-                case KEY_SMOKE_MODE_NUMKEY5 :
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dParticleElement);
-                    break;
-                default:
-                    Cursor.placeParticles(Cursor.x - Cursor.h, Cursor.y - Cursor.h, Cursor.w * SCALE, Cursor.h * SCALE, dSandElement);
-                    break;
-
+                case KEY_NUMKEY1 : Cursor.placeParticles(x, y, w, h, elementSlots[0]); break;
+                case KEY_NUMKEY2 : Cursor.placeParticles(x, y, w, h, elementSlots[1]); break;
+                case KEY_NUMKEY3 : Cursor.placeParticles(x, y, w, h, elementSlots[2]); break;
+                case KEY_NUMKEY4 : Cursor.placeParticles(x, y, w, h, elementSlots[3]); break;
+                case KEY_NUMKEY5 : Cursor.placeParticles(x, y, w, h, elementSlots[4]); break;
+                case KEY_NUMKEY6 : Cursor.placeParticles(x, y, w, h, elementSlots[5]); break;
+                case KEY_NUMKEY7 : Cursor.placeParticles(x, y, w, h, elementSlots[6]); break;
+                case KEY_NUMKEY8 : Cursor.placeParticles(x, y, w, h, elementSlots[7]); break;
+                case KEY_NUMKEY9 : Cursor.placeParticles(x, y, w, h, elementSlots[8]); break;
+                case KEY_NUMKEY0 : Cursor.placeParticles(x, y, w, h, elementSlots[9]); break;
+                default : Cursor.placeParticles(x, y, w, h, elementSlots[0]); break;
             } 
 
         } else if (lastMouseKeyPressed == SDL_BUTTON_RIGHT) 

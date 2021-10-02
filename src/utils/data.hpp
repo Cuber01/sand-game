@@ -3,11 +3,16 @@
 
 #include <stdint.h>
 
-#define KEY_SAND_MODE_NUMKEY1  49
-#define KEY_WATER_MODE_NUMKEY2 50
-#define KEY_WOOD_MODE_NUMKEY3  51
-#define KEY_FIRE_MODE_NUMKEY4  52
-#define KEY_SMOKE_MODE_NUMKEY5 53
+#define KEY_NUMKEY1 49
+#define KEY_NUMKEY2 50
+#define KEY_NUMKEY3 51
+#define KEY_NUMKEY4 52
+#define KEY_NUMKEY5 53
+#define KEY_NUMKEY6 54
+#define KEY_NUMKEY7 55
+#define KEY_NUMKEY8 56
+#define KEY_NUMKEY9 57
+#define KEY_NUMKEY0 48
 
 // real keys:    1  2  3  4  5  6  7  8  9  0
 // key numbers: 49 50 51 52 53 54 55 56 57 48

@@ -40,13 +40,23 @@ void CGUI::update()
         ImGui::End();
     }
 
-    if (show_demo_window)
-        ImGui::ShowDemoWindow(&show_demo_window);
+    if (show_menu_window) {
+        showMenuWindow();
+    }
 
     // Rendering
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     SDL_GL_SwapWindow(window);
+}
+
+void CGUI::showMenuWindow()
+{
+    ImGui::Begin("Menu", &show_menu_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+        ImGui::Text("Hello from another window!");
+        if (ImGui::Button("Close Me"))
+            show_menu_window = false;
+    ImGui::End();
 }
 
 #endif
