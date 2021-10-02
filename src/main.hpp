@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "cursor.hpp"
 #include "utils/util.hpp"
+#include "utils/data.hpp"
 #include "settings.hpp"
 
 #define WINDOW_WIDTH 600
@@ -19,6 +20,7 @@ extern CUtil Util;
 
 extern CElement* grid[ROWS][COLS];
 extern CElement* next[ROWS][COLS];
+extern element_t elementSlots[10];
 
 #ifdef DEBUG_STACK
     extern int stack;

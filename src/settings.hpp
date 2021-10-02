@@ -3,7 +3,7 @@
 //#define SLOW
 
 // counts and prints the amount of all currently running elements
-#define DEBUG_STACK
+// #define DEBUG_STACK
 
 // use software rendering
 // #define SOFTWARE_RENDERING
