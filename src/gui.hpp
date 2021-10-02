@@ -13,7 +13,8 @@
     class CGUI
     {
         public:
-            bool show_test_window = true;
+            bool show_test_window = false;
+            bool show_demo_window = true;
             ImGuiIO io;
     
             void init(const char* glsl_version, SDL_GLContext gl_context);

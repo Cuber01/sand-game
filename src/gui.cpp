@@ -9,6 +9,7 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
 
+
 void CGUI::init(const char* glsl_version, SDL_GLContext gl_context) {
     // initalize imgui
     IMGUI_CHECKVERSION(); 
@@ -27,6 +28,8 @@ void CGUI::update()
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
+
+       // printf("%d", GUI.io.WantCaptureMouse);
     
     if (show_test_window)
     {
@@ -36,6 +39,9 @@ void CGUI::update()
             show_test_window = false;
         ImGui::End();
     }
+
+    if (show_demo_window)
+        ImGui::ShowDemoWindow(&show_demo_window);
 
     // Rendering
     ImGui::Render();

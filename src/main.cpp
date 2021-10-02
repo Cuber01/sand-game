@@ -113,7 +113,7 @@ void handleEvent(SDL_Event* event)
     ImGui_ImplSDL2_ProcessEvent(event);
     #endif
 
-    if(!GUI.io.WantCaptureMouse)
+    if(!ImGui::GetIO().WantCaptureMouse)
     {
 
         switch (event->type)
