@@ -38,7 +38,7 @@ class CElement
         bool isFalling = true;
 
         // chance for setting isFalling to true while being nudged [used in sand only atm]
-        uint8_t nudgeChance = 0.1;
+        float nudgeChance = 0.1;
 
         // whether I can be nudged by other cells
         bool canBeNudged = false;

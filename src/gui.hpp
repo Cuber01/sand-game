@@ -14,7 +14,7 @@
     {
         public:
             bool show_menu_window = false;
-            bool show_help_window = true;
+            bool show_help_window = false;
 
             ImGuiIO io;
     

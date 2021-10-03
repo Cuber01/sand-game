@@ -36,6 +36,8 @@ void CGUI::update()
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
+
+    show_menu_window = true;
     if (show_menu_window) {
         showMenuWindow();
     }
@@ -47,7 +49,6 @@ void CGUI::update()
     // Rendering
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-    SDL_GL_SwapWindow(window);
 }
 
 void CGUI::showMenuWindow()

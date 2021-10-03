@@ -224,6 +224,7 @@ void reactToEvent()
             #ifdef OPENGL_GUI
             case SDL_SCANCODE_F1:
                 GUI.show_help_window = !GUI.show_help_window;
+                printf("aaaa");
                 lastKeyboardKeyPressed = 0;
                 break;
 
@@ -243,22 +244,23 @@ void reactToEvent()
 void updateParticles()
 {
 
+    for (uint16_t y = 0; y < ROWS; y++) {
+                
 
-    for (uint16_t x = 0; x < COLS; x++) {
-            for (uint16_t y = 0; y < ROWS; y++) {
-                CElement* value = grid[x][y];
-
-                if(value != 0) {
-
-
-                    value->update(x, y);
+        for (uint16_t x = 0; x < COLS; x++) {
+         
+            CElement* value = grid[x][y];
+            if(value != 0) {
 
 
-                }        
+                value->update(x, y);
+
+
+            }        
         
-            }
-    }    
+        }    
 
+    }
 
 }
 

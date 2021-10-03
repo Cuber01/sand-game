@@ -151,6 +151,10 @@ void CRenderHandler::draw()
 
     #ifdef OPENGL_GUI
     GUI.update();
+
+    SDL_GL_SwapWindow(window);
+    #else
+    SDL_RenderPresent(renderer);
     #endif
 
     SDL_DestroyTexture(texture); //TODO keep one texture instead of destroying it every frame, see: SDL_Texture_Lock or SDL_Texture_Update
