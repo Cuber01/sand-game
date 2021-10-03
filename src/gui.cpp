@@ -16,7 +16,9 @@ void CGUI::init(const char* glsl_version, SDL_GLContext gl_context) {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-    //ImGui::GetIO().style.Colors[ImGuiCol_TableRowBg];
+    #ifdef __EMSCRIPTEN
+    io.IniFilename = NULL;
+    #endif
     
 
 

@@ -89,7 +89,7 @@ void CWater::spread(uint16_t x, uint16_t y, int8_t direction)
 
 void CWater::fall(uint16_t x, uint16_t y)
 {
-    int8_t rounded_vel_y = std::roundf(velocity_y);
+    int8_t rounded_vel_y = roundf(velocity_y);
 
 
     for(int8_t i = 1; i <= rounded_vel_y; i++)

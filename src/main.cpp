@@ -21,6 +21,10 @@
 #include "imgui_impl_opengl3.h"
 #endif
 
+#ifdef __EMSCRIPTEN
+    #include <emscripten.h>
+#endif
+
 
 // sdl
 SDL_Window* window = NULL;
@@ -118,10 +122,11 @@ void handleEvent(SDL_Event* event)
 
     #ifdef OPENGL_GUI
     ImGui_ImplSDL2_ProcessEvent(event);
-    #endif
 
     if(!ImGui::GetIO().WantCaptureMouse)
     {
+    #endif
+
 
         switch (event->type)
         {
@@ -154,7 +159,9 @@ void handleEvent(SDL_Event* event)
             break;
         }
 
-   }
+    #ifdef OPENGL_GUI   
+    }
+    #endif
 
     switch (event->type)
     {
@@ -214,13 +221,17 @@ void reactToEvent()
                 lastKeyboardKeyPressed = 0;
                 break;
 
+            #ifdef OPENGL_GUI
             case SDL_SCANCODE_F1:
                 GUI.show_help_window = !GUI.show_help_window;
+                lastKeyboardKeyPressed = 0;
                 break;
 
             case SDL_SCANCODE_F2:
                 GUI.show_menu_window = !GUI.show_menu_window;
+                lastKeyboardKeyPressed = 0;
                 break;
+            #endif
 
             default:
                 break;
@@ -251,46 +262,53 @@ void updateParticles()
 
 }
 
+void main_loop()
+{
+    #ifdef SLOW
+        SDL_Delay(100);
+    #endif
+
+    #ifdef DEBUG_STACK
+        printf("%d\n", stack);
+    #endif
+
+    SDL_Delay(10);
+
+
+    Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
+    reactToEvent();
+
+    SDL_Event event;
+    while (SDL_PollEvent(&event))
+    {
+        handleEvent(&event);
+    }
+
+
+    memset( next, 0, sizeof(next) );
+
+    updateParticles();
+
+    RenderHandler.draw(); 
+
+    memcpy( grid, next, sizeof(grid) );
+
+}
 
 int main(int argc, char* args[])
 {
     init();
 
-    // Main loop
-    while (running)
+    #ifdef __EMSCRIPTEN
+        emscripten_set_main_loop(main_loop, 0, 1);
+    #else
+
+    while(running)
     {
-
-        #ifdef SLOW
-            SDL_Delay(100);
-        #endif
-
-        #ifdef DEBUG_STACK
-            printf("%d\n", stack);
-        #endif
-
-        SDL_Delay(10);
-
-
-        Cursor.adjustCursor(Cursor.x, Cursor.y, Cursor.w, Cursor.h);   
-        reactToEvent();
-
-        SDL_Event event;
-        while (SDL_PollEvent(&event))
-        {
-            handleEvent(&event);
-        }
-
-
-        memset( next, 0, sizeof(next) );
-
-        updateParticles();
-
-        RenderHandler.draw(); 
-
-        memcpy( grid, next, sizeof(grid) );
-
-        
+        main_loop();
     }
+            
+    #endif
 
     quit();
 

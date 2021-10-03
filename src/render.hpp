@@ -1,10 +1,13 @@
 #ifndef draw_hpp
 #define draw_hpp
 
+#include "settings.hpp"
 #include <stdint.h>
 #include "gui.hpp"
 
+#ifdef OPENGL_GUI
 extern CGUI GUI;
+#endif
 
 extern SDL_Renderer* renderer;
 
