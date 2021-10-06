@@ -5,7 +5,7 @@ CC = g++
 CFLAGS	:= `sdl2-config --cflags` -g -Wall -Wformat 
 
 # linker flags
-LFLAGS = -lSDL2 -lGL -ldl `sdl2-config --libs` 
+LFLAGS = -lSDL2 -lSDL2_image -lGL -ldl `sdl2-config --libs`
 
 # output directory
 OUTPUT	= out
@@ -21,7 +21,7 @@ SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_
 SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 
 # include directories
-INCLUDES = -I./src/ -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I/usr/include/SDL2
+INCLUDES = -I./src/ -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -I/usr/include/SDL2 
 
 # object files
 OBJECTS = $(SOURCES:.cpp=.o)

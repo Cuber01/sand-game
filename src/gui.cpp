@@ -95,6 +95,18 @@ void CGUI::showHelpWindow()
             ImGui::TableNextColumn();
             ImGui::Text("Clear board");
 
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::Text("MouseLeft");
+            ImGui::TableNextColumn();
+            ImGui::Text("Place current slot");
+
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::Text("MouseRight");
+            ImGui::TableNextColumn();
+            ImGui::Text("Remove elements");
+
             for(uint8_t i = 0; i <= 9; i++)
             {
                 ImGui::TableNextRow();
@@ -116,8 +128,12 @@ void CGUI::showHelpWindow()
             ImGui::TableNextColumn();
             ImGui::Text("Slot Editor");
 
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            ImGui::Text("F3");
+            ImGui::TableNextColumn();
+            ImGui::Text("Map Loader");
 
-            
         
         ImGui::EndTable();
         

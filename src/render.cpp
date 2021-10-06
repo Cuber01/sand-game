@@ -143,7 +143,7 @@ void CRenderHandler::draw()
     #endif
 
     // draw cursor
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &Cursor.cursor);
 
     // present render

@@ -66,6 +66,31 @@ void CUtil::switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2 )
     grid[x2][y2]->willBeReplaced = true;
 }
 
+color_t CUtil::getPixel(const SDL_Surface* surface, uint16_t x, uint16_t y)
+{
+	// bytes per pixel
+	const Uint8 bpp = surface->format->BytesPerPixel;
+
+	/*
+	Retrieve the address to a specific pixel
+	surface->pixels	    = an array containing the SDL_Surface pixels
+	surface->pitch		= the length of a row of pixels (in bytes)
+	x and y				= offset
+	*/
+
+	Uint8* pixel = (Uint8*)surface->pixels + y * surface->pitch + x * bpp;
+
+	Uint32 PixelData = *(Uint32*)pixel;
+
+	color_t color;
+
+	// Retrieve the RGB values of the specific pixel
+	SDL_GetRGB(PixelData, surface->format, &color.r, &color.g, &color.b);
+
+	return color;
+}
+
+
 void CUtil::clearGrid()
 {
     for(uint8_t x = 0; x <= ROWS; x++) 

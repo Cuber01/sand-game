@@ -33,6 +33,9 @@ class CUtil
         // clear grid
         void clearGrid();
 
+        // get color of a pixel at xy coordinates from surface 
+        color_t getPixel(const SDL_Surface* surface, uint16_t x, uint16_t y);
+
         // ------------ RANDOM -------------------
 
         // return a random number where x is min <= x <=max

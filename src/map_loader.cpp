@@ -29,25 +29,19 @@ void CmapLoader::loadMap(const char* pathToMap)
 
     map = IMG_Load(pathToMap);
 
-    
-    SDL_LockSurface(map);
+   // SDL_LockSurface(map);
 
-    unsigned char* pixels = (unsigned char*)map -> pixels;
+   // unsigned char* pixels = (unsigned char*)map -> pixels;
 
     for (uint16_t x = 0; x < ROWS; x++) {
         for (uint16_t y = 0; y < COLS; y++) {
 
-            color_t pixel_color = 
-            {
-                pixels[4 * (y * map -> w + x) + 2], // r
-                pixels[4 * (y * map -> w + x) + 1], // g
-                pixels[4 * (y * map -> w + x) + 0]  // b
-            };
+            color_t pixel_color = Util.getPixel(map, x, y);
 
             for(uint16_t i = 0; i < _colorNumber; i++)
             {
-                if(pixel_color.r != 0){
-                printf("color list: %d, pixel_color: %d\n",color_list[i].r, pixel_color.r ); }
+            //     if(pixel_color.r != 0){
+            //     printf("color list: %d, pixel_color: %d\n",color_list[i].r, pixel_color.r ); }
                 if(color_list[i].r == pixel_color.r &&
                    color_list[i].g == pixel_color.g &&
                    color_list[i].b == pixel_color.b) 
@@ -61,7 +55,7 @@ void CmapLoader::loadMap(const char* pathToMap)
 
     }
     
-    SDL_UnlockSurface(map);
+    //SDL_UnlockSurface(map);
     SDL_FreeSurface(map);
 
 }
