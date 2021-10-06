@@ -15,6 +15,7 @@
         public:
             bool show_menu_window = false;
             bool show_help_window = false;
+            bool show_map_window = false;
 
             ImGuiIO io;
     
@@ -22,6 +23,7 @@
             
             void showMenuWindow();
             void showHelpWindow();
+            void showMapWindow();
     
             void update();
             

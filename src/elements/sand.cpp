@@ -21,7 +21,7 @@ CSand::CSand()
     this->setColor( sand_color_list[Util.random(0, 2)] );
     canBeNudged = true;
     type = dSandElement;
-    nudgeChance = 0.9;
+    nudgeChance = 0.1;
     incrementStack();
 }
 

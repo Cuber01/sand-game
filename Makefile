@@ -2,7 +2,7 @@
 CC = g++
 
 # compile flags
-CFLAGS	:= `sdl2-config --cflags` -g -Wall -Wformat 
+CFLAGS	:= -std=c++17 `sdl2-config --cflags` -g -Wall -Wformat 
 
 # linker flags
 LFLAGS = -lSDL2 -lSDL2_image -lGL -ldl `sdl2-config --libs`

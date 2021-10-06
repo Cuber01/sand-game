@@ -225,6 +225,7 @@ void reactToEvent()
                 break;
 
             #ifdef OPENGL_GUI
+
             case SDL_SCANCODE_F1:
                 GUI.show_help_window = !GUI.show_help_window;
                 lastKeyboardKeyPressed = 0;
@@ -234,6 +235,12 @@ void reactToEvent()
                 GUI.show_menu_window = !GUI.show_menu_window;
                 lastKeyboardKeyPressed = 0;
                 break;
+
+            case SDL_SCANCODE_F3:
+                GUI.show_map_window = !GUI.show_map_window;
+                lastKeyboardKeyPressed = 0;
+                break;
+
             #endif
 
             default:
@@ -303,7 +310,7 @@ int main(int argc, char* args[])
 {
     init();
 
-    MapLoader.loadMap("/home/cubeq/Projects/cpp/sand_game/out/map1.png");
+    MapLoader.loadMap("/home/cubeq/Projects/cpp/sand_game/out/maps/map1.png");
 
     #ifdef __EMSCRIPTEN
         emscripten_set_main_loop(main_loop, 0, 1);
