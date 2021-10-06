@@ -1,18 +1,7 @@
 #include <SDL.h>
 #include <stdint.h>
 
-#include "elements/derived/cracked_brick.hpp"
-#include "elements/derived/petrol.hpp"
-#include "elements/derived/dirt.hpp"
-#include "elements/derived/steam.hpp"
-#include "elements/derived/fire.hpp"
-#include "elements/particle.hpp"
-#include "elements/wall.hpp"
-#include "elements/sand.hpp"
-#include "elements/water.hpp"
-#include "elements/derived/wood.hpp"
-#include "elements/smoke.hpp"
-
+#include "element_list.hpp"
 #include "settings.hpp"
 #include "cursor.hpp"
 #include "main.hpp"

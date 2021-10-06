@@ -36,8 +36,6 @@ void CGUI::update()
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-
-    show_menu_window = true;
     if (show_menu_window) {
         showMenuWindow();
     }

@@ -12,6 +12,7 @@
 #include "settings.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
+#include "map_loader.hpp"
 
 
 #ifdef OPENGL_GUI
@@ -61,6 +62,8 @@ CElement* next[ROWS][COLS];
 CCursor Cursor;
 CRenderHandler RenderHandler;
 CUtil Util;
+CmapLoader MapLoader;
+
 
 void init()
 {
@@ -224,7 +227,6 @@ void reactToEvent()
             #ifdef OPENGL_GUI
             case SDL_SCANCODE_F1:
                 GUI.show_help_window = !GUI.show_help_window;
-                printf("aaaa");
                 lastKeyboardKeyPressed = 0;
                 break;
 
@@ -300,6 +302,8 @@ void main_loop()
 int main(int argc, char* args[])
 {
     init();
+
+    MapLoader.loadMap("/home/cubeq/Projects/cpp/sand_game/out/map1.png");
 
     #ifdef __EMSCRIPTEN
         emscripten_set_main_loop(main_loop, 0, 1);
