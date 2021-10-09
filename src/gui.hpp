@@ -31,7 +31,7 @@
 
             void showMenuWindow();
             void showHelpWindow();
-            void showMapWindow();
+            //void showMapWindow();
 
             uint8_t file_count;
             const char* files[];//ET:size 0 ?

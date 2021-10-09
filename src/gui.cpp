@@ -51,9 +51,9 @@ void CGUI::update()
         showHelpWindow();
     }
 
-    if (show_map_window) {
-        showMapWindow();
-    }
+    // if (show_map_window) {
+    //     showMapWindow();
+    // }
 
     // Rendering
     ImGui::Render();
@@ -139,11 +139,11 @@ void CGUI::showHelpWindow()
             ImGui::TableNextColumn();
             ImGui::Text("Slot Editor");
 
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            ImGui::Text("F3");
-            ImGui::TableNextColumn();
-            ImGui::Text("Map Loader");
+            // ImGui::TableNextRow();
+            // ImGui::TableNextColumn();
+            // ImGui::Text("F3");
+            // ImGui::TableNextColumn();
+            // ImGui::Text("Map Loader");
 
         
         ImGui::EndTable();
@@ -158,37 +158,37 @@ void CGUI::showHelpWindow()
         
         ImGui::Text("\n");
         
-        ImGui::TextWrapped("Maps can be loaded using Map Loader (F3) or their path can be passed as a commandline argument.");
+        ImGui::TextWrapped("Maps can be loaded by dropping an image over the window.");
 
     ImGui::End();
 }
 
-// unused
-void CGUI::showMapWindow()
-{
-    ImGui::Begin("Help", &show_map_window);
-        ImGui::TextWrapped("Select which map would you like to load.");
-        ImGui::Text("\n");
-        ImGui::TextWrapped("For more info press F1.");
-        ImGui::Text("Maps are taken from the maps/ directory.");
+// // unused
+// void CGUI::showMapWindow()
+// {
+//     ImGui::Begin("Help", &show_map_window);
+//         ImGui::TextWrapped("Select which map would you like to load.");
+//         ImGui::Text("\n");
+//         ImGui::TextWrapped("For more info press F1.");
+//         ImGui::Text("Maps are taken from the maps/ directory.");
 
-        if(collect_file_data)
-        {
-            std::string path = "/home/cubeq/Projects/cpp/sand_game/out/maps/";
-            // std::string path = "./out/maps/"; //TODO
-            collectFileData(path);
-            collect_file_data = false;
-        }
+//         if(collect_file_data)
+//         {
+//             std::string path = "/home/cubeq/Projects/cpp/sand_game/out/maps/";
+//             // std::string path = "./out/maps/"; //TODO
+//             collectFileData(path);
+//             collect_file_data = false;
+//         }
 
-        static int selected_item = 0;
-        //printf("%s", files[0]);
+//         static int selected_item = 0;
+//         //printf("%s", files[0]);
         
-        ImGui::Combo("Map",  &selected_item, files, file_count+1);
+//         ImGui::Combo("Map",  &selected_item, files, file_count+1);
         
         
 
-    ImGui::End();
-}
+//     ImGui::End();
+// }
 
 void CGUI::collectFileData(std::string path)
 {

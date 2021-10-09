@@ -256,10 +256,10 @@ void reactToEvent()
                 lastKeyboardKeyPressed = 0;
                 break;
 
-            case SDL_SCANCODE_F3:
-                GUI.show_map_window = !GUI.show_map_window;
-                lastKeyboardKeyPressed = 0;
-                break;
+            // case SDL_SCANCODE_F3:
+            //     GUI.show_map_window = !GUI.show_map_window;
+            //     lastKeyboardKeyPressed = 0;
+            //     break;
 
             #endif
 

@@ -2,4 +2,7 @@ src/*.o
 src/elements/*.o
 src/elements/derived/*.o
 src/utils/*.o
+out/*
 /.vscode
+imgui.ini
+src/imgui.ini

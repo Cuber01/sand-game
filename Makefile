@@ -31,12 +31,12 @@ ifeq ($(OS),Windows_NT)
 MAIN	:= sand_game.exe
 FIXPATH = $(subst /,\,$1)
 RM			:= del /q /f
-MD	:= mkdir
+MD	:= mkdir out/
 else
 MAIN	:= sand_game
 FIXPATH = $1
 RM = rm -f
-MD	:= mkdir -p
+MD	:= mkdir -p out/
 endif
 
 
@@ -47,9 +47,11 @@ all:$(OUTPUTMAIN)
 	@echo Executing 'all' complete!
 
 $(OUTPUTMAIN): $(OBJECTS) 
+	$(MD)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
 
 .cpp.o:
+	$(MD)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
 
 .PHONY: clean
