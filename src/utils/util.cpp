@@ -90,6 +90,12 @@ color_t CUtil::getPixel(const SDL_Surface* surface, uint16_t x, uint16_t y)
 	return color;
 }
 
+const char* CUtil::getFileExtension(const char* path)
+{
+    const char *dot = strrchr(path, '.');
+    if(!dot || dot == path) return "";
+    return dot + 1;
+}
 
 void CUtil::clearGrid()
 {

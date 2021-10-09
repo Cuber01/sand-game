@@ -12,6 +12,8 @@
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
 
+#include <iostream>
+using namespace std;
 
 
 
@@ -161,6 +163,7 @@ void CGUI::showHelpWindow()
     ImGui::End();
 }
 
+// unused
 void CGUI::showMapWindow()
 {
     ImGui::Begin("Help", &show_map_window);
@@ -169,27 +172,40 @@ void CGUI::showMapWindow()
         ImGui::TextWrapped("For more info press F1.");
         ImGui::Text("Maps are taken from the maps/ directory.");
 
-        std::string path = "./out/maps/"; //TODO
-        
-        
-        const char* file_name;
-        const char* items[] = {};
-
-        for ( const auto & entry : std::filesystem::directory_iterator(path)) {
-            std::string file_name_string = entry.path().u8string();
-            file_name = file_name_string.c_str();
-            printf("%s", file_name);
+        if(collect_file_data)
+        {
+            std::string path = "/home/cubeq/Projects/cpp/sand_game/out/maps/";
+            // std::string path = "./out/maps/"; //TODO
+            collectFileData(path);
+            collect_file_data = false;
         }
 
-
-
         static int selected_item = 0;
+        //printf("%s", files[0]);
         
-        ImGui::Combo("Map",  &selected_item, items, IM_ARRAYSIZE(items));
+        ImGui::Combo("Map",  &selected_item, files, file_count+1);
         
         
 
     ImGui::End();
+}
+
+void CGUI::collectFileData(std::string path)
+{
+    uint8_t file_count = 0U;
+    const char* file_name;
+
+    for ( const auto & entry : std::filesystem::directory_iterator(path)) {
+        std::string file_name_string = entry.path().u8string();
+        file_name = file_name_string.c_str();
+        std::cout << file_name;
+        //std::cout << file_name_string;
+        files[file_count] = file_name;
+        file_count++;
+    }
+
+    
+    
 }
 
 #endif

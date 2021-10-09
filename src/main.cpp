@@ -101,6 +101,7 @@ void init()
         exit(1);
 	} 
 
+    SDL_EventState(SDL_DROPFILE, SDL_ENABLE);
     RenderHandler.init();
 
 }
@@ -160,7 +161,26 @@ void handleEvent(SDL_Event* event)
                 }
             }
             break;
+
+
+            case (SDL_DROPFILE):    
+            {
+                char* dropped_filedir = event->drop.file;
+            
+                // SDL_ShowSimpleMessageBox(
+                //     SDL_MESSAGEBOX_INFORMATION,
+                //     "File dropped on window",
+                //     dropped_filedir,
+                //     window
+                // );
+                MapLoader.loadMap(dropped_filedir);
+
+                SDL_free(dropped_filedir);    
+                break;
+            }
+
         }
+        
 
     #ifdef OPENGL_GUI   
     }
@@ -309,8 +329,6 @@ void main_loop()
 int main(int argc, char* args[])
 {
     init();
-
-    MapLoader.loadMap("/home/cubeq/Projects/cpp/sand_game/out/maps/map1.png");
 
     #ifdef __EMSCRIPTEN
         emscripten_set_main_loop(main_loop, 0, 1);
