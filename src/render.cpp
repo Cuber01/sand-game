@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include <stdio.h>
 
 #include "elements/element.hpp"
 #include "settings.hpp"

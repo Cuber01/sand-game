@@ -1,3 +1,7 @@
+#include <settings.hpp>
+
+#ifdef MAP_LOADER
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string.h>
@@ -61,3 +65,5 @@ void CmapLoader::loadMap(const char* pathToMap)
     SDL_FreeSurface(map);
 
 }
+
+#endif

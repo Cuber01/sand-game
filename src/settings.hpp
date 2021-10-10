@@ -21,7 +21,10 @@
 #define BOUNDS_FRICTION 0.1
 
 // whether we want a gui or not
-#define OPENGL_GUI
+// #define OPENGL_GUI
+
+// whether we want map loader to work or not
+// #define MAP_LOADER
 
 // whether we compile for web or not. If we do, OPENGL_GUI has to be undefined.
 // #define __EMSCRIPTEN

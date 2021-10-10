@@ -12,8 +12,6 @@
 #include "settings.hpp"
 #include "utils/util.hpp"
 #include "utils/data.hpp"
-#include "map_loader.hpp"
-
 
 #ifdef OPENGL_GUI
 #include <SDL_opengl.h>
@@ -26,6 +24,9 @@
     #include <emscripten.h>
 #endif
 
+#ifdef MAP_LOADER
+#include "map_loader.hpp"
+#endif
 
 // sdl
 SDL_Window* window = NULL;
@@ -62,8 +63,10 @@ CElement* next[ROWS][COLS];
 CCursor Cursor;
 CRenderHandler RenderHandler;
 CUtil Util;
-CmapLoader MapLoader;
 
+#ifdef MAP_LOADER
+CmapLoader MapLoader;
+#endif
 
 void init()
 {
@@ -165,6 +168,8 @@ void handleEvent(SDL_Event* event)
 
             case (SDL_DROPFILE):    
             {
+                #ifdef MAP_LOADER
+
                 char* dropped_filedir = event->drop.file;
             
                 // SDL_ShowSimpleMessageBox(
@@ -175,7 +180,10 @@ void handleEvent(SDL_Event* event)
                 // );
                 MapLoader.loadMap(dropped_filedir);
 
-                SDL_free(dropped_filedir);    
+                SDL_free(dropped_filedir); 
+
+                #endif
+                
                 break;
             }
 
@@ -326,7 +334,7 @@ void main_loop()
 
 }
 
-int main(int argc, char* args[])
+int main(int argc, char *argv[])
 {
     init();
 

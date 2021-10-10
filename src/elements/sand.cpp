@@ -5,6 +5,7 @@
 #include "../utils/util.hpp"
 #include <float.h>
 #include <stdint.h> 
+#include <cmath>
 
 #define sRETURN { isFalling = true; return; }
 
@@ -175,7 +176,7 @@ void CSand::nudge_neighbors(uint16_t x, uint16_t y)
 
 void CSand::fall(uint16_t x, uint16_t y)
 {
-    int8_t rounded_vel_y = roundf(velocity_y);
+    int8_t rounded_vel_y = std::roundf(velocity_y);
 
 
     for(int8_t i = 1; i <= rounded_vel_y; i++)
@@ -207,7 +208,7 @@ void CSand::fall(uint16_t x, uint16_t y)
 
 void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
 {
-    int8_t rounded_vel_x = roundf(velocity_x);
+    int8_t rounded_vel_x = std::roundf(velocity_x);
 
 
     for(int8_t i = 1; i <= rounded_vel_x; i++)

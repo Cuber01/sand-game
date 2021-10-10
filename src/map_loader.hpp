@@ -1,3 +1,7 @@
+#include <settings.hpp>
+
+#ifdef MAP_LOADER
+
 #ifndef map_loader_hpp
 #define map_loader_hpp
 
@@ -33,5 +37,7 @@ class CmapLoader
 
 };
 
+
+#endif
 
 #endif

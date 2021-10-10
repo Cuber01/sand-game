@@ -6,7 +6,7 @@
 
 #include <stdint.h>
 #include <random>
-
+#include <cstring>
 
 bool CUtil::isOutOfBounds(uint16_t x, uint16_t y)
 {

@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "element_list.hpp"
 #include "settings.hpp"
