@@ -24,7 +24,7 @@
 // #define OPENGL_GUI
 
 // whether we want map loader to work or not
-// #define MAP_LOADER
+#define MAP_LOADER
 
 // whether we compile for web or not. If we do, OPENGL_GUI has to be undefined.
 // #define __EMSCRIPTEN

@@ -57,6 +57,7 @@ For 32bit Windows:
 i686-w64-mingw32-g++ test.cpp -I/tmp/sdl2-win32/include/ -L/tmp/sdl2-win32/lib -lmingw32 -lSDL2main -lSDL2 -mwindows -o test.exe
 ```
 
+You may also need to include headers located in the folder with SDL source code you downloaded earlier: ``-I/some/path/SDL/include/`` 
 (This is assuming you have ``#include <SDL2/SDL.h>`` in your files)
 
 ## Ship app

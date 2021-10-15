@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "element_list.hpp"
 #include "map_loader.hpp"
