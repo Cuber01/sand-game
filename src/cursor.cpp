@@ -53,7 +53,6 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                     case dDirtElement:         o = new CDirt();  break;
                     case dFireElement:         o = new CFire();  break;
                     case dPetrolElement:       o = new CPetrol();  break;
-                    case dParticleElement:     o = new CParticle({255, 255, 255}, 5, 5); break;
                     case dCrackedBrickElement: o = new CCrackedBrick(); break;
                     default:
                         printf("Unknown particle.\n");

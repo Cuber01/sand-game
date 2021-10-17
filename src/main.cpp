@@ -42,11 +42,10 @@ uint16_t lastKeyboardKeyPressed;
 uint8_t  lastMouseKeyPressed;
 uint32_t lastId;
 
-element_t elementSlots[10] = {
+element_t elementSlots[9] = {
                             dSandElement, dWaterElement, dWallElement, 
                             dWoodElement, dFireElement, dSmokeElement,
-                            dSteamElement, dCrackedBrickElement, dPetrolElement,
-                            dParticleElement
+                            dSteamElement, dCrackedBrickElement, dPetrolElement
                            };
 
 //bool

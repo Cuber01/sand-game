@@ -3,7 +3,6 @@
 #include "elements/derived/dirt.hpp"
 #include "elements/derived/steam.hpp"
 #include "elements/derived/fire.hpp"
-#include "elements/particle.hpp"
 #include "elements/wall.hpp"
 #include "elements/sand.hpp"
 #include "elements/water.hpp"

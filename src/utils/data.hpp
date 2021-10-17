@@ -23,7 +23,6 @@ typedef enum {
     dCrackedBrickElement,
     dDirtElement,
     dFireElement,
-    dParticleElement,
     dPetrolElement,  
     dSandElement,  
     dSmokeElement,

@@ -20,7 +20,7 @@ extern CUtil Util;
 
 extern CElement* grid[ROWS][COLS];
 extern CElement* next[ROWS][COLS];
-extern element_t elementSlots[10];
+extern element_t elementSlots[9];
 
 #ifdef DEBUG_STACK
     extern int stack;

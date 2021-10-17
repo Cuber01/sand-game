@@ -65,8 +65,8 @@ void CGUI::showMenuWindow()
     ImGui::Begin("Slot Editor", &show_menu_window);
         ImGui::Text("Choose which element should appear in each slot.");
 
-        const char* items[] = { "Air", "Cracked Brick", "Dirt", "Fire", "Particle", "Petrol", "Sand", "Smoke", "Steam", "Wall", "Water", "Wood"};
-        static int selected_items[10] = {6, 10, 9, 11, 3, 7, 8, 2, 3, 5};
+        const char* items[] = { "Air", "Cracked Brick", "Dirt", "Fire", "Petrol", "Sand", "Smoke", "Steam", "Wall", "Water", "Wood"};
+        static int selected_items[10] = {5, 9, 8, 10, 2, 6, 7, 2, 3, 5};
         
         ImGui::Combo("Slot 1",  &selected_items[0], items, IM_ARRAYSIZE(items));
         ImGui::Combo("Slot 2",  &selected_items[1], items, IM_ARRAYSIZE(items));
