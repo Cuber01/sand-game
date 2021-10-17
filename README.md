@@ -4,9 +4,7 @@ Sand game is a sandbox game, where you can place one of the many elements and wa
 
 *Feel free to watch sand.mp4 if you'd like to see how it looks like.*
 
-You're currently on the 'master' branch, I'm currently rewriting this project to full OOP and adding better interactions on this branch. It's currently unstable, go to 'simple' for a stable build.
-
-version before 2.0
+version 2.0
 
 # Compile instructions
 
@@ -51,10 +49,9 @@ Clone modules:
 git submodule update --init
 ```
 
-Go to dir and create out/ directory:
+Go to dir:
 ```sh
 cd sand-game/
-mkdir out/
 ```
 
 Build:
@@ -68,25 +65,20 @@ The default scale of the game is 4, you can change it at src/render.hpp (recomme
 
 # Controls
 
-1 - choose sand
+` - Clear board
 
-2 - choose water
+MouseLeft - Place current slot
 
-3 - choose wood
+MouseRight - Remove elements
 
-4 - choose fire
+1, 2, 3, 4, 5, 6, 7, 8, 9, 0 - Choose Slot
 
-5 - choose smoke
+F1 - Show help window (OPENGL_GUI only - currently only on Linux)
 
-` - clear the board
+F2 - Slot Editor (OPENGL_GUI only - currently only on Linux)
 
-Any other keyboard button will result in choosing sand.
+Drop image on window to load a map (MAP_LOADER only - currently only on Linux)
 
-Left mouse button - place chosen particle
-
-Right mouse button - remove particles
-
-Mouse wheel - change cursor size
 
 # TODO 
 
