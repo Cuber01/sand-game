@@ -1,9 +1,15 @@
+# Windows from Linux Makefile
+# Read CompileSDL2exeFromLinux.md for instructions on how to setup an environment
+
+# OPENGL_GUI has to be undefined
+# MAP_LOADER has to be undefined
+
 SOURCES	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
 OBJECTS	= $(SOURCES:.cpp=.o)
 
 CC      = x86_64-w64-mingw32-g++ 
 CFLAGS	= -std=c++17 -L/tmp/sdl2-win64/lib -g -Wall -Wformat `pkg-config` 
-LFLAGS  = -L/tmp/sdl2-win64/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -mwindows `sdl2-config --libs`
+LFLAGS  = -L/tmp/sdl2-win64/lib -lmingw32 -lSDL2main -lSDL2 -mwindows `sdl2-config --libs`
 
 INCLUDES = -I./src/ -I/tmp/sdl2-win64/include/ -I/home/cubeq/bin/CompilingOpenSource/SDL/include/ 
 # `sdl2-config --cflags` -I/usr/include/x86_64-linux-gnu/ -I/usr/include/SDL2 -I/usr/lib/gcc/x86_64-w64-mingw32/ `sdl2-config --libs` -L/tmp/sdl2-win64/lib  -L/usr/lib/x86_64-linux-gnu/
@@ -47,7 +53,7 @@ clean:
 	@echo Cleanup complete!
 
 
-# -----------------------------
+# ----------------------------- trash
 
 
 # # output directory
@@ -95,3 +101,52 @@ clean:
 # #SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
 # #SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 
+# ------------------------------------
+
+# SOURCES	= $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
+# OBJECTS	= $(SOURCES:.cpp=.o)
+
+# CC      = x86_64-w64-mingw32-g++ 
+# CFLAGS	= -std=c++17 -L/tmp/sdl2-win64/lib -g -Wall -Wformat `pkg-config` 
+# LFLAGS  = -L/tmp/sdl2-win64/lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -mwindows `sdl2-config --libs`
+
+# INCLUDES = -I./src/ -I/tmp/sdl2-win64/include/ -I/home/cubeq/bin/CompilingOpenSource/SDL/include/ 
+# # `sdl2-config --cflags` -I/usr/include/x86_64-linux-gnu/ -I/usr/include/SDL2 -I/usr/lib/gcc/x86_64-w64-mingw32/ `sdl2-config --libs` -L/tmp/sdl2-win64/lib  -L/usr/lib/x86_64-linux-gnu/
+
+# ifeq ($(OS),Windows_NT)
+# FIXPATH = $(subst /,\,$1)
+# RM			:= del /q /f
+# MD	:= mkdir out/
+# else
+# FIXPATH = $1
+# RM = rm -f
+# MD	:= mkdir -p out/
+# endif
+
+# # output directory
+# OUTPUT	= out
+
+# # executable
+# MAIN	:= sand_game.exe
+
+# # full output path
+# OUTPUTMAIN	:= $(OUTPUT)/$(MAIN)
+
+# $(OUTPUTMAIN): $(OBJECTS) 
+# 	$(MD)
+# 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS)
+
+# .cpp.o:
+# 	$(MD)
+# 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $<  -o $@ 
+
+
+# .PHONY: all
+# all:$(OUTPUTMAIN)
+# 	@echo Executing 'all' complete!
+
+# .PHONY: clean
+# clean:
+# 	$(RM) $(OUTPUTMAIN)
+# 	$(RM) $(call FIXPATH,$(OBJECTS))
+# 	@echo Cleanup complete!

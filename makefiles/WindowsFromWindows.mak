@@ -1,4 +1,5 @@
-# OUTDATED
+# Windows from Windows Makefile
+# Unmaintained
 
 OBJS    = $(wildcard src/*.o) $(wildcard src/utils/*.o) $(wildcard src/elements/*.o) $(wildcard src/elements/derived/*.o)
 

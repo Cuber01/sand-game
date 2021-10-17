@@ -1,6 +1,9 @@
-# Use this to compile for web, you need to have emscripten installed on your system
+# Linux Web Makefile
 
-# OPENG_GUI has to be undefined
+# You need to have emscripten installed on your system
+
+# OPENGL_GUI has to be undefined
+# MAP_LOADER has to be undefined
 # __EMSCRIPTEN has to be defined
 
 # To use the .html file, do:
@@ -13,10 +16,10 @@ SOURCES	=  $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elem
 
 # debug:
 CFLAGS	= -g -s ALLOW_MEMORY_GROWTH=1 -O3 -s USE_SDL=2 -s OFFSCREEN_FRAMEBUFFER=1 
+INCLUDES = -I/src
 
 OUT	    = out/sand_game.html
 CC	    = emcc
-# CFLAGS	= 
 LFLAGS	= -lSDL2 
 
 all: $(OBJS)

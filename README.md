@@ -68,6 +68,7 @@ Makefiles are kept at makefiles/
 4. If you're compiling from Linux to Web: use makefiles/Web.mak (maintained)
 
 Choose yours and put it in the root directory.
+Read their comments for further instructions.
 
 ## Build
 

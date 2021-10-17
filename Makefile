@@ -1,3 +1,5 @@
+# Linux from Linux makefile
+
 # compiler
 CC = g++
 
