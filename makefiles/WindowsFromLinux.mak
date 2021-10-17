@@ -38,7 +38,6 @@ $(OUTPUTMAIN): $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS)
 
 .cpp.o:
-	$(MD)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LFLAGS) -c $<  -o $@ 
 
 
