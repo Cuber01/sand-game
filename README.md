@@ -70,6 +70,9 @@ Makefiles are kept at makefiles/
 Choose yours and put it in the root directory.
 Read their comments for further instructions.
 
+
+I'm having quite some trouble with developing on multiple platforms, so if you want to, I'd be really happy if you could help me out.  Read Contributing.md for more info.
+
 ## Build
 
 Clone the git repo:
@@ -112,6 +115,11 @@ F2 - Slot Editor (OPENGL_GUI only - currently only on Linux)
 
 Drop image on window to load a map (MAP_LOADER only - currently only on Linux)
 
+# Contributing
+
+If you'd like to contribute to the project, read Contributing.md
+
+I have a lot of trouble in maintaining makefiles for multiple platforms, so help in that field is even more appreciated.
 
 # TODO 
 
