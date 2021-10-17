@@ -37,6 +37,38 @@ sudo apt install libsdl2-dev
 
 Again, if you don't have access to a package manager and a repository with sdl packages, go to https://wiki.libsdl.org/Installation and check how can you install it on your system.
 
+## Change settings
+
+You can tweak a few compile settings at src/settings.hpp 
+
+*Please note that the default settings should be fine for most setups.*
+
+
+The important ones are:
+
+``#define SOFTWARE_RENDERING`` - if this is defined, we use some sort of software rendering, and draw every pixel on screen using SDL_RenderDrawPoint. This performs ok on Linux but terribly on Windows. If this is not defined, we edit a texture and then draw it on screen. You should probably keep it disabled.
+
+``#define SCALE 6`` - scale of the game. Example: if it's 6, every cell is a 6x6 square.
+
+``#define OPENGL_GUI`` - if this is defined, we use imgui and opengl to draw gui in the game (F1, F2). The Linux to Linux Makefile (the default one), can handle this, however I still haven't managed to compile with gui for Windows or Web, so if you use my Makefile for Windows/Web, make sure to keep it undefined.
+
+``#define MAP_LOADER`` - if this is defined, you can drop an image on the game's window, to load it as a map. For more info press F1. The Linux to Linux Makefile (the default one), can handle this, however I still haven't managed to compile with map loader for Windows or Web, so if you use my Makefile for Windows/Web, make sure to keep it undefined.
+
+``#define __EMSCRIPTEN`` - if you're compiling for web, make sure to enable it, if you're not compiling on web, comment it out.
+
+## Choose a Makefile
+
+Yep, I don't have a universal Makefile. Sorry.
+
+Makefiles are kept at makefiles/
+
+1. If you're compiling from Linux to Linux: Go with the default one (maintained)
+2. If you're compiling from Linux to Windows: use makefiles/WindowsFromLinux.mak (maintained)
+3. If you're compiling from Windows to Windows: use makefiles/WindowsFromWindows.mak (unmaintained)
+4. If you're compiling from Linux to Web: use makefiles/Web.mak (maintained)
+
+Choose yours and put it in the root directory.
+
 ## Build
 
 Clone the git repo:
