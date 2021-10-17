@@ -121,9 +121,8 @@ If you'd like to contribute to the project, read Contributing.md
 
 I have a lot of trouble in maintaining makefiles for multiple platforms, so help in that field is even more appreciated.
 
-# TODO 
+# Contact
 
-* screen is drawn from 1,1 instead of 0,0
-* very big cursor doesnt work properly
-* cursor is off
+The best way to contact me at the moment, is the [issue board](https://github.com/Cuber01/sand-game/issues).
+Feel free to ask any questions or report bugs there.
 
