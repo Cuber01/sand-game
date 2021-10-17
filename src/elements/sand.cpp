@@ -46,27 +46,9 @@ void CSand::move(uint16_t x, uint16_t y)
         sRETURN;
     }
     
-    if (Util.getGrid( DOWN )->type == dWaterElement)
+    if (Util.getGrid( DOWN )->type == dWaterElement || Util.getGrid( DOWN )->type == dPetrolElement)
     {
-        // grid [x][y] = 1
-        // grid [x][y+1] = 2
-
-        //GO_DOWN(x, y);
-        next[x][y+1] = grid[x][y];
-
-        // grid[x][y] = 1
-        // grid[x][y+1] = 2
-        // next[x][y+1] = 1
-        
-        next[x][y] = grid[x][y+1];
-
-        // grid[x][y] = 1
-        // grid[x][y+1] = 2
-        // next [x][y+1] = 1
-        // next [x][y] = 2
-
-        grid[x][y+1]->willBeReplaced = true;
-
+        Util.switchCells(x, y, x, y+1);
         sRETURN; // TODO
     }
 
@@ -181,7 +163,7 @@ void CSand::fall(uint16_t x, uint16_t y)
 
     for(int8_t i = 1; i <= rounded_vel_y; i++)
     {
-        if(Util.getGrid(x, y+i) == 0) // TODO if i add getnext checks it doesnt work
+        if(Util.getGrid(x, y+i) == 0) // if i add getnext checks it doesnt work (thats because down is not updated yet. all cells on the bottom are only on grid)
         {
             if(Util.getGrid(x , y + i+1) != 0)
             {

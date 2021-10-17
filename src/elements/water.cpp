@@ -22,41 +22,51 @@ CWater::CWater()
 void CWater::move(uint16_t x, uint16_t y)
 {
 
-
-    if(!willBeReplaced)
+    if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 
     {
-        if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0) 
-        {
-            fall(x, y);
-        } else if (Util.getGrid( DOWN_RIGHT ) == 0 && Util.getNext( DOWN_RIGHT ) == 0) 
-        {
-            //spread(x, y+1, true);
-            GO_DOWN_RIGHT(x, y);
-        } else if (Util.getGrid( DOWN_LEFT ) == 0 && Util.getNext( DOWN_LEFT ) == 0) 
-        {
-            //spread(x, y+1, false);
-            GO_DOWN_LEFT(x, y);
-        } else if (Util.getGrid( RIGHT ) == 0 && Util.getGrid( LEFT ) == 0 && Util.getNext( RIGHT ) == 0 && Util.getNext( LEFT ) == 0)
-        {
-            if(movesRight)
-            {
-                spread(x, y, 1);
-            } else {
-                spread(x, y, -1);
-            }
-        } else if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0)  
-        {
-            movesRight = true;
-            spread(x, y, 1);
-        } else if (Util.getGrid( LEFT ) == 0 && Util.getNext( LEFT ) == 0)
-        {
-            movesRight = false;
-            spread(x, y, -1);
-        } else { 
-            STAY(x, y);
-        }
-    }
+        
+        fall(x, y);
 
+    } else if (Util.getGrid( DOWN_RIGHT ) == 0 && Util.getNext( DOWN_RIGHT ) == 0) 
+    {
+
+        //spread(x, y+1, true);
+        GO_DOWN_RIGHT(x, y);
+
+    } else if (Util.getGrid( DOWN_LEFT ) == 0 && Util.getNext( DOWN_LEFT ) == 0) 
+    {
+
+        //spread(x, y+1, false);
+        GO_DOWN_LEFT(x, y);
+
+    } else if (Util.getGrid( RIGHT ) == 0 && Util.getGrid( LEFT ) == 0 && Util.getNext( RIGHT ) == 0 && Util.getNext( LEFT ) == 0)
+    {
+
+        if(movesRight)
+        {
+            spread(x, y, 1);
+        } else {
+            spread(x, y, -1);
+        }
+        
+    } else if (Util.getGrid( RIGHT ) == 0 && Util.getNext( RIGHT ) == 0)  
+    {
+
+        movesRight = true;
+        spread(x, y, 1);
+
+    } else if (Util.getGrid( LEFT ) == 0 && Util.getNext( LEFT ) == 0)
+    {
+
+        movesRight = false;
+        spread(x, y, -1);
+
+    } else { 
+
+        STAY(x, y);
+
+    }
+    
     checkHeat();
 
 }
@@ -126,6 +136,10 @@ void CWater::update(uint16_t x, uint16_t y)
         grid[x][y] = 0;
         next[x][y] = new CSteam();
         delete this;
+    } else if (willBeReplaced)
+    {
+        // grid[x][y] = 0;
+        next[x][y] = 0;
     }
 
 

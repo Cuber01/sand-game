@@ -62,8 +62,20 @@ void CUtil::switchCells( uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2 )
     next[x1][y1] = cell2;
     next[x2][y2] = cell1;
 
-    grid[x1][y1] = 0;
-    grid[x2][y2]->willBeReplaced = true;
+    // TO PIASEK UMIERA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // piasek się zawala??
+    // nudge?
+    //grid[x1][y1] = 0;babelek
+
+    //grid[x2][y2]->willBeReplaced = true;
+
+
+   // grid[x1][y1] = 0;
+    grid[x2][y2] = 0;
+    
+
+    // grid[x1][y1] = cell2;
+    // grid[x2][y2] = cell1;    
 }
 
 color_t CUtil::getPixel(const SDL_Surface* surface, uint16_t x, uint16_t y)

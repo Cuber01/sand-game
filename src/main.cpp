@@ -289,7 +289,6 @@ void updateParticles()
             CElement* value = grid[x][y];
             if(value != 0) {
 
-
                 value->update(x, y);
 
 
@@ -306,6 +305,7 @@ void main_loop()
     #ifdef SLOW
         SDL_Delay(100);
     #endif
+    //SDL_Delay(1000);
 
     #ifdef DEBUG_STACK
         printf("%d\n", stack);
