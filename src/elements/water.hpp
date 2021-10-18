@@ -12,7 +12,7 @@ class CWater : public CElement
 
         void spread(uint16_t x, uint16_t y, int8_t right);
 
-        uint8_t dispersionRate = 4;
+        uint8_t dispersionRate = 8;
         bool movesRight;
 
     public:
