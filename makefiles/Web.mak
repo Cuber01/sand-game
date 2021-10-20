@@ -15,15 +15,15 @@ OBJS	= $(wildcard src/*.o) $(wildcard src/utils/*.o) $(wildcard src/elements/*.o
 SOURCES	=  $(wildcard src/*.cpp) $(wildcard src/utils/*.cpp) $(wildcard src/elements/*.cpp) $(wildcard src/elements/derived/*.cpp)
 
 # debug:
-CFLAGS	= -g -s ALLOW_MEMORY_GROWTH=1 -O3 -s USE_SDL=2 -s OFFSCREEN_FRAMEBUFFER=1 
+CFLAGS	= -g -s ALLOW_MEMORY_GROWTH=1 -O3 -s USE_SDL=2 -s OFFSCREEN_FRAMEBUFFER=1
 INCLUDES = -I/src
 
-OUT	    = out/sand_game.html
+OUT	    = out/index.html
 CC	    = emcc
 LFLAGS	= -lSDL2 
 
 all: $(OBJS)
-	$(CC) -o $(OUT) $(SOURCES) $(CFLAGS) $(INCLUDES) $(LFLAGS)
+	$(CC) -o $(OUT) --shell-file ./makefiles/emcc_index_no_ui.html $(SOURCES) $(CFLAGS) $(INCLUDES) $(LFLAGS)
 
 clean:
 	rm -f $(OBJS) $(OUT)
