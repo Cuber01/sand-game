@@ -11,7 +11,7 @@ class CPetrol : public CWater
 
         void update(uint16_t x, uint16_t y);
 
-        void checkHitpoints(uint16_t x, uint16_t y);
+        bool checkHitpoints(uint16_t x, uint16_t y);
 
 };
 

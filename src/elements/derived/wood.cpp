@@ -15,7 +15,7 @@ CWood::CWood()
     incrementStack();
 }
 
-void CWood::checkHitpoints(uint16_t x, uint16_t y)
+bool CWood::checkHitpoints(uint16_t x, uint16_t y)
 {
 
     if(hitpoints < 0)
@@ -30,8 +30,9 @@ void CWood::checkHitpoints(uint16_t x, uint16_t y)
         }
 
         delete this;
+        return true;
     }
-
+    return false;
 }
 
 void CWood::receiveHeat(float heatAmount)
@@ -67,7 +68,7 @@ void CWood::update(uint16_t x, uint16_t y)
     stay(x, y);
 
     checkHeat();
-    checkHitpoints(x, y);
+    if(checkHitpoints(x, y)) return;
     
 }
 

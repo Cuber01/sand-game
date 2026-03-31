@@ -16,7 +16,7 @@ color_t color_list[3] =
     { 251, 242, 54 }, // sand 3
 };
 
-CElement::CElement() {}
+CElement::CElement() { type = dNoneElement; }
 
 CElement::~CElement() 
 {
@@ -84,7 +84,7 @@ void CElement::emitHeat(uint16_t x, uint16_t y)
       
 }
 
-void CElement::checkHitpoints(uint16_t x, uint16_t y)
+bool CElement::checkHitpoints(uint16_t x, uint16_t y)
 {
 
     if(hitpoints < 0)
@@ -93,8 +93,9 @@ void CElement::checkHitpoints(uint16_t x, uint16_t y)
         next[x][y] = 0;
 
         delete this;
+        return true;
     }
-
+    return false;
 }
 
 void CElement::checkHeat()

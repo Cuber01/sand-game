@@ -17,7 +17,7 @@ CSmoke::CSmoke()
 
 void CSmoke::update(uint16_t x, uint16_t y)
 {
-    handleLifetime(x, y);
+    if(handleLifetime(x, y)) return;
 
     move(x, y);
     
@@ -70,7 +70,7 @@ void CSmoke::move(uint16_t x, uint16_t y)
 
 }
 
-void CSmoke::handleLifetime(uint16_t x, uint16_t y)
+bool CSmoke::handleLifetime(uint16_t x, uint16_t y)
 {
     lifetime--;
 
@@ -79,7 +79,9 @@ void CSmoke::handleLifetime(uint16_t x, uint16_t y)
         // goodbye cruel world
         grid[x][y] = 0;
         delete this;
+        return true;
     }
+    return false;
 }
 
 void CSmoke::receiveHeat(float heatAmount) {}

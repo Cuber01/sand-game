@@ -13,7 +13,7 @@ class CUtil
         // ------------- WORLD --------------------
 
         // this is returned by get functions when they encounter a bound, to indicate that it is not an empty space
-        CElement bounds;
+        CElement bounds = CElement();
 
         // returns a value from grid[][]
         CElement* getGrid( uint16_t x, uint16_t y );

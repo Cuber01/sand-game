@@ -24,7 +24,7 @@ CFire::CFire()
 void CFire::update(uint16_t x,uint16_t y)
 {
     setColor( fire_color_list[Util.random(0, 2)] );
-    handleLifetime(x, y);
+    if(handleLifetime(x, y)) return;
     emitHeat(x, y);
     move(x, y);
 }

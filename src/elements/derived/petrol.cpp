@@ -24,7 +24,7 @@ void CPetrol::update(uint16_t x, uint16_t y)
         hitpoints--;
         setColor(fire_color_list2[Util.random(0, 2)]);
 
-        checkHitpoints(x, y);
+        if(checkHitpoints(x, y)) return;
 
     }
 
@@ -33,7 +33,7 @@ void CPetrol::update(uint16_t x, uint16_t y)
     checkHeat();
 }
 
-void CPetrol::checkHitpoints(uint16_t x, uint16_t y)
+bool CPetrol::checkHitpoints(uint16_t x, uint16_t y)
 {
     if(hitpoints < 0 && Util.randomBoolChance(0.1))
     {
@@ -47,6 +47,8 @@ void CPetrol::checkHitpoints(uint16_t x, uint16_t y)
         }
 
         delete this;
+        return true;
     }
+    return false;
 }
 

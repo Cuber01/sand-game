@@ -40,13 +40,13 @@ void CSand::move(uint16_t x, uint16_t y)
 
     //------
 
-    if (Util.getGrid( DOWN ) == 0)
+    if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0)
     {
         fall(x, y);
         sRETURN;
     }
     
-    if (Util.getGrid( DOWN )->type == dWaterElement || Util.getGrid( DOWN )->type == dPetrolElement)
+    if (Util.getGrid( DOWN ) != 0 && (Util.getGrid( DOWN )->type == dWaterElement || Util.getGrid( DOWN )->type == dPetrolElement))
     {
         Util.switchCells(x, y, x, y+1);
         sRETURN; // TODO
@@ -59,11 +59,11 @@ void CSand::move(uint16_t x, uint16_t y)
     if(check_order)
     {
         
-        if (Util.getGrid( DOWN_RIGHT ) == 0) 
+        if (Util.getGrid( DOWN_RIGHT ) == 0 && Util.getNext( DOWN_RIGHT ) == 0) 
         {
             GO_DOWN_RIGHT(x, y);
             sRETURN;
-        } else if (Util.getGrid( DOWN_LEFT ) == 0) 
+        } else if (Util.getGrid( DOWN_LEFT ) == 0 && Util.getNext( DOWN_LEFT ) == 0) 
         {
             GO_DOWN_LEFT(x, y);
             sRETURN;
@@ -71,11 +71,11 @@ void CSand::move(uint16_t x, uint16_t y)
     
     } else {
 
-        if (Util.getGrid( DOWN_LEFT ) == 0) 
+        if (Util.getGrid( DOWN_LEFT ) == 0 && Util.getNext( DOWN_LEFT ) == 0) 
         {
             GO_DOWN_LEFT(x, y);
             sRETURN;
-        } else if (Util.getGrid( DOWN_RIGHT ) == 0) 
+        } else if (Util.getGrid( DOWN_RIGHT ) == 0 && Util.getNext( DOWN_RIGHT ) == 0) 
         {
             GO_DOWN_RIGHT(x, y);
             sRETURN;
@@ -104,7 +104,7 @@ void CSand::move(uint16_t x, uint16_t y)
 
 void CSand::notFallingUpdate(uint16_t x, uint16_t y)
 {
-    if (Util.getGrid( DOWN ) == 0)
+    if (Util.getGrid( DOWN ) == 0 && Util.getNext( DOWN ) == 0)
     {
         fall(x, y);
         isFalling = true;
@@ -163,9 +163,9 @@ void CSand::fall(uint16_t x, uint16_t y)
 
     for(int8_t i = 1; i <= rounded_vel_y; i++)
     {
-        if(Util.getGrid(x, y+i) == 0) // if i add getnext checks it doesnt work (thats because down is not updated yet. all cells on the bottom are only on grid)
+        if(Util.getGrid(x, y+i) == 0 && Util.getNext(x, y+i) == 0)
         {
-            if(Util.getGrid(x , y + i+1) != 0)
+            if(Util.getGrid(x , y + i+1) != 0 || Util.getNext(x, y + i+1) != 0)
             {
                 GO(x, y, x, y+i);
                 return;
@@ -195,9 +195,9 @@ void CSand::react_to_velocity_x(uint16_t x, uint16_t y, int8_t direction)
 
     for(int8_t i = 1; i <= rounded_vel_x; i++)
     {
-        if(Util.getGrid(x+(i*direction), y) == 0) 
+        if(Util.getGrid(x+(i*direction), y) == 0 && Util.getNext(x+(i*direction), y) == 0) 
         {
-            if(Util.getGrid(x + ( (i+1) * direction ), y) != 0)
+            if(Util.getGrid(x + ( (i+1) * direction ), y) != 0 || Util.getNext(x + ( (i+1) * direction ), y) != 0)
             {
                 GO(x, y, x+(i*direction), y);
                 velocity_x -= BOUNDS_FRICTION; //TODO it should use friction of the object below

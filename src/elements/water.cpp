@@ -79,7 +79,7 @@ void CWater::spread(uint16_t x, uint16_t y, int8_t direction)
     {
         if(Util.getGrid(x+(i*direction), y) == 0 && Util.getNext(x+(i*direction), y) == 0)
         {
-            if(Util.getGrid(x + ((i+1)*direction) , y) != 0 && Util.getNext(x + ((i+1)*direction) , y) != 0)
+            if(Util.getGrid(x + ((i+1)*direction) , y) != 0 || Util.getNext(x + ((i+1)*direction) , y) != 0)
             {
                 GO(x, y, x+(i*direction), y);
                 return;
@@ -104,9 +104,9 @@ void CWater::fall(uint16_t x, uint16_t y)
 
     for(int8_t i = 1; i <= rounded_vel_y; i++)
     {
-        if(Util.getGrid(x, y+i) == 0) // TODO if i add getnext checks it doesnt work
+        if(Util.getGrid(x, y+i) == 0 && Util.getNext(x, y+i) == 0)
         {
-            if(Util.getGrid(x , y + i+1) != 0)
+            if(Util.getGrid(x , y + i+1) != 0 || Util.getNext(x, y+i+1) != 0)
             {
                 GO(x, y, x, y+i);
                 return;
@@ -136,10 +136,12 @@ void CWater::update(uint16_t x, uint16_t y)
         grid[x][y] = 0;
         next[x][y] = new CSteam();
         delete this;
+        return;
     } else if (willBeReplaced)
     {
         // grid[x][y] = 0;
         next[x][y] = 0;
+        return;
     }
 
 
