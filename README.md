@@ -32,7 +32,7 @@ If you don't have access to a fancy package manager, you'll have to get make and
 
 To install SDL2 packages, run:
 ```sh
-sudo apt install libsdl2-dev
+sudo apt install libsdl2-dev libsdl2-image-dev
 ```
 
 Again, if you don't have access to a package manager and a repository with sdl packages, go to https://wiki.libsdl.org/Installation and check how can you install it on your system.
@@ -80,14 +80,14 @@ Clone the git repo:
 git clone https://github.com/Cuber01/sand-game
 ```
 
-Clone modules:
-```
-git submodule update --init
-```
-
 Go to dir:
 ```sh
 cd sand-game/
+```
+
+Clone modules:
+```
+git submodule update --init
 ```
 
 Build:
