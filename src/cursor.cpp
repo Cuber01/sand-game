@@ -38,7 +38,14 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
     for(uint8_t i = 1; i < w; i++) {
         for(uint8_t j = 1; j < h; j++) {
 
-            if ( Util.getGrid((x+i)/SCALE, (y+j)/SCALE) == 0 && particle != dNoneElement)
+            int grid_x = (x + i) / SCALE;
+            int grid_y = (y + j) / SCALE;
+
+            if (grid_x <= 0 || grid_x >= ROWS || grid_y <= 0 || grid_y >= COLS) {
+                continue;
+            }
+
+            if ( Util.getGrid(grid_x, grid_y) == 0 && particle != dNoneElement)
             {                
                 CElement* o;
 
@@ -59,13 +66,13 @@ void CCursor::placeParticles(uint16_t x, uint16_t y, uint8_t w, uint8_t h, eleme
                         exit(1);
                 }
 
-                grid[(x+i)/SCALE][(y+j)/SCALE] = o;
+                grid[grid_x][grid_y] = o;
                  
-            } else if ( particle == dNoneElement && !Util.isOutOfBounds((x+i)/SCALE, (y+j)/SCALE)) {
+            } else if ( particle == dNoneElement ) {
 
-                delete grid[(x+i)/SCALE][(y+j)/SCALE];
+                delete grid[grid_x][grid_y];
 
-                grid[(x+i)/SCALE][(y+j)/SCALE] = 0;
+                grid[grid_x][grid_y] = 0;
                  
             }
 

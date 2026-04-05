@@ -7,8 +7,8 @@
 #include "utils/data.hpp"
 #include "settings.hpp"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 640
+#define WINDOW_HEIGHT 640
 
 #define ROWS WINDOW_WIDTH/SCALE
 #define COLS WINDOW_WIDTH/SCALE

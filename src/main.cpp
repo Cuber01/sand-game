@@ -8,6 +8,7 @@
 
 #include "main.hpp"
 #include "cursor.hpp"
+#include "particle_updater.hpp"
 #include "render.hpp"
 #include "settings.hpp"
 #include "utils/util.hpp"
@@ -62,6 +63,7 @@ CElement* next[ROWS][COLS];
 CCursor Cursor;
 CRenderHandler RenderHandler;
 CUtil Util;
+CParticleUpdater ParticleUpdater;
 
 #ifdef MAP_LOADER
 CmapLoader MapLoader;
@@ -277,28 +279,6 @@ void reactToEvent()
     }
 }
 
-void updateParticles()
-{
-
-    for (uint16_t y = 0; y < ROWS; y++) {
-                
-
-        for (uint16_t x = 0; x < COLS; x++) {
-         
-            CElement* value = grid[x][y];
-            if(value != 0) {
-
-                value->update(x, y);
-
-
-            }        
-        
-        }    
-
-    }
-
-}
-
 void main_loop()
 {
     #ifdef SLOW
@@ -325,7 +305,7 @@ void main_loop()
 
     memset( next, 0, sizeof(next) );
 
-    updateParticles();
+    ParticleUpdater.updateParticles();
 
     RenderHandler.draw(); 
 
